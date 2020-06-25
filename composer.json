@@ -3,6 +3,7 @@
     "description": "Cookieconsent bar with required optin",
     "keywords": ["contao", "cookie", "cookiebar", "cookieconsent", "gdpr"],
     "type": "contao-module",
+    "version": "0.1.0",
     "license": "UNLICENSED",
     "authors": [
         {
