@@ -1,9 +1,52 @@
 <?php
+$GLOBALS['TL_CSS'][] = 'system/modules/kreativsoehne_cookieconsent/assets/cookieconsent.min.css|static';
+$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/kreativsoehne_cookieconsent/assets/cookieconsent.min.js|static';
+
+$GLOBALS['TL_CSS'][] = 'system/modules/kreativsoehne_cookieconsent/assets/cookieconsent-custom.css|static';
+$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/kreativsoehne_cookieconsent/assets/cookieconsent-custom.js|static';
 ?>
+
 <!-- indexer::stop -->
-<?php if (BE_USER_LOGGED_IN === true || $this->hasAuthenticatedBackendUser() === true): ?>
-    <script>
-        console.log('<?= $this->cookie ?>');
-    </script>
-<?php endif; ?>
+<script>
+window.addEventListener("load", function() {
+    if (typeof window.cookieconsent === 'undefined') {
+        return;
+    }
+    document.body.style.paddingBottom = '10px';
+    var pagePaddingBottom = document.body.style.paddingBottom;
+
+    window.cookieconsent.initialise({
+        "blockScreen": "0",
+        "cookie": {
+            "name": "cookieconsent_status",
+        },
+        "content": {
+            "allow": "<?= $this->button_allow ?>",
+            "deny": "<?= $this->button_deny ?>",
+            "dismiss": "<?= $this->button_deny ?>",
+            "href": "<?= $this->link_href ?>",
+            "link": "<?= $this->link_text ?>",
+            "message": "<?= $this->message ?>",
+        },
+        "position": "bottom",
+        "revokable": false,
+        "theme": "block",
+        "type": "opt-in",
+
+        "onPopupClose": function() {
+            document.body.style.paddingBottom = pagePaddingBottom;
+            location.reload();
+        },
+
+        "onPopupOpen": function() {
+            var element = this.element;
+            window.addEventListener('resize', function() {
+                document.body.style.paddingBottom = element.offsetHeight + 'px';
+            })
+            var event = new Event('resize');
+            window.dispatchEvent(event);
+        },
+    });
+});
+</script>
 <!-- indexer::continue -->
