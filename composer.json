@@ -1,0 +1,34 @@
+{
+    "name": "kreativsoehne/cookieconsent",
+    "description": "Cookieconsent bar with required optin",
+    "keywords": ["contao", "cookie", "cookiebar", "cookieconsent", "gdpr"],
+    "type": "contao-module",
+    "license": "UNLICENSED",
+    "authors": [
+        {
+            "name": "Kreativ&Söhne",
+            "homepage": "https://www.kreativundsoehne.de/"
+        }
+    ],
+    "require": {
+        "php": "^7.2|^7.3|^7.4",
+        "contao/core-bundle": "~4.4 || ~4.9"
+    },
+    "require-dev": { },
+    "autoload": {
+        "psr-0": {
+            "Kreativsoehne\\Cookieconsent\\": ["src/"]
+        },
+        "psr-4": {
+            "Kreativsoehne\\Cookieconsent\\": "src/"
+        }
+    },
+    "replace": {},
+    "extra": {
+        "contao": {
+            "sources": {
+                "": "system/modules/kreativsoehne_cookieconsent"
+            }
+        }
+    }
+}

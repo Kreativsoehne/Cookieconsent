@@ -1,0 +1,9 @@
+<?php
+?>
+<!-- indexer::stop -->
+<?php if (BE_USER_LOGGED_IN === true || $this->hasAuthenticatedBackendUser() === true): ?>
+    <script>
+        console.log('<?= $this->cookie ?>');
+    </script>
+<?php endif; ?>
+<!-- indexer::continue -->
