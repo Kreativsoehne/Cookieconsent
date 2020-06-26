@@ -1,6 +1,6 @@
 # Kreativsoehne - Cookieconsent
 
-Cookie optin banner blocking major cookies through [cookieconsent](https://www.osano.com/cookieconsent)
+Cookie optin with [cookieconsent](https://www.osano.com/cookieconsent) as the banner and ways to block cookies and external resources.
 
 ## Install
 
