@@ -5,4 +5,3 @@ if (typeof window.ga !== 'function') {
 if (typeof window.gtag !== 'function') {
     window.gtag = function() { };
 }
-

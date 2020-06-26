@@ -17,24 +17,15 @@ class TemplateListener
         $rootPage = \Contao\PageModel::findByPk($GLOBALS['objPage']->rootId);
 
         if ($rootPage !== null && empty($rootPage->cookieconsent_enable) === false) {
-            $template = $this->getTemplate($rootPage);
+            $template = new \Contao\FrontendTemplate('cookieconsent');
             $template = $this->setData($template, $rootPage);
+            $template->blocknotice = $this->generateBlockNotice();
 
             $result = $template->parse();
             $buffer = str_replace('</body>', $result . '</body>', $buffer);
         }
 
         return $buffer;
-    }
-
-    /**
-     * Get cookieconsent template
-     * @param \Contao\PageModel $rootPage
-     * @return \Contao\FrontendTemplate
-     */
-    protected function getTemplate($rootPage) {
-        $template = new \Contao\FrontendTemplate('cookieconsent');
-        return $template;
     }
 
     /**
@@ -54,5 +45,17 @@ class TemplateListener
         }
 
         return $template;
+    }
+
+    /**
+     * Get cookieconsent notice
+     * @param string $name
+     * @return \Contao\FrontendTemplate
+     */
+    protected function generateBlockNotice() {
+        $template = new \Contao\FrontendTemplate('cookieblocknotice');
+        $result = $template->parse();
+        $result = preg_replace('/\r|\n/', '', $result);
+        return $result;
     }
 }

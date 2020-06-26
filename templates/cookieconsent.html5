@@ -9,6 +9,33 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/kreativsoehne_cookieconsent/assets
 <!-- indexer::stop -->
 <script>
 window.addEventListener("load", function() {
+
+    /**
+     * Get cookie value if exists
+     * @param {string} name
+     * @return {string|null}
+     */
+    function getCookie(name) {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        if (match === null) {
+            return null;
+        }
+        return match[2];
+    }
+
+    if (getCookie('cookieconsent_status') !== 'allow') {
+        var notice = document.querySelector('.cc-blocknotice-wrapper');
+
+        var iFrames = document.querySelectorAll('iframe[src*="youtube"],iframe[src*="vimeo"],embed[src*="youtube"],embed[src*="vimeo"]');
+        iFrames.forEach(function(item) {
+            item.setAttribute('data-src', item.src);
+            item.src = '';
+            var clonedNotice = notice.cloneNode(true)
+            item.parentNode.insertBefore(clonedNotice, item.nextSibling);
+            clonedNotice.appendChild(item);
+        })
+    }
+
     if (typeof window.cookieconsent === 'undefined') {
         return;
     }
@@ -35,7 +62,7 @@ window.addEventListener("load", function() {
 
         "onPopupClose": function() {
             document.body.style.paddingBottom = pagePaddingBottom;
-            location.reload();
+            window.location.reload();
         },
 
         "onPopupOpen": function() {
@@ -49,4 +76,5 @@ window.addEventListener("load", function() {
     });
 });
 </script>
+<div style="display: none;"><?= $this->blocknotice ?>';</div>
 <!-- indexer::continue -->
