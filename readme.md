@@ -19,8 +19,8 @@ The settings will be available through the root page. Activating the cookieconse
 If you wish to block analytics and similar. Extend the template `analytics_google.html5` and replace this line:
 
 ```diff
-- <?php if ($GoogleAnalyticsId != 'UA-XXXXX-X' && !BE_USER_LOGGED_IN && !$this->hasAuthenticatedBackendUser()): ?>
-+ <?php if ($GoogleAnalyticsId != 'UA-XXXXX-X' && !BE_USER_LOGGED_IN && !$this->hasAuthenticatedBackendUser() && \Input::cookie('cookieconsent_status') === 'allow'): ?>
+- if ($GoogleAnalyticsId != 'UA-XXXXX-X' && !BE_USER_LOGGED_IN && !$this->hasAuthenticatedBackendUser()): ?>
++ if ($GoogleAnalyticsId != 'UA-XXXXX-X' && !BE_USER_LOGGED_IN && !$this->hasAuthenticatedBackendUser() && \Input::cookie('cookieconsent_status') === 'allow'): ?>
 ```
 
 This way the analytics and any other code there won't be rendered unless the cookie and its necessary value were accepted & set by the user beforehand.
