@@ -3,7 +3,6 @@ $GLOBALS['TL_CSS'][] = 'system/modules/kreativsoehne_cookieconsent/assets/cookie
 $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/kreativsoehne_cookieconsent/assets/cookieconsent.min.js|static';
 
 $GLOBALS['TL_CSS'][] = 'system/modules/kreativsoehne_cookieconsent/assets/cookieconsent-custom.css|static';
-$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/kreativsoehne_cookieconsent/assets/cookieconsent-custom.js|static';
 ?>
 
 <!-- indexer::stop -->
@@ -34,6 +33,9 @@ window.addEventListener("load", function() {
             item.parentNode.insertBefore(clonedNotice, item.nextSibling);
             clonedNotice.appendChild(item);
         })
+
+        window.ga = function() { };
+        window.gtag = function() { };
     }
 
     if (typeof window.cookieconsent === 'undefined') {
