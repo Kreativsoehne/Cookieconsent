@@ -41,7 +41,6 @@ window.addEventListener("load", function() {
     if (typeof window.cookieconsent === 'undefined') {
         return;
     }
-    document.body.style.paddingBottom = '10px';
     var pagePaddingBottom = document.body.style.paddingBottom;
 
     window.cookieconsent.initialise({
