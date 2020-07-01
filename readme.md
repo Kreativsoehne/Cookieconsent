@@ -4,9 +4,7 @@ Cookie optin with [cookieconsent](https://www.osano.com/cookieconsent) as the ba
 
 ## Install
 
-Move module into `system/modules/kreativsoehne_cookieconsent`.
-
-Run a cache clean through console or contao-manager.
+Install through contao-manager or with `composer require kreativsoehne/cookieconsent`.
 
 Run a database update.
 
@@ -27,4 +25,4 @@ This way the analytics and any other code there won't be rendered unless the coo
 
 ### Blocking Youtube & Vimeo
 
-The content elements for Youtube and Vimeo will be blocked if the user did not accept all cookies. You can edit the block message through the template `cookieblocknotice.html5` and the text through the `TL_LANG` variables.
+The content elements for Youtube and Vimeo will be blocked if the user did not accept all cookies. You can edit the block message through the template `cookieblocknotice.html5` and its text through the `TL_LANG` variables.
