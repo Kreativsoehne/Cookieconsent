@@ -2,8 +2,8 @@
     "name": "kreativsoehne/cookieconsent",
     "description": "Cookieconsent bar with required optin",
     "keywords": ["contao", "cookie", "cookiebar", "cookieconsent", "gdpr"],
-    "type": "contao-module",
-    "version": "0.1.0",
+    "type": "contao-bundle",
+    "version": "1.0.0",
     "license": "MIT",
     "authors": [
         {
@@ -17,9 +17,6 @@
     },
     "require-dev": { },
     "autoload": {
-        "psr-0": {
-            "Kreativsoehne\\Cookieconsent\\": ["src/"]
-        },
         "psr-4": {
             "Kreativsoehne\\Cookieconsent\\": "src/"
         }
@@ -30,6 +27,7 @@
             "sources": {
                 "": "system/modules/kreativsoehne_cookieconsent"
             }
-        }
+        },
+        "contao-manager-plugin": "Kreativsoehne\\Cookieconsent\\ContaoManager\\Plugin"
     }
 }

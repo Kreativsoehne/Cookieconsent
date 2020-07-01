@@ -1,8 +1,7 @@
 <?php
-$GLOBALS['TL_CSS'][] = 'system/modules/kreativsoehne_cookieconsent/assets/cookieconsent.min.css|static';
-$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/kreativsoehne_cookieconsent/assets/cookieconsent.min.js|static';
-
-$GLOBALS['TL_CSS'][] = 'system/modules/kreativsoehne_cookieconsent/assets/cookieconsent-custom.css|static';
+    $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent.min.css|static';
+    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent.min.js|static';
+    $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent-custom.css|static';
 ?>
 
 <!-- indexer::stop -->
