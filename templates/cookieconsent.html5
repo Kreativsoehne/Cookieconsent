@@ -36,6 +36,7 @@ window.addEventListener("load", function() {
 
         window.ga = function() { };
         window.gtag = function() { };
+        window.fbq = function() { };
     }
 
     if (typeof window.cookieconsent === 'undefined') {
