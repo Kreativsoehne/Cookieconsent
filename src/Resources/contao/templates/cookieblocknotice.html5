@@ -1,3 +1,4 @@
+<!-- indexer::stop -->
 <div class="cc-blocknotice-wrapper">
     <div class="cc-blocknotice">
         <strong><?= $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] ?></strong>
@@ -6,3 +7,4 @@
         </a>
     </div>
 </div>
+<!-- indexer::continue -->
