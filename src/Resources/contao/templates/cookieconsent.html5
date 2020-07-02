@@ -55,6 +55,7 @@ window.addEventListener("load", function() {
             "href": "<?= $this->link_href ?>",
             "link": "<?= $this->link_text ?>",
             "message": "<?= $this->message ?>",
+            "target": ""
         },
         "position": "bottom",
         "revokable": false,
@@ -73,7 +74,7 @@ window.addEventListener("load", function() {
             })
             var event = new Event('resize');
             window.dispatchEvent(event);
-        },
+        }
     });
 });
 </script>

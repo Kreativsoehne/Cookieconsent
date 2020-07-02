@@ -26,3 +26,8 @@ This way the analytics and any other code there won't be rendered unless the coo
 ### Blocking Youtube & Vimeo
 
 The content elements for Youtube and Vimeo will be blocked if the user did not accept all cookies. You can edit the block message through the template `cookieblocknotice.html5` and its text through the `TL_LANG` variables.
+
+## Copyright
+
+Copyright 2020 Kreativ&Söhne GmbH ([https://www.kreativundsoehne.de](https://www.kreativundsoehne.de))
+See LICENSE for more information.
