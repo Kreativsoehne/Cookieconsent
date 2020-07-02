@@ -30,4 +30,5 @@ The content elements for Youtube and Vimeo will be blocked if the user did not a
 ## Copyright
 
 Copyright 2020 Kreativ&Söhne GmbH ([https://www.kreativundsoehne.de](https://www.kreativundsoehne.de))
+
 See LICENSE for more information.
