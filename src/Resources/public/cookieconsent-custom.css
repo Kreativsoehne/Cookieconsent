@@ -55,6 +55,14 @@
     z-index: 10;
 }
 
+.embed_responsive>.cc-blocknotice-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .cc-blocknotice-wrapper .cc-blocknotice {
     -webkit-box-align: center;
     -ms-flex-align: center;
