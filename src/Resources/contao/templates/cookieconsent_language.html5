@@ -1,0 +1,39 @@
+// Javascript object start, language: {
+    current: "<?= $GLOBALS['TL_LANGUAGE'] ?>",
+    locale: {
+        en: {
+            barMainText: (el) => {
+                el.innerHTML = '<?= $this->message ?>';
+                return el;
+            },
+            barLinkSetting: "Cookie Settings",
+            barBtnAcceptAll: "Accept all cookies",
+            modalMainTitle: "Cookie settings",
+            modalMainText: "[cookie-settings-text]",
+            modalBtnSave: "Save current settings",
+            modalBtnAcceptAll: "Accept all cookies and close",
+            modalAffectedSolutions: "Affected solutions:",
+            learnMore: "Learn More",
+            on: "On",
+            off: "Off",
+        },
+    },
+    locale: {
+        de: {
+            barMainText: (el) => {
+                el.innerHTML = '<?= $this->message ?>';
+                return el;
+            },
+            barLinkSetting: "Cookie Einstellungen",
+            barBtnAcceptAll: "Alle Cookies akzeptieren",
+            modalMainTitle: "Cookie Einstellungen",
+            modalMainText: "[cookie-settings-text]",
+            modalBtnSave: "Einstellungen speichern",
+            modalBtnAcceptAll: "Alle Cookies akzeptieren und schliessen",
+            modalAffectedSolutions: "Betroffene Dienste:",
+            learnMore: "Mehr erfahren",
+            on: "An",
+            off: "Aus",
+        },
+    },
+// Javascript object end, }

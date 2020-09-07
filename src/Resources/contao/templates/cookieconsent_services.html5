@@ -1,0 +1,99 @@
+// Javascript object start, services: {
+    analytics: {
+        category: "google",
+        type: "dynamic-script",
+        search: "analytics",
+        cookies: [
+            {
+                name: "_gid",
+            },
+            {
+                name: /^_ga/,
+            },
+        ],
+        language: {
+            locale: {
+                en: {
+                    name: "Google Analytics",
+                },
+            },
+        },
+    },
+    gtm: {
+        category: "google",
+        type: "dynamic-script",
+        search: [
+            "gtag",
+            "googletagmanager",
+            "gtm",
+            "bing",
+            "conversion",
+            "adservices",
+        ],
+        cookies: [
+            {
+                name: "_gid",
+            },
+            {
+                name: /^_ga/,
+            },
+        ],
+        language: {
+            locale: {
+                en: {
+                    name: "Google Tag Manager",
+                },
+            },
+        },
+    },
+    adwords: {
+        category: "google",
+        type: "script-tag",
+        search: [
+            "gtag",
+            "googletagmanager",
+            "gtm",
+            "bing",
+            "conversion",
+            "adservices",
+        ],
+        language: {
+            locale: {
+                en: {
+                    name: "Adwords",
+                },
+            },
+        },
+    },
+
+    youtube: {
+        category: "iframes",
+        type: "dynamic-script",
+        search: ["youtube"],
+        cookies: [
+            {
+                name: "_gid",
+            },
+        ],
+        language: {
+            locale: {
+                en: {
+                    name: "Youtube",
+                },
+            },
+        },
+    },
+    vimeo: {
+        category: "iframes",
+        type: "dynamic-script",
+        search: ["vimeo"],
+        cookies: [],
+        language: {
+            locale: {
+                en: {
+                    name: "Vimeo",
+                },
+            },
+        },
+    },
+// Javascript object end, }

@@ -1,0 +1,41 @@
+// Javascript object start, categories: {
+    google: {
+        needed: false,
+        wanted: false,
+        checked: false,
+        language: {
+            locale: {
+                en: {
+                    name: "Google services",
+                    description:
+                    "[google-services-text-en]"
+                },
+                de: {
+                    name: "Google Dienste",
+                    description:
+                    "[google-services-text-de]"
+                }
+            }
+        }
+    },
+
+    iframes: {
+        needed: false,
+        wanted: false,
+        checked: false,
+        language: {
+            locale: {
+                en: {
+                    name: "External frames",
+                    description:
+                    "[iframes-text-en]"
+                },
+                de: {
+                    name: "Externe Frames",
+                    description:
+                    "[iframes-text-de]"
+                }
+            }
+        }
+    },
+// Javascript object end, }
