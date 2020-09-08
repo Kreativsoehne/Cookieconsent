@@ -40,6 +40,14 @@ window.addEventListener("load", function() {
         var event = new Event('resize');
         window.dispatchEvent(event);
     }
+
+    var ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,.consent-give');
+    for(let ccButton of ccButtons) {
+        ccButton.addEventListener('click', function() {
+            return window.location.reload();
+        });
+
+    }
 });
 
 window.CookieConsent.init({
