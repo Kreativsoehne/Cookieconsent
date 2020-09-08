@@ -23,10 +23,11 @@ Through the template file `cookieconsent_language` the languages can be customiz
 #### Categories
 
 Through the template file `cookieconsent_categories` the services categories can be customized or additional ones added as required.
+There are several basic categories set up, though each will only be rendered if a info text for the category had been entered in the settings.
 
 #### Services
 
-Through the template file `cookieconsent_services` the specific services (and their cookies and how they are inserted) can be customized or additional ones added as required.
+Through the template file `cookieconsent_services` the specific services (and their cookies and how the services are inserted) can be customized or additional ones added as required.
 
 ### Blocking analytics
 
@@ -34,10 +35,10 @@ If you wish to block analytics and similar. Extend the template `analytics_googl
 
 ```diff
 + $ccChoices = json_decode(html_entity_decode(\Input::cookie('cconsent')));
-+ $allowedGoogleServices = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->google) && $ccChoices->categories->google->wanted === true;
++ $allowedAnalyticsCookies = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->analytics) && $ccChoices->categories->analytics->wanted === true;
 +
 - if ($GoogleAnalyticsId != 'UA-XXXXX-X' && !BE_USER_LOGGED_IN && !$this->hasAuthenticatedBackendUser()): ?>
-+ if ($GoogleAnalyticsId != 'UA-XXXXX-X' && !BE_USER_LOGGED_IN && !$this->hasAuthenticatedBackendUser() && $allowedGoogleServices == true): ?>
++ if ($GoogleAnalyticsId != 'UA-XXXXX-X' && !BE_USER_LOGGED_IN && !$this->hasAuthenticatedBackendUser() && $allowedAnalyticsCookies == true): ?>
 ```
 
 This way the analytics and any other code there won't be rendered unless the services were were accepted by the user beforehand.
@@ -87,23 +88,24 @@ if (ccChoices !== null && typeof ccChoices !== 'object' && ccChoices.categories.
 
 ### Blocking Youtube & Vimeo
 
-The content elements for Youtube and Vimeo will be blocked automatically if the user did not accept cookies for iframe usage. You can edit the block message through the template `cookieconsent_blocknotice.html5` and its text through the `TL_LANG` variables.
+The content elements for Youtube and Vimeo will be blocked automatically if the user did not accept cookies for measurement usage. You can edit the block message through the template `cookieconsent_blocknotice.html5` and its text through the `TL_LANG` variables.
 **Note:** If you have used a previous version of this extension, the template file `cookieblocknotice.html5` has been renamed to `cookieconsent_blocknotice.html5`.
 
 ### Blocking anything else
 
 If you require anything else to be blocked then these if-condition should help.
-In these examples we check if `Google` services/cookies were accepted by user:
+In these examples we check if `Analytics` services/cookies were accepted by user:
 
 In PHP:
 
 ```php
 <?php
 $ccChoices = json_decode(html_entity_decode(\Input::cookie('cconsent')));
-$allowedGoogleServices = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->google) &&
-$ccChoices->categories->google->wanted === true;
+$allowedAnalyticsCookies = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->analytics) &&
+$ccChoices->categories->analytics->wanted === true;
 
-if ($allowedGoogleServices === true) {
+if ($allowedAnalyticsCookies === true) {
+    // User allowed cookies of category "analytics"
     // Your php code here
 }
 ?>
@@ -112,11 +114,14 @@ if ($allowedGoogleServices === true) {
 In templates (**Note**: This will only work in 4.9 and above):
 
 ```php
+<?php
 $ccChoices = json_decode(html_entity_decode(\Input::cookie('cconsent')));
-$allowedGoogleServices = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->google) &&
-$ccChoices->categories->google->wanted === true;
+$allowedAnalyticsCookies = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->analytics) &&
+$ccChoices->categories->analytics->wanted === true;
+?>
 
-<?php if ($allowedGoogleServices === true): ?>
+<?php if ($allowedAnalyticsCookies === true): ?>
+    // User allowed cookies of category "analytics"
     // Your template code here
 <?php endif; ?>
 ```
@@ -132,8 +137,9 @@ if (ccChoices !== null) {
         ccChoices = null;
     }
 }
-if (ccChoices !== null && typeof ccChoices !== 'object' && ccChoices.categories.google.wanted === true) {
-    // You js code here
+if (ccChoices !== null && typeof ccChoices === 'object' && ccChoices.categories.analytics.wanted === true) {
+    // User allowed cookies of category "analytics"
+    // Your js code here
 }
 ```
 

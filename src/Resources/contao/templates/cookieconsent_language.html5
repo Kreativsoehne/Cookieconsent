@@ -1,8 +1,8 @@
-// Javascript object start, language: {
+/* Javascript object start, language: { */
     current: "<?= $GLOBALS['TL_LANGUAGE'] ?>",
     locale: {
         en: {
-            barMainText: (el) => {
+            barMainText: function (el) {
                 el.innerHTML = '<?= $this->message ?>';
                 return el;
             },
@@ -15,12 +15,12 @@
             modalAffectedSolutions: "Affected solutions:",
             learnMore: "Learn More",
             on: "On",
-            off: "Off",
-        },
+            off: "Off"
+        }
     },
     locale: {
         de: {
-            barMainText: (el) => {
+            barMainText: function (el) {
                 el.innerHTML = '<?= $this->message ?>';
                 return el;
             },
@@ -33,7 +33,7 @@
             modalAffectedSolutions: "Betroffene Dienste:",
             learnMore: "Mehr erfahren",
             on: "An",
-            off: "Aus",
-        },
-    },
-// Javascript object end, }
+            off: "Aus"
+        }
+    }
+/* Javascript object end, } */

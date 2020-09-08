@@ -1,99 +1,138 @@
-// Javascript object start, services: {
-    analytics: {
-        category: "google",
-        type: "dynamic-script",
-        search: "analytics",
-        cookies: [
-            {
-                name: "_gid",
-            },
-            {
-                name: /^_ga/,
-            },
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "Google Analytics",
-                },
-            },
-        },
-    },
-    gtm: {
-        category: "google",
+/* Javascript object start, services: { */
+    googleanalytics: {
+        category: "analytics",
         type: "dynamic-script",
         search: [
+            "analytics",
             "gtag",
             "googletagmanager",
             "gtm",
-            "bing",
-            "conversion",
-            "adservices",
+            "bing"
         ],
         cookies: [
             {
-                name: "_gid",
+                name: "_gid"
             },
             {
-                name: /^_ga/,
-            },
+                name: /^_ga/
+            }
         ],
         language: {
             locale: {
                 en: {
-                    name: "Google Tag Manager",
-                },
-            },
-        },
+                    name: "Google Analytics"
+                }
+            }
+        }
     },
-    adwords: {
-        category: "google",
-        type: "script-tag",
-        search: [
-            "gtag",
-            "googletagmanager",
-            "gtm",
-            "bing",
-            "conversion",
-            "adservices",
+
+    facebookanalytics: {
+        category: "analytics",
+        type: "dynamic-script",
+        search: ["facebook", "fbevents"],
+        cookies: [
+            {
+                name: "_fbp"
+            }
         ],
         language: {
             locale: {
                 en: {
-                    name: "Adwords",
-                },
-            },
-        },
+                    name: "Facebook Analytics"
+                }
+            }
+        }
+    },
+
+    facebookca: {
+        category: "advertisement",
+        type: "dynamic-script",
+        search: ["facebook"],
+        language: {
+            locale: {
+                en: {
+                    name: "Facebook Custom Audiences"
+                }
+            }
+        }
+    },
+
+    googleanalyticsadvertising: {
+        category: "advertisement",
+        type: "dynamic-script",
+        search: [
+            "adservices",
+            "remarketing"
+        ],
+        language: {
+            locale: {
+                en: {
+                    name: "Google Analytics Advertising"
+                }
+            }
+        }
+    },
+
+    googleremarketing: {
+        category: "advertisement",
+        type: "dynamic-script",
+        search: [
+            "adservices",
+            "remarketing"
+        ],
+        language: {
+            locale: {
+                en: {
+                    name: "Google Ads Remarketing"
+                }
+            }
+        }
+    },
+
+    googleconversion: {
+        category: "measurements",
+        type: "dynamic-script",
+        search: [
+            "adwords",
+            "conversion"
+        ],
+        language: {
+            locale: {
+                en: {
+                    name: "Google Ads Conversion"
+                }
+            }
+        }
     },
 
     youtube: {
-        category: "iframes",
+        category: "measurements",
         type: "dynamic-script",
         search: ["youtube"],
         cookies: [
             {
-                name: "_gid",
-            },
+                name: "_gid"
+            }
         ],
         language: {
             locale: {
                 en: {
-                    name: "Youtube",
-                },
-            },
-        },
+                    name: "Youtube"
+                }
+            }
+        }
     },
     vimeo: {
-        category: "iframes",
+        category: "measurements",
         type: "dynamic-script",
         search: ["vimeo"],
         cookies: [],
         language: {
             locale: {
                 en: {
-                    name: "Vimeo",
-                },
-            },
-        },
-    },
-// Javascript object end, }
+                    name: "Vimeo"
+                }
+            }
+        }
+    }
+/* Javascript object end, } */

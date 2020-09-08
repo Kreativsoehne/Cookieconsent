@@ -1,41 +1,105 @@
-// Javascript object start, categories: {
-    google: {
+/* Javascript object start, categories: { */
+    <?php if (empty($this->info_analytics) === false) : ?>
+    analytics: {
         needed: false,
         wanted: false,
         checked: false,
         language: {
             locale: {
                 en: {
-                    name: "Google services",
-                    description:
-                    "[google-services-text-en]"
+                    name: "Static analysis",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_analytics ?>';
+                        return el;
+                    }
                 },
                 de: {
-                    name: "Google Dienste",
-                    description:
-                    "[google-services-text-de]"
+                    name: "Statische Analyse",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_analytics ?>';
+                        return el;
+                    }
                 }
             }
         }
     },
+    <?php endif ?>
 
-    iframes: {
+    <?php if (empty($this->info_recommendations) === false) : ?>
+    recommendations: {
         needed: false,
         wanted: false,
         checked: false,
         language: {
             locale: {
                 en: {
-                    name: "External frames",
-                    description:
-                    "[iframes-text-en]"
+                    name: "Individual product rcommendation",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_recommendations ?>';
+                        return el;
+                    }
                 },
                 de: {
-                    name: "Externe Frames",
-                    description:
-                    "[iframes-text-de]"
+                    name: "Individuelle Produktempfehlung",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_recommendations ?>';
+                        return el;
+                    }
                 }
             }
         }
     },
-// Javascript object end, }
+    <?php endif ?>
+
+    <?php if (empty($this->info_advertisement) === false) : ?>
+    advertisement: {
+        needed: false,
+        wanted: false,
+        checked: false,
+        language: {
+            locale: {
+                en: {
+                    name: "Individualized advertisement",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_advertisement ?>';
+                        return el;
+                    }
+                },
+                de: {
+                    name: "Individualisierte Werbung",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_advertisement ?>';
+                        return el;
+                    }
+                }
+            }
+        }
+    },
+    <?php endif ?>
+
+    <?php if (empty($this->info_measurements) === false) : ?>
+    measurements: {
+        needed: false,
+        wanted: false,
+        checked: false,
+        language: {
+            locale: {
+                en: {
+                    name: "Coverage measurement",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_measurements ?>';
+                        return el;
+                    }
+                },
+                de: {
+                    name: "Reichweitenmessung",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_measurements ?>';
+                        return el;
+                    }
+                }
+            }
+        }
+    },
+    <?php endif ?>
+/* Javascript object end, } */

@@ -1,23 +1,30 @@
+
 body>#cconsent-bar {
     background-color: transparent;
     font-size: 12px;
     left: 50%;
     position: fixed;
     top: 10%;
-    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
     max-width: 100%;
 }
 
 @media (min-width: 768px) {
     body>#cconsent-bar {
         top: 50%;
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
     }
 }
 
 body>#cconsent-bar .ccb__wrapper {
     background-color: rgba(255, 255, 255, 0.8);
-    justify-content: center;
+    -webkit-box-pack: center;
+       -ms-flex-pack: center;
+       stify-content: center;
     padding: 15px;
     max-height: 100%;
     max-width: 640px;
@@ -33,10 +40,17 @@ body>#cconsent-bar .ccb__left>.cc-text {
 }
 
 body>#cconsent-bar .ccb__right>.ccb__button {
-    align-items: center;
+    -webkit-box-align: center;
+       -ms-flex-align: center;
+          align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+       -ms-flex-pack: center;
+     justify-content: center;
 }
 
 body>#cconsent-bar,
@@ -54,6 +68,8 @@ body>#cconsent-bar .ccb__button>.consent-give {
     border: 1px solid transparent;
     background-color: #000000;
     color: #ffffff;
+    -webkit-transition: all 300ms ease-in;
+    -o-transition: all 300ms ease-in;
     transition: all 300ms ease-in;
 }
 
@@ -105,6 +121,7 @@ body>#cconsent-bar .ccb__button>.ccb__edit {
     max-width: 100%;
     position: absolute;
     right: 0;
+    text-align: center;
     top: 0;
     z-index: 1;
 }
