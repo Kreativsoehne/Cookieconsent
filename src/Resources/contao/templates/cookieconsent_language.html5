@@ -7,6 +7,7 @@
                 return el;
             },
             barLinkSetting: "Cookie Settings",
+            barBtnDenyAll: "Deny all cookies",
             barBtnAcceptAll: "Accept all cookies",
             modalMainTitle: "Cookie settings",
             modalMainText: function (el) {
@@ -16,6 +17,8 @@
             modalBtnSave: "Save current settings",
             modalBtnAcceptAll: "Accept all cookies and close",
             modalAffectedSolutions: "Affected solutions:",
+            barBtnPrivacyProtection: "Privacy protection",
+            barBtnCookieInformation: "Cookie Information",
             learnMore: "Learn More",
             on: "On",
             off: "Off"
@@ -28,6 +31,7 @@
                 return el;
             },
             barLinkSetting: "Cookie Einstellungen",
+            barBtnDenyAll: "Alle Cookies ablehnen",
             barBtnAcceptAll: "Alle Cookies akzeptieren",
             modalMainTitle: "Cookie Einstellungen",
             modalMainText: function (el) {
@@ -37,6 +41,8 @@
             modalBtnSave: "Einstellungen speichern",
             modalBtnAcceptAll: "Alle Cookies akzeptieren und schliessen",
             modalAffectedSolutions: "Betroffene Dienste:",
+            barBtnPrivacyProtection: "Datenschutz",
+            barBtnCookieInformation: "Cookies Informationen",
             learnMore: "Mehr erfahren",
             on: "An",
             off: "Aus"

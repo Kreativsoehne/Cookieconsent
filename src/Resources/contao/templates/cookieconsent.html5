@@ -15,7 +15,7 @@ window.addEventListener("load", function() {
         }
     }
 
-    if (ccChoices === null || typeof ccChoices !== 'object' || ccChoices.categories.iframes.wanted !== true) {
+    if (ccChoices === null || typeof ccChoices !== 'object' || ccChoices.categories.measurements.wanted !== true) {
         var notice = document.querySelector('.cc-blocknotice-wrapper');
         var iFrames = document.querySelectorAll('iframe[src*="youtube"],iframe[src*="vimeo"],embed[src*="youtube"],embed[src*="vimeo"]');
 
@@ -41,7 +41,8 @@ window.addEventListener("load", function() {
 });
 
 window.CookieConsent.init({
-  modalMainTextMoreLink: "<?= $this->link_href ?>",
+  modalMainTextMoreLink: '<?= $this->cookie_link ?>',
+  modalMainTextPrivacyLink: '<?= $this->privacy_link ?>',
   barTimeout: 0,
 
   language: {
