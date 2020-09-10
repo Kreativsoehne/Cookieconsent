@@ -29,12 +29,18 @@ class TemplateListener
     public function onOutputFrontendTemplate($buffer)
     {
         $rootPage = \Contao\PageModel::findByPk($GLOBALS['objPage']->rootId);
-        $this->rootData = $rootPage->row();
+        $rootData = $rootPage->row();
 
-        if ($rootPage !== null && empty($rootPage->cookieconsent_enable) === false) {
+        foreach ($rootData as $key => $value) {
+            if (strpos($key, 'cookieconsent_') === 0) {
+                $this->rootData[substr($key, strlen('cookieconsent_'))] = $value;
+            }
+        }
+
+        if ($rootPage !== null && empty($this->rootData[enable]) === false) {
             $template = new \Contao\FrontendTemplate('cookieconsent');
             $template = $this->setData($template);
-            $template->blocknotice = $this->getSubTemplateContent('cookieconsent_blocknotice', true);
+            $template->blocknotice = $this->getSubTemplateContent('cookieconsent_blocknotice');
             $template->categories = $this->getSubTemplateContent('cookieconsent_categories');
             $template->languagesettings = $this->getSubTemplateContent('cookieconsent_language');
             $template->services = $this->getSubTemplateContent('cookieconsent_services');
@@ -54,9 +60,7 @@ class TemplateListener
      */
     protected function setData($template) {
         foreach ($this->rootData as $key => $value) {
-            if (strpos($key, 'cookieconsent_') === 0) {
-                $template->{substr($key, strlen('cookieconsent_'))} = $value;
-            }
+            $template->{$key} = $value;
         }
 
         return $template;
@@ -67,14 +71,24 @@ class TemplateListener
      * @param string $name
      * @return \Contao\FrontendTemplate
      */
-    protected function getSubTemplateContent($template, $trimNewlines = false) {
+    protected function getSubTemplateContent($template, $trimNewlines = true) {
         $template = new \Contao\FrontendTemplate($template);
         $template = $this->setData($template);
         $result = $template->parse();
         if ($trimNewlines === true) {
-            $result = preg_replace('/\r|\n/', '', $result);
+            $result = $this->trimNewslines($result);
         }
 
         return $result;
+    }
+
+    /**
+     * Basic method to trim newlines
+     *
+     * @param string $value
+     * @return stringd
+     */
+    protected function trimNewslines(string $value) {
+        return preg_replace('/\r|\n/', '', $value);
     }
 }

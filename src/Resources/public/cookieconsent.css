@@ -3,12 +3,12 @@ body>#cconsent-bar {
     background-color: transparent;
     font-size: 12px;
     left: 50%;
+    max-width: 100%;
     position: fixed;
     top: 10%;
     -webkit-transform: translate(-50%, 0);
         -ms-transform: translate(-50%, 0);
             transform: translate(-50%, 0);
-    max-width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -24,19 +24,16 @@ body>#cconsent-bar .ccb__wrapper {
     background-color: rgba(255, 255, 255, 0.8);
     -webkit-box-pack: center;
        -ms-flex-pack: center;
-       stify-content: center;
+     justify-content: center;
     padding: 15px;
     max-height: 100%;
-    max-width: 640px;
+    max-width: 400px;
     overflow: auto;
 }
 
 body>#cconsent-bar .ccb__left {
     margin-top: 0;
     text-align: justify;
-}
-
-body>#cconsent-bar .ccb__left>.cc-text {
 }
 
 body>#cconsent-bar .ccb__right>.ccb__button {
