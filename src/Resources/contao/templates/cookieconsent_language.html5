@@ -9,7 +9,10 @@
             barLinkSetting: "Cookie Settings",
             barBtnAcceptAll: "Accept all cookies",
             modalMainTitle: "Cookie settings",
-            modalMainText: "[cookie-settings-text]",
+            modalMainText: function (el) {
+                el.innerHTML = '<?= $this->settings_message ?>';
+                return el;
+            },
             modalBtnSave: "Save current settings",
             modalBtnAcceptAll: "Accept all cookies and close",
             modalAffectedSolutions: "Affected solutions:",
@@ -27,7 +30,10 @@
             barLinkSetting: "Cookie Einstellungen",
             barBtnAcceptAll: "Alle Cookies akzeptieren",
             modalMainTitle: "Cookie Einstellungen",
-            modalMainText: "[cookie-settings-text]",
+            modalMainText: function (el) {
+                el.innerHTML = '<?= $this->settings_message ?>';
+                return el;
+            },
             modalBtnSave: "Einstellungen speichern",
             modalBtnAcceptAll: "Alle Cookies akzeptieren und schliessen",
             modalAffectedSolutions: "Betroffene Dienste:",

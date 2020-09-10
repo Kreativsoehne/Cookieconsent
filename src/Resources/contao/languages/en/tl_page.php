@@ -15,6 +15,7 @@ $GLOBALS['TL_LANG']['tl_page']['cookieconsent_enable'] = ['Enable cookieconsent'
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_heading'] = ['Heading', 'Heading of the 1st layer message.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_link_href'] = ['Link url', 'Link to privacy protection site.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_message'] = ['Initial message', '1st layer message about cookie usage.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_settings_message'] = ['Settings description', '2nd Layer explanation text about cookie settings.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_analytics'] = ['Static analysis', 'Information for the specific category. Leave empty to disable the category.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_recommendations'] = ['Individual product recommendations', 'Information for the specific category. Leave empty to disable the category.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_advertisement'] = ['Individualized advertisement', 'Information for the specific category. Leave empty to disable the category.'];

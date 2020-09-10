@@ -17,7 +17,7 @@ if (isset($GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'])) {
     $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'] .= ';{cookieconsent_legend},cookieconsent_enable';
 }
 
-$GLOBALS['TL_DCA']['tl_page']['subpalettes']['cookieconsent_enable'] = 'cookieconsent_heading,cookieconsent_link_href,cookieconsent_message,cookieconsent_info_analytics,cookieconsent_info_recommendations,cookieconsent_info_advertisement,cookieconsent_info_measurements';
+$GLOBALS['TL_DCA']['tl_page']['subpalettes']['cookieconsent_enable'] = 'cookieconsent_heading,cookieconsent_link_href,cookieconsent_message,cookieconsent_settings_message,cookieconsent_info_analytics,cookieconsent_info_recommendations,cookieconsent_info_advertisement,cookieconsent_info_measurements';
 
 /*
  * Add the fields
@@ -48,6 +48,14 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_link_href'] = [
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_message'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_message'],
+    'exclude' => true,
+    'inputType' => 'textarea',
+    'eval' => ['mandatory' => false, 'tl_class' => 'long clr', 'rte' => 'tinyMCE'],
+    'sql' => 'text NULL',
+];
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_settings_message'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_settings_message'],
     'exclude' => true,
     'inputType' => 'textarea',
     'eval' => ['mandatory' => false, 'tl_class' => 'long clr', 'rte' => 'tinyMCE'],
