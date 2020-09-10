@@ -41,7 +41,7 @@ class TemplateListener
             $this->rootData['heading'] = '<div class="h4 ccb__heading text-center">' . html_entity_decode($this->rootData['heading']) . '</div>';
         }
 
-        if ($rootPage !== null && empty($this->rootData[enable]) === false) {
+        if ($rootPage !== null && empty($this->rootData['enable']) === false) {
             $template = new \Contao\FrontendTemplate('cookieconsent');
             $template = $this->setData($template);
             $template->blocknotice = $this->getSubTemplateContent('cookieconsent_blocknotice');

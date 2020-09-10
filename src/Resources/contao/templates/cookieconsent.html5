@@ -1,5 +1,6 @@
 <?php
     $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent.css|static';
+    $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent-custom.css|static';
     $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent.js|static';
 ?>
 
