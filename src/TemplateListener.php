@@ -37,6 +37,10 @@ class TemplateListener
             }
         }
 
+        if (empty($this->rootData['heading']) === false) {
+            $this->rootData['heading'] = '<div class="h4 ccb__heading text-center">' . html_entity_decode($this->rootData['heading']) . '</div>';
+        }
+
         if ($rootPage !== null && empty($this->rootData[enable]) === false) {
             $template = new \Contao\FrontendTemplate('cookieconsent');
             $template = $this->setData($template);

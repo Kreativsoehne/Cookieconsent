@@ -41,7 +41,7 @@ window.addEventListener("load", function() {
 });
 
 window.CookieConsent.init({
-  modalMainTextMoreLink: "<?= $this->link_url ?>",
+  modalMainTextMoreLink: "<?= $this->link_href ?>",
   barTimeout: 0,
 
   language: {

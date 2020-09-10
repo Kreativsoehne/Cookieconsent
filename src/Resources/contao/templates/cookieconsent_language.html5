@@ -3,7 +3,7 @@
     locale: {
         en: {
             barMainText: function (el) {
-                el.innerHTML = '<?= $this->message ?>';
+                el.innerHTML = '<?= $this->heading . $this->message ?>';
                 return el;
             },
             barLinkSetting: "Cookie Settings",
@@ -21,7 +21,7 @@
     locale: {
         de: {
             barMainText: function (el) {
-                el.innerHTML = '<?= $this->message ?>';
+                el.innerHTML = '<?= $this->heading . $this->message ?>';
                 return el;
             },
             barLinkSetting: "Cookie Einstellungen",

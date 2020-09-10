@@ -12,6 +12,7 @@
  * Fields.
  */
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_enable'] = ['Enable cookieconsent', 'Display cookieconsent on this site.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_heading'] = ['Heading', 'Heading of the 1st layer message.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_link_href'] = ['Link url', 'Link to privacy protection site.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_message'] = ['Initial message', '1st layer message about cookie usage.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_analytics'] = ['Static analysis', 'Information for the specific category. Leave empty to disable the category.'];
