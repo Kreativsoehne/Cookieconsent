@@ -1,6 +1,6 @@
 # Kreativsoehne - Cookieconsent
 
-Cookie optin with [brainsum/cookieconsent](https://github.com/brainsum/cookieconsent) as the banner/overlay and ways to block cookies and external resources.
+Cookie optin with [brainsum/cookieconsent](https://github.com/brainsum/cookieconsent) as the overlay and ways to block cookies and external resources.
 
 ## Install
 
@@ -28,6 +28,14 @@ There are several basic categories set up, though each will only be rendered if 
 #### Services
 
 Through the template file `cookieconsent_services` the specific services (and their cookies and how the services are inserted) can be customized or additional ones added as required.
+
+#### Opening the settings
+
+If you require a link to open the cookie settings (2nd layer):
+
+```html
+<a href="#" onclick="document.querySelector('#cconsent-modal').classList.add('ccm--visible'); return false;">Cookie Einstellungen</a>
+```
 
 ### Blocking analytics
 

@@ -2647,13 +2647,9 @@ function () {
     key: "buildBar",
     value: function buildBar() {
       return (0, _redom.el)('div#cconsent-bar.ccb--hidden', (0, _redom.el)("div.ccb__wrapper", (0, _redom.el)('div.ccb__left', (0, _redom.el)('div.cc-text', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barMainText'))), (0, _redom.el)('div.ccb__row', (0, _redom.el)('div.ccb__col.ccb__button', (0, _redom.el)('button#ccm__footer__consent-modal-submit', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnDenyAll'))), (0, _redom.el)('div.ccb__col.ccb__button', (0, _redom.el)('button.consent-give', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnAcceptAll')))), (0, _redom.el)('.ccb__button.text-center', (0, _redom.el)('a.ccb__edit', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barLinkSetting'))), (0, _redom.el)('div.ccb__row.ccb__footer', (0, _redom.el)('div.ccb__col.ccb__button.text-right', window.CookieConsent.config.modalMainTextPrivacyLink ? (0, _redom.el)('a', {
-        href: window.CookieConsent.config.modalMainTextPrivacyLink,
-        target: '_blank',
-        rel: 'noopener noreferrer'
+        href: window.CookieConsent.config.modalMainTextPrivacyLink
       }, _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnPrivacyProtection')) : null), (0, _redom.el)('div.ccb__col.ccb__button', window.CookieConsent.config.modalMainTextMoreLink ? (0, _redom.el)('a', {
-        href: window.CookieConsent.config.modalMainTextMoreLink,
-        target: '_blank',
-        rel: 'noopener noreferrer'
+        href: window.CookieConsent.config.modalMainTextMoreLink
       }, _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnCookieInformation')) : null))));
     }
   }, {

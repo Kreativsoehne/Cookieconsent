@@ -107,14 +107,17 @@
     right: 0;
     bottom: 0;
     font-size: 14px;
-    background-color: rgba(0, 0, 0, 0.6);
     z-index: 9999;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+#cconsent-bar.ccb--hidden+#cconsent-modal {
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 @media (max-width: 600px) {
