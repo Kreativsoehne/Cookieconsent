@@ -33,7 +33,7 @@ window.addEventListener("load", function() {
         window.fbq = function() { };
     }
 
-    var ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,.consent-give');
+    var ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,button.consent-give,button.consent-deny');
     for(let ccButton of ccButtons) {
         ccButton.addEventListener('click', function() {
             return window.location.reload();

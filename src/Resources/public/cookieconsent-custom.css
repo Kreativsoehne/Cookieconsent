@@ -20,7 +20,7 @@ body > #cconsent-bar a:hover {
 body > #cconsent-modal .ccm__button > #ccm__footer__consent-modal-submit,
 body > #cconsent-modal .ccm__button > .consent-give,
 body > #cconsent-bar .ccb__button > .ccb__edit,
-body > #cconsent-bar .ccb__button > #ccm__footer__consent-modal-submit,
+body > #cconsent-bar .ccb__button > .consent-deny,
 body > #cconsent-bar .ccb__button > .consent-give {
     border: 1px solid transparent;
     background-color: #000000;
@@ -33,7 +33,7 @@ body > #cconsent-bar .ccb__button > .consent-give {
 
 body > #cconsent-modal .ccm__button > #ccm__footer__consent-modal-submit:hover,
 body > #cconsent-modal .ccm__button > .consent-give:hover,
-body > #cconsent-bar .ccb__button > #ccm__footer__consent-modal-submit,
+body > #cconsent-bar .ccb__button > .consent-deny,
 body > #cconsent-bar .ccb__button > .consent-give:hover {
     background-color: #ffffff;
     border-color: #000000;
