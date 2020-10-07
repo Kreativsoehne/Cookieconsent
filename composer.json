@@ -1,6 +1,6 @@
 {
     "name": "kreativsoehne/cookieconsent",
-    "description": "Cookieconsent banner with required optin and ways to block cookies and external resources",
+    "description": "Cookieconsent overlay with required optin and ways to block cookies and external resources",
     "keywords": ["contao", "cookie", "cookiebar", "cookieconsent", "gdpr"],
     "type": "contao-bundle",
     "version": "1.0.6",

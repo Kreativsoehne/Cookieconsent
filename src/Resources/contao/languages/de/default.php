@@ -11,5 +11,5 @@
 /**
  * Frontend
  */
-$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Externe Resourcen sind ohne Cookies leider nicht verfügbar.';
-$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Cookies erlauben';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Leider sind externe Video Einbindungen ohne entsprechende Cookies Zustimmung nicht verfügbar.';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Cookie Einstellungen bearbeiten';

@@ -12,11 +12,15 @@
  * Fields.
  */
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_enable'] = ['Cookieconsent aktivieren', 'Das Cookieconsent auf dieser Seite anzeigen.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_message'] = ['Meldung', 'Der Hinweistext über Cookie Nutzung.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_button_allow'] = ['Akzeptieren Button', 'Text des Akzeptieren-Buttons.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_button_deny'] = ['Ablehnen Button', 'Text des Ablehen-Buttons.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_link_text'] = ['Link Text', 'Text des Hinweis-Links.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_link_href'] = ['Link Url', 'Url des Hinweis-Links.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_heading'] = ['Überschrift', 'Überschrift des 1st Layer Hinweistext.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_privacy_link'] = ['Datenschutz Link', 'Link zur Datenschutz-Seite.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_cookie_link'] = ['Cookie Informationen Link', 'Link zur Cookie Informations-Seite.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_message'] = ['Hinweis Meldung', 'Der 1st Layer Hinweistext über Cookie Nutzung.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_settings_message'] = ['Einstellungen Erklärung', 'Der 2nd Layer Erklärungstext über die Cookie-Einstellungen.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_analytics'] = ['Statistische Analyse', 'Hinweistext zur entsprechenden Kategorie. Leer lassen um die Kategorie auszuschliessen.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_recommendations'] = ['Individuelle Produktempfehlungen', 'Hinweistext zur entsprechenden Kategorie. Leer lassen um die Kategorie auszuschliessen.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_advertisement'] = ['Individualisierte Werbung', 'Hinweistext zur entsprechenden Kategorie. Leer lassen um die Kategorie auszuschliessen.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_measurements'] = ['Reichweitenmessung', 'Hinweistext zur entsprechenden Kategorie. Leer lassen um die Kategorie auszuschliessen.'];
 
 /*
  * Legends
