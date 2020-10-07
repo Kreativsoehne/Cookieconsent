@@ -42,6 +42,11 @@ class TemplateListener
         }
 
         if ($rootPage !== null && empty($this->rootData['enable']) === false) {
+
+            // Temporarily disable debug-mode to prevent template-hints within javascript-code
+            $blDebugMode = \Contao\Config::get('debugMode');
+            \Contao\Config::set('debugMode', false);
+
             $template = new \Contao\FrontendTemplate('cookieconsent');
             $template = $this->setData($template);
             $template->blocknotice = $this->getSubTemplateContent('cookieconsent_blocknotice');
@@ -51,6 +56,8 @@ class TemplateListener
 
             $result = $template->parse();
             $buffer = str_replace('</body>', $result . '</body>', $buffer);
+
+            \Contao\Config::set('debugMode', $blDebugMode);
         }
 
         return $buffer;
