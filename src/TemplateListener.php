@@ -16,6 +16,12 @@ namespace Kreativsoehne\Cookieconsent;
 class TemplateListener
 {
     /**
+     * Data from root page
+     * @var array
+     */
+    protected $rootData = [];
+
+    /**
      * Output cookieconsent on frontend template if enabled
      * @param string $buffer
      * @return string
@@ -23,11 +29,25 @@ class TemplateListener
     public function onOutputFrontendTemplate($buffer)
     {
         $rootPage = \Contao\PageModel::findByPk($GLOBALS['objPage']->rootId);
+        $rootData = $rootPage->row();
 
-        if ($rootPage !== null && empty($rootPage->cookieconsent_enable) === false) {
+        foreach ($rootData as $key => $value) {
+            if (strpos($key, 'cookieconsent_') === 0) {
+                $this->rootData[substr($key, strlen('cookieconsent_'))] = $value;
+            }
+        }
+
+        if (empty($this->rootData['heading']) === false) {
+            $this->rootData['heading'] = '<div class="h4 ccb__heading text-center">' . html_entity_decode($this->rootData['heading']) . '</div>';
+        }
+
+        if ($rootPage !== null && empty($this->rootData['enable']) === false) {
             $template = new \Contao\FrontendTemplate('cookieconsent');
-            $template = $this->setData($template, $rootPage);
-            $template->blocknotice = $this->generateBlockNotice();
+            $template = $this->setData($template);
+            $template->blocknotice = $this->getSubTemplateContent('cookieconsent_blocknotice');
+            $template->categories = $this->getSubTemplateContent('cookieconsent_categories');
+            $template->languagesettings = $this->getSubTemplateContent('cookieconsent_language');
+            $template->services = $this->getSubTemplateContent('cookieconsent_services');
 
             $result = $template->parse();
             $buffer = str_replace('</body>', $result . '</body>', $buffer);
@@ -42,28 +62,37 @@ class TemplateListener
      * @param \Contao\PageModel $rootPage
      * @return array
      */
-    protected function setData($template, $rootPage) {
-        $rowData = $rootPage->row();
-
-        foreach ($rowData as $key => $value) {
-            if (strpos($key, 'cookieconsent_') === 0) {
-                // echo(substr($key, strlen('cookieconsent_')) . $value . '<br>');
-                $template->{substr($key, strlen('cookieconsent_'))} = $value;
-            }
+    protected function setData($template) {
+        foreach ($this->rootData as $key => $value) {
+            $template->{$key} = $value;
         }
 
         return $template;
     }
 
     /**
-     * Get cookieconsent notice
+     * Get child template content
      * @param string $name
      * @return \Contao\FrontendTemplate
      */
-    protected function generateBlockNotice() {
-        $template = new \Contao\FrontendTemplate('cookieblocknotice');
+    protected function getSubTemplateContent($template, $trimNewlines = true) {
+        $template = new \Contao\FrontendTemplate($template);
+        $template = $this->setData($template);
         $result = $template->parse();
-        $result = preg_replace('/\r|\n/', '', $result);
+        if ($trimNewlines === true) {
+            $result = $this->trimNewslines($result);
+        }
+
         return $result;
+    }
+
+    /**
+     * Basic method to trim newlines
+     *
+     * @param string $value
+     * @return stringd
+     */
+    protected function trimNewslines(string $value) {
+        return preg_replace('/\r|\n/', '', $value);
     }
 }

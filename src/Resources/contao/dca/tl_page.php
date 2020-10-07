@@ -17,7 +17,7 @@ if (isset($GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'])) {
     $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'] .= ';{cookieconsent_legend},cookieconsent_enable';
 }
 
-$GLOBALS['TL_DCA']['tl_page']['subpalettes']['cookieconsent_enable'] = 'cookieconsent_message,cookieconsent_button_allow,cookieconsent_button_deny,cookieconsent_link_text,cookieconsent_link_href';
+$GLOBALS['TL_DCA']['tl_page']['subpalettes']['cookieconsent_enable'] = 'cookieconsent_heading,cookieconsent_privacy_link,cookieconsent_cookie_link,cookieconsent_message,cookieconsent_settings_message,cookieconsent_info_analytics,cookieconsent_info_recommendations,cookieconsent_info_advertisement,cookieconsent_info_measurements';
 
 /*
  * Add the fields
@@ -30,43 +30,74 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_enable'] = [
     'sql' => "char(1) NOT NULL default ''",
 ];
 
+$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_privacy_link'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_privacy_link'],
+    'exclude' => true,
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'url', 'decodeEntities' => true, 'dcaPicker' => true, 'fieldType' => 'radio', 'tl_class' => 'w50'],
+    'sql' => "varchar(255) NOT NULL default ''",
+];
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_cookie_link'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_cookie_link'],
+    'exclude' => true,
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'url', 'decodeEntities' => true, 'dcaPicker' => true, 'fieldType' => 'radio', 'tl_class' => 'w50'],
+    'sql' => "varchar(255) NOT NULL default ''",
+];
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_heading'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_heading'],
+    'exclude' => true,
+    'inputType' => 'text',
+    'eval' => ['mandatory' => false, 'tl_class' => ''],
+    'sql' => 'text NULL',
+];
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_message'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_message'],
     'exclude' => true,
-    'inputType' => 'text',
-    'eval' => ['mandatory' => true, 'tl_class' => 'long'],
+    'inputType' => 'textarea',
+    'eval' => ['mandatory' => false, 'tl_class' => 'long clr', 'rte' => 'tinyMCE'],
     'sql' => 'text NULL',
 ];
 
-$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_button_allow'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_button_allow'],
+$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_settings_message'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_settings_message'],
     'exclude' => true,
-    'inputType' => 'text',
-    'eval' => ['mandatory' => true, 'maxlength' => 128, 'tl_class' => 'w50'],
-    'sql' => "varchar(128) NOT NULL default ''",
+    'inputType' => 'textarea',
+    'eval' => ['mandatory' => false, 'tl_class' => 'long clr', 'rte' => 'tinyMCE'],
+    'sql' => 'text NULL',
 ];
 
-$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_button_deny'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_button_deny'],
+$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_info_analytics'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_analytics'],
     'exclude' => true,
-    'inputType' => 'text',
-    'eval' => ['mandatory' => true, 'maxlength' => 128, 'tl_class' => 'w50'],
-    'sql' => "varchar(128) NOT NULL default ''",
+    'inputType' => 'textarea',
+    'eval' => ['mandatory' => false, 'tl_class' => 'long', 'rte' => 'tinyMCE'],
+    'sql' => 'text NULL',
 ];
 
-$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_link_text'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_link_text'],
+$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_info_recommendations'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_recommendations'],
     'exclude' => true,
-    'inputType' => 'text',
-    'eval' => ['mandatory' => true, 'maxlength' => 128, 'tl_class' => 'w50'],
-    'sql' => "varchar(128) NOT NULL default ''",
+    'inputType' => 'textarea',
+    'eval' => ['mandatory' => false, 'tl_class' => 'long', 'rte' => 'tinyMCE'],
+    'sql' => 'text NULL',
 ];
 
-$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_link_href'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_link_href'],
+$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_info_advertisement'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_advertisement'],
     'exclude' => true,
-    'inputType' => 'text',
-    'eval' => ['rgxp' => 'url', 'decodeEntities' => true, 'dcaPicker' => true, 'fieldType' => 'radio', 'tl_class' => 'w50 wizard'],
-    'sql' => "varchar(255) NOT NULL default ''",
+    'inputType' => 'textarea',
+    'eval' => ['mandatory' => false, 'tl_class' => 'long', 'rte' => 'tinyMCE'],
+    'sql' => 'text NULL',
+];
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['cookieconsent_info_measurements'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_measurements'],
+    'exclude' => true,
+    'inputType' => 'textarea',
+    'eval' => ['mandatory' => false, 'tl_class' => 'long', 'rte' => 'tinyMCE'],
+    'sql' => 'text NULL',
 ];

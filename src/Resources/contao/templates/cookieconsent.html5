@@ -1,30 +1,25 @@
 <?php
-    $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent.min.css|static';
-    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent.min.js|static';
+    $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent.css|static';
     $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent-custom.css|static';
+    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent.js|static';
 ?>
 
 <!-- indexer::stop -->
 <script>
 window.addEventListener("load", function() {
-
-    /**
-     * Get cookie value if exists
-     * @param {string} name
-     * @return {string|null}
-     */
-    function getCookie(name) {
-        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-        if (match === null) {
-            return null;
+    var ccChoices = document.cookie.match(new RegExp('(^| )cconsent=([^;]+)'));
+    if (ccChoices !== null) {
+        try {
+            ccChoices = JSON.parse(ccChoices[2]);
+        } catch (e) {
+            ccChoices = null;
         }
-        return match[2];
     }
 
-    if (getCookie('cookieconsent_status') !== 'allow') {
+    if (ccChoices === null || typeof ccChoices !== 'object' || ccChoices.categories.measurements.wanted !== true) {
         var notice = document.querySelector('.cc-blocknotice-wrapper');
-
         var iFrames = document.querySelectorAll('iframe[src*="youtube"],iframe[src*="vimeo"],embed[src*="youtube"],embed[src*="vimeo"]');
+
         iFrames.forEach(function(item) {
             item.setAttribute('data-src', item.src);
             item.src = '';
@@ -38,45 +33,32 @@ window.addEventListener("load", function() {
         window.fbq = function() { };
     }
 
-    if (typeof window.cookieconsent === 'undefined') {
-        return;
+    var ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,.consent-give');
+    for(let ccButton of ccButtons) {
+        ccButton.addEventListener('click', function() {
+            return window.location.reload();
+        });
     }
-    var pagePaddingBottom = document.body.style.paddingBottom;
+});
 
-    window.cookieconsent.initialise({
-        "blockScreen": "0",
-        "cookie": {
-            "name": "cookieconsent_status",
-        },
-        "content": {
-            "allow": "<?= $this->button_allow ?>",
-            "deny": "<?= $this->button_deny ?>",
-            "dismiss": "<?= $this->button_deny ?>",
-            "href": "<?= $this->link_href ?>",
-            "link": "<?= $this->link_text ?>",
-            "message": "<?= $this->message ?>",
-            "target": ""
-        },
-        "position": "bottom",
-        "revokable": false,
-        "theme": "block",
-        "type": "opt-in",
+window.CookieConsent.init({
+  modalMainTextMoreLink: '<?= $this->cookie_link ?>',
+  modalMainTextPrivacyLink: '<?= $this->privacy_link ?>',
+  barTimeout: 0,
 
-        "onPopupClose": function() {
-            document.body.style.paddingBottom = pagePaddingBottom;
-            window.location.reload();
-        },
+  language: {
+    <?= $this->languagesettings ?>
+  },
 
-        "onPopupOpen": function() {
-            var element = this.element;
-            window.addEventListener('resize', function() {
-                document.body.style.paddingBottom = element.offsetHeight + 'px';
-            })
-            var event = new Event('resize');
-            window.dispatchEvent(event);
-        }
-    });
+  categories: {
+    <?= $this->categories ?>
+  },
+
+  services: {
+    <?= $this->services ?>
+  }
 });
 </script>
+
 <div style="display: none;"><?= $this->blocknotice ?>';</div>
 <!-- indexer::continue -->

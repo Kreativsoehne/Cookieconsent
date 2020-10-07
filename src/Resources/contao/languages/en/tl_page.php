@@ -12,11 +12,15 @@
  * Fields.
  */
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_enable'] = ['Enable cookieconsent', 'Display cookieconsent on this site.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_message'] = ['Message', 'Message about cookie usage.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_button_allow'] = ['Accept button', 'Text of accept-button.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_button_deny'] = ['Dismiss button', 'Text of dismiss-button.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_link_text'] = ['Link text', 'Text of Hint-Link.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_link_href'] = ['Link url', 'Url of Hint-Link.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_heading'] = ['Heading', 'Heading of the 1st layer message.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_privacy_link'] = ['Privacy protection link', 'Link to privacy protection site.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_cookie_link'] = ['Cookie information link', 'Link to cookie information site.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_message'] = ['Initial message', '1st layer message about cookie usage.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_settings_message'] = ['Settings description', '2nd Layer explanation text about cookie settings.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_analytics'] = ['Static analysis', 'Information for the specific category. Leave empty to disable the category.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_recommendations'] = ['Individual product recommendations', 'Information for the specific category. Leave empty to disable the category.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_advertisement'] = ['Individualized advertisement', 'Information for the specific category. Leave empty to disable the category.'];
+$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_measurements'] = ['Coverage measurements', 'Information for the specific category. Leave empty to disable the category.'];
 
 /*
  * Legends
