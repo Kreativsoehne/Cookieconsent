@@ -2646,7 +2646,7 @@ function () {
   _createClass(Interface, [{
     key: "buildBar",
     value: function buildBar() {
-      return (0, _redom.el)('div#cconsent-bar.ccb--hidden', (0, _redom.el)("div.ccb__wrapper", (0, _redom.el)('div.ccb__left', (0, _redom.el)('div.cc-text', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barMainText'))), (0, _redom.el)('div.ccb__row', (0, _redom.el)('div.ccb__col.ccb__button', (0, _redom.el)('button#ccm__footer__consent-modal-submit', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnDenyAll'))), (0, _redom.el)('div.ccb__col.ccb__button', (0, _redom.el)('button.consent-give', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnAcceptAll')))), (0, _redom.el)('.ccb__button.text-center', (0, _redom.el)('a.ccb__edit', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barLinkSetting'))), (0, _redom.el)('div.ccb__row.ccb__footer', (0, _redom.el)('div.ccb__col.ccb__button.text-right', window.CookieConsent.config.modalMainTextPrivacyLink ? (0, _redom.el)('a', {
+      return (0, _redom.el)('div#cconsent-bar.ccb--hidden', (0, _redom.el)("div.ccb__wrapper", (0, _redom.el)('div.ccb__left', (0, _redom.el)('div.cc-text', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barMainText'))), (0, _redom.el)('div.ccb__row', (0, _redom.el)('div.ccb__col.ccb__button', (0, _redom.el)('button.consent-deny', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnDenyAll'))), (0, _redom.el)('div.ccb__col.ccb__button', (0, _redom.el)('button.consent-give', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnAcceptAll')))), (0, _redom.el)('.ccb__button.text-center', (0, _redom.el)('a.ccb__edit', _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barLinkSetting'))), (0, _redom.el)('div.ccb__row.ccb__footer', (0, _redom.el)('div.ccb__col.ccb__button.text-right', window.CookieConsent.config.modalMainTextPrivacyLink ? (0, _redom.el)('a', {
         href: window.CookieConsent.config.modalMainTextPrivacyLink
       }, _Language.default.getTranslation(window.CookieConsent.config, window.CookieConsent.config.language.current, 'barBtnPrivacyProtection')) : null), (0, _redom.el)('div.ccb__col.ccb__button', window.CookieConsent.config.modalMainTextMoreLink ? (0, _redom.el)('a', {
         href: window.CookieConsent.config.modalMainTextMoreLink
@@ -2880,7 +2880,7 @@ function () {
         _this.elements['modal'].classList.remove('ccm--visible');
       }); // If you click submit on cookie settings
 
-      document.getElementById('ccm__footer__consent-modal-submit').addEventListener('click', function () {
+      var submitSettingsHandler = function submitSettingsHandler() {
         var switchElements = _this.elements['modal'].querySelectorAll('.ccm__switch input');
 
         Array.prototype.forEach.call(switchElements, function (switchElement) {
@@ -2896,7 +2896,10 @@ function () {
         });
 
         _this.writeBufferToDOM();
-      });
+      };
+
+      document.getElementById('ccm__footer__consent-modal-submit').addEventListener('click', submitSettingsHandler);
+      document.querySelector('#cconsent-bar button.consent-deny').addEventListener('click', submitSettingsHandler);
     }
   }, {
     key: "writeBufferToDOM",
