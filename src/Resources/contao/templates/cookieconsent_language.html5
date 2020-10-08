@@ -6,19 +6,19 @@
                 el.innerHTML = '<?= $this->heading . $this->message ?>';
                 return el;
             },
-            barLinkSetting: "Cookie Settings",
-            barBtnDenyAll: "Deny all cookies",
-            barBtnAcceptAll: "Accept all cookies",
-            modalMainTitle: "Cookie settings",
+            barLinkSetting: "Privacy protection settings",
+            barBtnDenyAll: "Deny tracking",
+            barBtnAcceptAll: "Accept tracking",
+            modalMainTitle: "Privacy protection settings",
             modalMainText: function (el) {
                 el.innerHTML = '<?= $this->settings_message ?>';
                 return el;
             },
             modalBtnSave: "Save current settings",
-            modalBtnAcceptAll: "Accept all cookies and close",
+            modalBtnAcceptAll: "Accept tracking and close",
             modalAffectedSolutions: "Affected solutions:",
             barBtnPrivacyProtection: "Privacy protection",
-            barBtnCookieInformation: "Cookie Information",
+            barBtnCookieInformation: "Additional information",
             learnMore: "Learn More",
             on: "On",
             off: "Off"
@@ -30,19 +30,19 @@
                 el.innerHTML = '<?= $this->heading . $this->message ?>';
                 return el;
             },
-            barLinkSetting: "Cookie Einstellungen",
-            barBtnDenyAll: "Alle Cookies ablehnen",
-            barBtnAcceptAll: "Alle Cookies akzeptieren",
-            modalMainTitle: "Cookie Einstellungen",
+            barLinkSetting: "Datenschutzeinstellungen",
+            barBtnDenyAll: "Tracking ablehnen",
+            barBtnAcceptAll: "Tracking akzeptieren",
+            modalMainTitle: "Datenschutzeinstellungen",
             modalMainText: function (el) {
                 el.innerHTML = '<?= $this->settings_message ?>';
                 return el;
             },
             modalBtnSave: "Einstellungen speichern",
-            modalBtnAcceptAll: "Alle Cookies akzeptieren und schliessen",
+            modalBtnAcceptAll: "Tracking akzeptieren und schliessen",
             modalAffectedSolutions: "Betroffene Dienste:",
             barBtnPrivacyProtection: "Datenschutz",
-            barBtnCookieInformation: "Cookies Informationen",
+            barBtnCookieInformation: "Weitere Informationen",
             learnMore: "Mehr erfahren",
             on: "An",
             off: "Aus"
