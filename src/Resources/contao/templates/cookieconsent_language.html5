@@ -22,9 +22,7 @@
             learnMore: "Learn More",
             on: "On",
             off: "Off"
-        }
-    },
-    locale: {
+        },
         de: {
             barMainText: function (el) {
                 el.innerHTML = '<?= $this->heading . $this->message ?>';
