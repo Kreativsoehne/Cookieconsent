@@ -60,5 +60,5 @@ window.CookieConsent.init({
 });
 </script>
 
-<div style="display: none;"><?= $this->blocknotice ?>';</div>
+<div style="display: none;"><?= $this->blocknotice ?></div>
 <!-- indexer::continue -->
