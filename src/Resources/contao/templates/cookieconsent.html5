@@ -27,10 +27,6 @@ window.addEventListener("load", function() {
             item.parentNode.insertBefore(clonedNotice, item.nextSibling);
             clonedNotice.appendChild(item);
         })
-
-        window.ga = function() { };
-        window.gtag = function() { };
-        window.fbq = function() { };
     }
 
     var ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,button.consent-give,button.consent-deny');
