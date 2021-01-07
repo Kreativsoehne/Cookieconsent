@@ -38,7 +38,7 @@ class TemplateListener
         }
 
         if (empty($this->rootData['heading']) === false) {
-            $this->rootData['heading'] = '<div class="h4 ccb__heading text-center">' . html_entity_decode($this->rootData['heading']) . '</div>';
+            $this->rootData['heading'] = '<div class="h4 ccb__heading">' . html_entity_decode($this->rootData['heading']) . '</div>';
         }
 
         if ($rootPage !== null && empty($this->rootData['enable']) === false) {

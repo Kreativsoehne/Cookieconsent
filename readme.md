@@ -34,11 +34,12 @@ Through the template file `cookieconsent_services` the specific services (and th
 If you require a link to open the cookie settings (2nd layer):
 
 ```html
-<a href="#" onclick="document.querySelector('#cconsent-modal').classList.add('ccm--visible'); return false;">Cookie Einstellungen</a>
+<a href="#" onclick="document.querySelector('#cconsent-modal').classList.add('ccm--visible'); return false;">Cookie settings</a>
 ```
 
 ### Blocking analytics
 
+This is for Contao 4.9 and above.
 If you wish to block analytics and similar. Extend the template `analytics_google.html5` and replace this line:
 
 ```diff
