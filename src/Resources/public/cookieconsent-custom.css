@@ -17,6 +17,13 @@ body > #cconsent-bar a:hover {
     text-decoration: none;
 }
 
+body > #cconsent-bar .ccb__heading,
+body > #cconsent-modal .ccm__heading,
+body > #cconsent-bar .ccb__button,
+body > #cconsent-modal .ccm__button {
+    text-align: center;
+}
+
 body > #cconsent-modal .ccm__button > #ccm__footer__consent-modal-submit,
 body > #cconsent-modal .ccm__button > .consent-give,
 body > #cconsent-bar .ccb__button > .ccb__edit,

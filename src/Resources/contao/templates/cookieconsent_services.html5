@@ -1,4 +1,5 @@
 /* Javascript object start, services: { */
+    <?php if (empty($this->info_analytics) === false) : ?>
     googleanalytics: {
         category: "analytics",
         type: "dynamic-script",
@@ -43,6 +44,7 @@
             }
         }
     },
+<?php endif ?>
 
     facebookca: {
         category: "advertisement",
@@ -57,6 +59,7 @@
         }
     },
 
+<?php if (empty($this->info_advertisement) === false) : ?>
     googleanalyticsadvertising: {
         category: "advertisement",
         type: "dynamic-script",
@@ -88,7 +91,9 @@
             }
         }
     },
+<?php endif ?>
 
+<?php if (empty($this->info_measurements) === false) : ?>
     googleconversion: {
         category: "measurements",
         type: "dynamic-script",
@@ -100,6 +105,21 @@
             locale: {
                 en: {
                     name: "Google Ads Conversion"
+                }
+            }
+        }
+    },
+
+    googlemaps: {
+        category: "measurements",
+        type: "dynamic-script",
+        search: [
+            "gmap"
+        ],
+        language: {
+            locale: {
+                en: {
+                    name: "Google Maps"
                 }
             }
         }
@@ -122,6 +142,7 @@
             }
         }
     },
+
     vimeo: {
         category: "measurements",
         type: "dynamic-script",
@@ -135,4 +156,5 @@
             }
         }
     }
+<?php endif ?>
 /* Javascript object end, } */
