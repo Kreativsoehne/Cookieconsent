@@ -62,6 +62,11 @@
     padding-right: 10px;
 }
 
+#cconsent-bar .ccb__row > .ccb__col:empty,
+#cconsent-modal .ccm__row > .ccm__col:empty {
+    display: none;
+}
+
 #cconsent-bar .ccb__row:not(.ccb__footer) > .ccb__col {
     -ms-flex-preferred-size: 50%;
         flex-basis: 50%;
