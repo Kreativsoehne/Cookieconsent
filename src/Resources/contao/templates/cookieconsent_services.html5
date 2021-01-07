@@ -110,6 +110,21 @@
         }
     },
 
+    googlemaps: {
+        category: "measurements",
+        type: "dynamic-script",
+        search: [
+            "gmap"
+        ],
+        language: {
+            locale: {
+                en: {
+                    name: "Google Maps"
+                }
+            }
+        }
+    },
+
     youtube: {
         category: "measurements",
         type: "dynamic-script",
@@ -127,6 +142,7 @@
             }
         }
     },
+
     vimeo: {
         category: "measurements",
         type: "dynamic-script",
