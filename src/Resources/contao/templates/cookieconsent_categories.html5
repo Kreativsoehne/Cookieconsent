@@ -1,4 +1,30 @@
 /* Javascript object start, categories: { */
+    <?php if (empty($this->info_necessary) === false) : ?>
+    necessary: {
+        needed: true,
+        wanted: true,
+        checked: true,
+        language: {
+            locale: {
+                en: {
+                    name: "Necessary cookies",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_necessary ?>';
+                        return el;
+                    }
+                },
+                de: {
+                    name: "Notwendige cookies",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_necessary ?>';
+                        return el;
+                    }
+                }
+            }
+        }
+    },
+    <?php endif ?>
+
     <?php if (empty($this->info_analytics) === false) : ?>
     analytics: {
         needed: false,
@@ -102,4 +128,31 @@
         }
     },
     <?php endif ?>
+
+    <?php if (empty($this->info_external) === false) : ?>
+    external: {
+        needed: false,
+        wanted: false,
+        checked: false,
+        language: {
+            locale: {
+                en: {
+                    name: "External services",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_external ?>';
+                        return el;
+                    }
+                },
+                de: {
+                    name: "Externe Dienste",
+                    description: function (el) {
+                        el.innerHTML = '<?= $this->info_external ?>';
+                        return el;
+                    }
+                }
+            }
+        }
+    },
+    <?php endif ?>
+
 /* Javascript object end, } */
