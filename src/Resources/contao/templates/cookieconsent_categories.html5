@@ -14,7 +14,7 @@
                     }
                 },
                 de: {
-                    name: "Notwendige cookies",
+                    name: "Notwendige Cookies",
                     description: function (el) {
                         el.innerHTML = '<?= $this->info_necessary ?>';
                         return el;
