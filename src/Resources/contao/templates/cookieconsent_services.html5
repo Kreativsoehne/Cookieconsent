@@ -1,5 +1,41 @@
 /* Javascript object start, services: { */
-    <?php if (empty($this->info_analytics) === false) : ?>
+<?php if (empty($this->info_necessary) === false) : ?>
+    phpsessid: {
+        category: "necessary",
+        type: "localcookie",
+        cookies: [
+            {
+                name: "PHPSESSID"
+            }
+        ],
+        language: {
+            locale: {
+                en: {
+                    name: "PHP Session"
+                }
+            }
+        }
+    },
+
+    contaocsrftoken: {
+        category: "necessary",
+        type: "localcookie",
+        cookies: [
+            {
+                name: "csrf_https-contao_csrf_token"
+            }
+        ],
+        language: {
+            locale: {
+                en: {
+                    name: "Contao CSRF Protection"
+                }
+            }
+        }
+    },
+<?php endif ?>
+
+<?php if (empty($this->info_analytics) === false) : ?>
     googleanalytics: {
         category: "analytics",
         type: "dynamic-script",
@@ -46,6 +82,7 @@
     },
 <?php endif ?>
 
+<?php if (empty($this->info_advertisement) === false) : ?>
     facebookca: {
         category: "advertisement",
         type: "dynamic-script",
@@ -59,7 +96,6 @@
         }
     },
 
-<?php if (empty($this->info_advertisement) === false) : ?>
     googleanalyticsadvertising: {
         category: "advertisement",
         type: "dynamic-script",
@@ -109,13 +145,13 @@
             }
         }
     },
+<?php endif ?>
 
+<?php if (empty($this->info_external) === false) : ?>
     googlemaps: {
-        category: "measurements",
+        category: "external",
         type: "dynamic-script",
-        search: [
-            "gmap"
-        ],
+        search: ["gmap"],
         language: {
             locale: {
                 en: {
@@ -126,7 +162,7 @@
     },
 
     youtube: {
-        category: "measurements",
+        category: "external",
         type: "dynamic-script",
         search: ["youtube"],
         cookies: [
@@ -144,7 +180,7 @@
     },
 
     vimeo: {
-        category: "measurements",
+        category: "external",
         type: "dynamic-script",
         search: ["vimeo"],
         cookies: [],

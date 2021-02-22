@@ -1,5 +1,5 @@
 /* Javascript object start, categories: { */
-    <?php if (empty($this->info_necessary) === false) : ?>
+<?php if (empty($this->info_necessary) === false) : ?>
     necessary: {
         needed: true,
         wanted: true,
@@ -23,9 +23,9 @@
             }
         }
     },
-    <?php endif ?>
+<?php endif ?>
 
-    <?php if (empty($this->info_analytics) === false) : ?>
+<?php if (empty($this->info_analytics) === false) : ?>
     analytics: {
         needed: false,
         wanted: false,
@@ -49,9 +49,9 @@
             }
         }
     },
-    <?php endif ?>
+<?php endif ?>
 
-    <?php if (empty($this->info_recommendations) === false) : ?>
+<?php if (empty($this->info_recommendations) === false) : ?>
     recommendations: {
         needed: false,
         wanted: false,
@@ -75,9 +75,9 @@
             }
         }
     },
-    <?php endif ?>
+<?php endif ?>
 
-    <?php if (empty($this->info_advertisement) === false) : ?>
+<?php if (empty($this->info_advertisement) === false) : ?>
     advertisement: {
         needed: false,
         wanted: false,
@@ -101,9 +101,9 @@
             }
         }
     },
-    <?php endif ?>
+<?php endif ?>
 
-    <?php if (empty($this->info_measurements) === false) : ?>
+<?php if (empty($this->info_measurements) === false) : ?>
     measurements: {
         needed: false,
         wanted: false,
@@ -127,9 +127,9 @@
             }
         }
     },
-    <?php endif ?>
+<?php endif ?>
 
-    <?php if (empty($this->info_external) === false) : ?>
+<?php if (empty($this->info_external) === false) : ?>
     external: {
         needed: false,
         wanted: false,
@@ -153,6 +153,6 @@
             }
         }
     },
-    <?php endif ?>
+<?php endif ?>
 
 /* Javascript object end, } */
