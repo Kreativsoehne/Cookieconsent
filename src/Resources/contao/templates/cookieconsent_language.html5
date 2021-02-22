@@ -7,15 +7,15 @@
                 return el;
             },
             barLinkSetting: "Privacy protection settings",
-            barBtnDenyAll: "Deny tracking",
-            barBtnAcceptAll: "Accept tracking",
+            barBtnDenyAll: "Deny",
+            barBtnAcceptAll: "Accept",
             modalMainTitle: "Privacy protection settings",
             modalMainText: function (el) {
                 el.innerHTML = '<?= $this->settings_message ?>';
                 return el;
             },
             modalBtnSave: "Save current settings",
-            modalBtnAcceptAll: "Accept tracking and close",
+            modalBtnAcceptAll: "Accept and close",
             modalAffectedSolutions: "Affected solutions:",
             barBtnPrivacyProtection: "Privacy protection",
             barBtnCookieInformation: "Additional information",
@@ -29,15 +29,15 @@
                 return el;
             },
             barLinkSetting: "Datenschutzeinstellungen",
-            barBtnDenyAll: "Tracking ablehnen",
-            barBtnAcceptAll: "Tracking akzeptieren",
+            barBtnDenyAll: "Ablehnen",
+            barBtnAcceptAll: "Akzeptieren",
             modalMainTitle: "Datenschutzeinstellungen",
             modalMainText: function (el) {
                 el.innerHTML = '<?= $this->settings_message ?>';
                 return el;
             },
             modalBtnSave: "Einstellungen speichern",
-            modalBtnAcceptAll: "Tracking akzeptieren und schliessen",
+            modalBtnAcceptAll: "Akzeptieren und schliessen",
             modalAffectedSolutions: "Betroffene Dienste:",
             barBtnPrivacyProtection: "Datenschutz",
             barBtnCookieInformation: "Weitere Informationen",
