@@ -16,25 +16,33 @@ window.addEventListener("load", function() {
         }
     }
 
-    if (ccChoices === null || typeof ccChoices !== 'object' || ccChoices.categories.measurements.wanted !== true) {
-        var notice = document.querySelector('.cc-blocknotice-wrapper');
-        var iFrames = document.querySelectorAll('iframe[src*="youtube"],iframe[src*="vimeo"],embed[src*="youtube"],embed[src*="vimeo"]');
-
-        iFrames.forEach(function(item) {
-            item.setAttribute('data-src', item.src);
-            item.src = '';
-            var clonedNotice = notice.cloneNode(true)
-            item.parentNode.insertBefore(clonedNotice, item.nextSibling);
-            clonedNotice.appendChild(item);
-        })
-    }
-
     var ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,button.consent-give,button.consent-deny');
     for(let ccButton of ccButtons) {
         ccButton.addEventListener('click', function() {
             return window.location.reload();
         });
     }
+
+    try {
+        // If we got choices and allow category external, don't bother with blocknotices
+        if (ccChoices !== null
+        && typeof ccChoices === 'object'
+        && typeof ccChoices.categories.external === 'object'
+        && ccChoices.categories.external.wanted === true) {
+            return;
+        }
+    } catch (e) {}
+
+    var notice = document.querySelector('.cc-blocknotice-wrapper');
+    var iFrames = document.querySelectorAll('iframe[src*="youtube"],iframe[src*="vimeo"],embed[src*="youtube"],embed[src*="vimeo"]');
+
+    iFrames.forEach(function(item) {
+        item.setAttribute('data-src', item.src);
+        item.src = '';
+        var clonedNotice = notice.cloneNode(true)
+        item.parentNode.insertBefore(clonedNotice, item.nextSibling);
+        clonedNotice.appendChild(item);
+    })
 });
 
 window.CookieConsent.init({

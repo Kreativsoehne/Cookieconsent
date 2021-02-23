@@ -146,7 +146,7 @@ if (ccChoices !== null) {
         ccChoices = null;
     }
 }
-if (ccChoices !== null && typeof ccChoices === 'object' && ccChoices.categories.analytics.wanted === true) {
+if (ccChoices !== null && typeof ccChoices === 'object' && typeof ccChoices.categories.analytics === 'object' && ccChoices.categories.analytics.wanted === true) {
     // User allowed cookies of category "analytics"
     // Your js code here
 }
