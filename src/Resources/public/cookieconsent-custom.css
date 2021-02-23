@@ -85,6 +85,7 @@ body > #cconsent-bar .ccb__button > .ccb__edit {
     left: 0;
     max-height: 100%;
     max-width: 100%;
+    padding: 10px;
     position: absolute;
     right: 0;
     text-align: center;
