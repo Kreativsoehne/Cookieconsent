@@ -1,5 +1,4 @@
 /* Javascript object start, services: { */
-<?php if (empty($this->info_necessary) === false) : ?>
     phpsessid: {
         category: "necessary",
         type: "localcookie",
@@ -33,9 +32,7 @@
             }
         }
     },
-<?php endif ?>
 
-<?php if (empty($this->info_analytics) === false) : ?>
     googleanalytics: {
         category: "analytics",
         type: "dynamic-script",
@@ -80,117 +77,4 @@
             }
         }
     },
-<?php endif ?>
-
-<?php if (empty($this->info_advertisement) === false) : ?>
-    facebookca: {
-        category: "advertisement",
-        type: "dynamic-script",
-        search: ["facebook"],
-        language: {
-            locale: {
-                en: {
-                    name: "Facebook Custom Audiences"
-                }
-            }
-        }
-    },
-
-    googleanalyticsadvertising: {
-        category: "advertisement",
-        type: "dynamic-script",
-        search: [
-            "adservices",
-            "remarketing"
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "Google Analytics Advertising"
-                }
-            }
-        }
-    },
-
-    googleremarketing: {
-        category: "advertisement",
-        type: "dynamic-script",
-        search: [
-            "adservices",
-            "remarketing"
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "Google Ads Remarketing"
-                }
-            }
-        }
-    },
-<?php endif ?>
-
-<?php if (empty($this->info_measurements) === false) : ?>
-    googleconversion: {
-        category: "measurements",
-        type: "dynamic-script",
-        search: [
-            "adwords",
-            "conversion"
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "Google Ads Conversion"
-                }
-            }
-        }
-    },
-<?php endif ?>
-
-<?php if (empty($this->info_external) === false) : ?>
-    googlemaps: {
-        category: "external",
-        type: "dynamic-script",
-        search: ["gmap"],
-        language: {
-            locale: {
-                en: {
-                    name: "Google Maps"
-                }
-            }
-        }
-    },
-
-    youtube: {
-        category: "external",
-        type: "dynamic-script",
-        search: ["youtube"],
-        cookies: [
-            {
-                name: "_gid"
-            }
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "Youtube"
-                }
-            }
-        }
-    },
-
-    vimeo: {
-        category: "external",
-        type: "dynamic-script",
-        search: ["vimeo"],
-        cookies: [],
-        language: {
-            locale: {
-                en: {
-                    name: "Vimeo"
-                }
-            }
-        }
-    }
-<?php endif ?>
 /* Javascript object end, } */

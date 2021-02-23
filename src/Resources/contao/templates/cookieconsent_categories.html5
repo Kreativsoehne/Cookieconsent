@@ -1,158 +1,24 @@
 /* Javascript object start, categories: { */
-<?php if (empty($this->info_necessary) === false) : ?>
-    necessary: {
-        needed: true,
-        wanted: true,
-        checked: true,
-        language: {
-            locale: {
-                en: {
-                    name: "Necessary cookies",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_necessary ?>';
-                        return el;
-                    }
-                },
-                de: {
-                    name: "Notwendige Cookies",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_necessary ?>';
-                        return el;
-                    }
-                }
-            }
-        }
-    },
-<?php endif ?>
+<?php foreach($this->categories as $category): ?>
+    <?= $category->alias?>: {
+        needed: <?= $category->needed === '1' ? 'true' : 'false' ?>,
+        wanted: <?= $category->wanted === '1' ? 'true' : 'false' ?>,
+        checked: <?= $category->checked === '1' ? 'true' : 'false' ?>,
 
-<?php if (empty($this->info_analytics) === false) : ?>
-    analytics: {
-        needed: false,
-        wanted: false,
-        checked: false,
         language: {
             locale: {
-                en: {
-                    name: "Static analysis",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_analytics ?>';
-                        return el;
-                    }
-                },
-                de: {
-                    name: "Statische Analyse",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_analytics ?>';
-                        return el;
-                    }
-                }
+                <?php foreach($category->languages as $language): ?>
+                    <?= $language->language ?>: {
+                        name: '<?= $language->name ?>',
+                        description: function (el) {
+                            el.innerHTML = '<?= $language->description ?>';
+                            return el;
+                        }
+                    },
+                <?php endforeach?>
             }
         }
     },
-<?php endif ?>
-
-<?php if (empty($this->info_recommendations) === false) : ?>
-    recommendations: {
-        needed: false,
-        wanted: false,
-        checked: false,
-        language: {
-            locale: {
-                en: {
-                    name: "Individual product rcommendation",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_recommendations ?>';
-                        return el;
-                    }
-                },
-                de: {
-                    name: "Individuelle Produktempfehlung",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_recommendations ?>';
-                        return el;
-                    }
-                }
-            }
-        }
-    },
-<?php endif ?>
-
-<?php if (empty($this->info_advertisement) === false) : ?>
-    advertisement: {
-        needed: false,
-        wanted: false,
-        checked: false,
-        language: {
-            locale: {
-                en: {
-                    name: "Individualized advertisement",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_advertisement ?>';
-                        return el;
-                    }
-                },
-                de: {
-                    name: "Individualisierte Werbung",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_advertisement ?>';
-                        return el;
-                    }
-                }
-            }
-        }
-    },
-<?php endif ?>
-
-<?php if (empty($this->info_measurements) === false) : ?>
-    measurements: {
-        needed: false,
-        wanted: false,
-        checked: false,
-        language: {
-            locale: {
-                en: {
-                    name: "Coverage measurement",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_measurements ?>';
-                        return el;
-                    }
-                },
-                de: {
-                    name: "Reichweitenmessung",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_measurements ?>';
-                        return el;
-                    }
-                }
-            }
-        }
-    },
-<?php endif ?>
-
-<?php if (empty($this->info_external) === false) : ?>
-    external: {
-        needed: false,
-        wanted: false,
-        checked: false,
-        language: {
-            locale: {
-                en: {
-                    name: "External services",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_external ?>';
-                        return el;
-                    }
-                },
-                de: {
-                    name: "Externe Dienste",
-                    description: function (el) {
-                        el.innerHTML = '<?= $this->info_external ?>';
-                        return el;
-                    }
-                }
-            }
-        }
-    },
-<?php endif ?>
+<?php endforeach?>
 
 /* Javascript object end, } */
