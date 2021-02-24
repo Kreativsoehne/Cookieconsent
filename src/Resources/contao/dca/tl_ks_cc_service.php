@@ -22,6 +22,7 @@ $GLOBALS['TL_DCA']['tl_ks_cc_service'] = [
             'disableGrouping' => true,
 			'panelLayout' => 'filter;search,limit',
             'child_record_callback' => ['Kreativsoehne\Cookieconsent\Backend\Service', 'listLanguageRows'],
+            'paste_button_callback' => ['Kreativsoehne\Cookieconsent\Backend\Category', 'pasteItem'],
         ],
 		'label' => [
 			'fields' => ['alias'],

@@ -130,6 +130,27 @@ abstract class AbstractBackend extends \Contao\Backend
         return $varValue;
     }
 
+	/**
+	 * Return the paste item button
+	 *
+	 * @param Contao\DataContainer $dc
+	 * @param array                $row
+	 * @param string               $table
+	 * @param boolean              $cr
+	 * @param array                $arrClipboard
+	 *
+	 * @return string
+	 */
+	public function pasteItem(\Contao\DataContainer $dc, $row, $table, $cr, $arrClipboard=null)
+	{
+		$imagePasteAfter = \Contao\Image::getHtml('pasteafter.svg', sprintf($GLOBALS['TL_LANG'][$dc->table]['pasteafter'][1], $row['id']));
+
+		return (
+            ($arrClipboard['mode'] == 'cut' && $arrClipboard['id'] == $row['id'])
+        ||  ($arrClipboard['mode'] == 'cutAll' && in_array($row['id'], $arrClipboard['id']))
+        ||   $cr) ? \Contao\Image::getHtml('pasteafter_.svg') . ' ' : '<a href="' . $this->addToUrl('act=' . $arrClipboard['mode'] . '&amp;mode=1&amp;pid=' . $row['id'] . (!is_array($arrClipboard['id']) ? '&amp;id=' . $arrClipboard['id'] : '')) . '" title="' . \Contao\StringUtil::specialchars(sprintf($GLOBALS['TL_LANG'][$dc->table]['pasteafter'][1], $row['id'])) . '" onclick="Backend.getScrollOffset()">' . $imagePasteAfter . '</a> ';
+	}
+
 	// /**
 	//  * Return the drag item button
 	//  *
