@@ -5,6 +5,7 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category'] = [
         'dataContainer' => 'Table',
         'ctable' => ['tl_ks_cc_category_language'],
         'enableVersioning' => true,
+        'notSortable' => false,
         'sql' => [
             'keys' => [
                 'id' => 'primary',
@@ -14,9 +15,9 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category'] = [
     ],
     'list' => [
 		'sorting' => [
-			'mode' => 1,
-			'fields' => ['id'],
-            'flag' => 1,
+			'mode' => 5,
+			'fields' => ['sorting', 'id'],
+            'flag' => 11,
             'headerFields' => ['alias'],
             'disableGrouping' => true,
 			'panelLayout' => 'filter;search,limit',
@@ -25,6 +26,13 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category'] = [
 		'label' => [
 			'fields' => ['alias'],
 			'format' => "%s",
+        ],
+		'global_operations' => [
+			'all' => [
+				'href'                => 'act=select',
+				'class'               => 'header_edit_all',
+				'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
+            ]
         ],
         'operations' => [
             'edit' => [
@@ -36,6 +44,13 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category'] = [
                 'label'               => ['LB copy', 'Help'],
                 'href'                => 'act=paste&amp;mode=copy',
                 'icon'                => 'copy.gif'
+            ],
+            'cut' => [
+                'label'               => ['LB Cut', 'Help'],
+                'href'                => 'act=paste&amp;mode=cut',
+                'icon'                => 'cut.svg',
+                'attributes'          => 'onclick="Backend.getScrollOffset()"',
+                // 'button_callback'     => array('Kreativsoehne\Cookieconsent\Backend\Category', 'disableAction')
             ],
             'delete' => [
                 'label'               => ['LB delete', 'Help'],
@@ -49,12 +64,11 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category'] = [
             //     'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
             //     'button_callback'     => ['Kreativsoehne\Cookieconsent\Backend\Category', 'toggleIcon']
             // ],
-            'show' => array
-            (
+            'show' => [
                 'label'               => ['LB show', 'Help'],
                 'href'                => 'act=show',
                 'icon'                => 'show.gif'
-            )
+            ],
         ]
     ],
 	'palettes' => [
@@ -66,6 +80,12 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category'] = [
         ],
         'tstamp' => [
             'sql' => "int(10) unsigned NOT NULL default 0"
+        ],
+        'sorting' => [
+            'sql' => "int(10) unsigned NOT NULL default '0'",
+        ],
+        'pid' => [
+            'sql' => "int(10) unsigned NOT NULL default '0'",
         ],
 		'alias' => [
 			'label' => ['LB Alias', 'Help'],

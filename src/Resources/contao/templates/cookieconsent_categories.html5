@@ -1,6 +1,6 @@
 /* Javascript object start, categories: { */
 <?php foreach($this->categories as $category): ?>
-    <?= $category->alias?>: {
+    '<?= $category->alias?>': {
         needed: <?= $category->needed === '1' ? 'true' : 'false' ?>,
         wanted: <?= $category->wanted === '1' ? 'true' : 'false' ?>,
         checked: <?= $category->checked === '1' ? 'true' : 'false' ?>,

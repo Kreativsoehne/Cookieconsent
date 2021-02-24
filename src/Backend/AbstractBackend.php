@@ -129,4 +129,21 @@ abstract class AbstractBackend extends \Contao\Backend
 
         return $varValue;
     }
+
+	// /**
+	//  * Return the drag item button
+	//  *
+	//  * @param array  $row
+	//  * @param string $href
+	//  * @param string $label
+	//  * @param string $title
+	//  * @param string $icon
+	//  * @param string $attributes
+	//  *
+	//  * @return string
+	//  */
+	// public function dragItem($row, $href, $label, $title, $icon, $attributes)
+	// {
+	// 	return '<button type="button" title="' . \Contao\StringUtil::specialchars($title) . '" ' . $attributes . '>' . \Contao\Image::getHtml($icon, $label) . '</button> ';
+	// }
 }
