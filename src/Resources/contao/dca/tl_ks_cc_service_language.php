@@ -1,9 +1,9 @@
 <?php
 
-$GLOBALS['TL_DCA']['tl_ks_cc_category_language'] = [
+$GLOBALS['TL_DCA']['tl_ks_cc_service_language'] = [
     'config' => [
         'dataContainer' => 'Table',
-        'ptable' => 'tl_ks_cc_category',
+        'ptable' => 'tl_ks_cc_service',
         'enableVersioning' => true,
         'sql' => [
             'keys' => [
@@ -58,7 +58,7 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category_language'] = [
             'sql' => "int(10) unsigned NOT NULL default 0"
         ],
         'pid' => [
-            'foreignKey'              => 'tl_ks_cc_category.alias',
+            'foreignKey'              => 'tl_ks_cc_service.alias',
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'relation'                => ['type'=>'belongsTo', 'load'=>'lazy']
         ],
@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category_language'] = [
             'options' => \System::getLanguages(),
             'eval' => ['mandatory'=>true, 'chosen'=>true, 'tl_class'=>'w50'],
             'sql' => "varchar(5) NOT NULL default ''",
-            // 'save_callback' => ['Kreativsoehne\Cookieconsent\Backend\Category', 'validateLanguageField'],
+            // 'save_callback' => ['Kreativsoehne\Cookieconsent\Backend\Service', 'validateLanguageField'],
         ],
 		'name' => [
             'label' => ['LB Name', 'Help'],

@@ -1,0 +1,13 @@
+
+<?php
+    $translatedDuration = $this->duration;
+
+    if (isset($GLOBALS['TL_LANG']['tl_ks_cc_service']['duration'][$this->duration]) === true) {
+        $translatedDuration = $GLOBALS['TL_LANG']['tl_ks_cc_service']['duration'][$this->duration];
+    }
+?>
+<div><?= $this->name ?> (<?= implode(', ', $this->cookies) ?>)</div>
+<small>
+    <p>LB Duration: <?= $translatedDuration ?></p>
+    <div><?= addslashes($this->description) ?></div>
+</small>

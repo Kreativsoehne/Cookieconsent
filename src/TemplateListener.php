@@ -12,6 +12,8 @@ namespace Kreativsoehne\Cookieconsent;
 
 use \Kreativsoehne\Cookieconsent\Model\Category;
 use \Kreativsoehne\Cookieconsent\Model\CategoryLanguage;
+use \Kreativsoehne\Cookieconsent\Model\Service;
+use \Kreativsoehne\Cookieconsent\Model\ServiceLanguage;
 
 /**
  * TemplateListener
@@ -55,7 +57,7 @@ class TemplateListener
             $template->blocknotice = $this->getSubTemplateContent('cookieconsent_blocknotice');
             $template->categories = $this->getCategoriesContent();
             $template->languagesettings = $this->getSubTemplateContent('cookieconsent_language');
-            $template->services = $this->getSubTemplateContent('cookieconsent_services');
+            $template->services = $this->getServicesContent();
 
             $result = $template->parse();
             $buffer = str_replace('</body>', $result . '</body>', $buffer);
@@ -69,7 +71,7 @@ class TemplateListener
     /**
      * Get categories
      *
-     * @return void
+     * @return string
      */
     protected function getCategoriesContent() {
         $availableCategories = Category::findBy(['published = ?'], [1]);
@@ -88,6 +90,33 @@ class TemplateListener
         }
 
         return $this->renderTemplate('cookieconsent_categories', ['categories' => $categories]);
+    }
+
+    /**
+     * Get services content
+     *
+     * @return string
+     */
+    protected function getServicesContent() {
+        $availableServices = Service::findBy(['published = ?'], [1]);
+        $services = [];
+
+        if (count($availableServices) < 1) {
+            return '';
+        }
+
+        foreach ($availableServices as $service) {
+            $languages = ServiceLanguage::findByPid($service->id);
+            if (count($languages) > 0) {
+                $service->languages = $languages;
+                $service->cookies = explode(',', $service->cookies);
+                $service->category = Category::findBy(['id = ?', 'published = ?'], [$service->category, 1]);
+                $service->keywords = explode(',', $service->keywords);
+                $services[] = $service;
+            }
+        }
+
+        return $this->renderTemplate('cookieconsent_services', ['services' => $services]);
     }
 
     /**
