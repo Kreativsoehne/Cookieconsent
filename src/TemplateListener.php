@@ -74,7 +74,7 @@ class TemplateListener
      * @return string
      */
     protected function getCategoriesContent() {
-        $availableCategories = Category::findBy(['published = ?'], [1]);
+        $availableCategories = Category::findBy(['published = ?'], [1], ['order' => 'sorting ASC']);
         $categories = [];
 
         if (count($availableCategories) < 1) {
@@ -98,7 +98,7 @@ class TemplateListener
      * @return string
      */
     protected function getServicesContent() {
-        $availableServices = Service::findBy(['published = ?'], [1]);
+        $availableServices = Service::findBy(['published = ?'], [1], ['order' => 'sorting ASC']);
         $services = [];
 
         if (count($availableServices) < 1) {
