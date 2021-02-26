@@ -2,7 +2,7 @@
 
 /*
  * Cookieconsent module for Contao Open Source CMS
- * Copyright (C) 2020 Kreativ&Söhne GmbH
+ * Copyright (C) 2021 Kreativ&Söhne GmbH
 
  * @author  Kreativ&Söhne GmbH <https://www.kreativundsoehne.de>
  * @license MIT

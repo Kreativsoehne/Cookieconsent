@@ -2,7 +2,7 @@
 
 /*
  * Cookieconsent module for Contao Open Source CMS
- * Copyright (C) 2020 Kreativ&Söhne GmbH
+ * Copyright (C) 2021 Kreativ&Söhne GmbH
 
  * @author  Kreativ&Söhne GmbH <https://www.kreativundsoehne.de>
  * @license MIT
@@ -32,13 +32,12 @@ abstract class AbstractBackend extends \Contao\Backend
      * child_record_callback
      *
      * @param array $arrRow
-     *
      * @return string
      */
     public function listLanguageRows($arrRow)
     {
         if ($this->sLanguageTable === null) {
-            return 'Missing language table name';
+            return 'Missing language table name. [1614331419]';
         }
 
         if (0 === count($this->arrTranslations)) {
@@ -66,9 +65,8 @@ abstract class AbstractBackend extends \Contao\Backend
      * Generate a list for the dcaWizard displaying the languages
      *
      * @param \Database\Result $objRecords
-     * @param string           $strId
-     * @param \DcaWizard       $widget
-     *
+     * @param string $strId
+     * @param \DcaWizard $widget
      * @return string
      */
     public function generateLanguageWizardList($objRecords, $strId, $widget)
@@ -102,23 +100,21 @@ abstract class AbstractBackend extends \Contao\Backend
     }
 
     /**
-     * Check if the language field is unique per message
+     * Check if the language field is unique per item
      *
-     * @param mixed          $varValue
+     * @param mixed $varValue
      * @param \DataContainer $dc
-     *
      * @return mixed
      * @throws \Exception
+     * @todo Currently unused
      */
     public function validateLanguageField($varValue, \DataContainer $dc)
     {
-        throw new \Exception(sprintf('validateLanguageField', $dc->field));
         if ($this->sLanguageTable === null) {
             throw new \Exception(sprintf('Missing sLanguageTable. [1614329292]', $dc->field));
         }
 
         $sLanguageTable = $this->sLanguageTable;
-
         $objLanguages = $this->Database->prepare("SELECT id FROM $sLanguageTable WHERE language=? AND pid=? AND id!=?")
             ->limit(1)
             ->execute($varValue, $dc->activeRecord->pid, $dc->id);
@@ -133,12 +129,11 @@ abstract class AbstractBackend extends \Contao\Backend
 	/**
 	 * Return the paste item button
 	 *
-	 * @param Contao\DataContainer $dc
-	 * @param array                $row
-	 * @param string               $table
-	 * @param boolean              $cr
-	 * @param array                $arrClipboard
-	 *
+	 * @param \Contao\DataContainer $dc
+	 * @param array $row
+	 * @param string $table
+	 * @param boolean $cr
+	 * @param array $arrClipboard
 	 * @return string
 	 */
 	public function pasteItem(\Contao\DataContainer $dc, $row, $table, $cr, $arrClipboard=null)
@@ -150,21 +145,4 @@ abstract class AbstractBackend extends \Contao\Backend
         ||  ($arrClipboard['mode'] == 'cutAll' && in_array($row['id'], $arrClipboard['id']))
         ||   $cr) ? \Contao\Image::getHtml('pasteafter_.svg') . ' ' : '<a href="' . $this->addToUrl('act=' . $arrClipboard['mode'] . '&amp;mode=1&amp;pid=' . $row['id'] . (!is_array($arrClipboard['id']) ? '&amp;id=' . $arrClipboard['id'] : '')) . '" title="' . \Contao\StringUtil::specialchars(sprintf($GLOBALS['TL_LANG'][$dc->table]['pasteafter'][1], $row['id'])) . '" onclick="Backend.getScrollOffset()">' . $imagePasteAfter . '</a> ';
 	}
-
-	// /**
-	//  * Return the drag item button
-	//  *
-	//  * @param array  $row
-	//  * @param string $href
-	//  * @param string $label
-	//  * @param string $title
-	//  * @param string $icon
-	//  * @param string $attributes
-	//  *
-	//  * @return string
-	//  */
-	// public function dragItem($row, $href, $label, $title, $icon, $attributes)
-	// {
-	// 	return '<button type="button" title="' . \Contao\StringUtil::specialchars($title) . '" ' . $attributes . '>' . \Contao\Image::getHtml($icon, $label) . '</button> ';
-	// }
 }

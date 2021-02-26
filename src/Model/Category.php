@@ -1,12 +1,22 @@
 <?php
+
+/*
+ * Cookieconsent module for Contao Open Source CMS
+ * Copyright (C) 2021 Kreativ&Söhne GmbH
+
+ * @author  Kreativ&Söhne GmbH <https://www.kreativundsoehne.de>
+ * @license MIT
+ */
+
 namespace Kreativsoehne\Cookieconsent\Model;
 
+/**
+ * Category
+ */
 class Category extends \Contao\Model
 {
-
     /**
-     * Name of the current table
-     * @var string
+     * @inheritDoc
      */
     protected static $strTable = 'tl_ks_cc_category';
 }
