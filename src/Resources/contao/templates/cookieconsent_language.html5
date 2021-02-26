@@ -16,7 +16,7 @@
             },
             modalBtnSave: "Save current settings",
             modalBtnAcceptAll: "Accept and close",
-            modalAffectedSolutions: "Affected solutions:",
+            modalAffectedSolutions: "Affected solutions/cookies:",
             barBtnPrivacyProtection: "Privacy protection",
             barBtnCookieInformation: "Additional information",
             learnMore: "Learn More",
@@ -28,17 +28,23 @@
                 el.innerHTML = '<?= $this->heading . $this->message ?>';
                 return el;
             },
-            barLinkSetting: "Datenschutzeinstellungen",
+            barLinkSetting: function (el) {
+                el.innerHTML = "Datenschutz[-]einstellungen";
+                return el;
+            },
             barBtnDenyAll: "Ablehnen",
             barBtnAcceptAll: "Akzeptieren",
-            modalMainTitle: "Datenschutzeinstellungen",
+            modalMainTitle: function (el) {
+                el.innerHTML = "Datenschutz[-]einstellungen";
+                return el;
+            },
             modalMainText: function (el) {
                 el.innerHTML = '<?= $this->settings_message ?>';
                 return el;
             },
             modalBtnSave: "Einstellungen speichern",
             modalBtnAcceptAll: "Akzeptieren und schliessen",
-            modalAffectedSolutions: "Betroffene Dienste:",
+            modalAffectedSolutions: "Betroffene Dienste/Cookies:",
             barBtnPrivacyProtection: "Datenschutz",
             barBtnCookieInformation: "Weitere Informationen",
             learnMore: "Mehr erfahren",

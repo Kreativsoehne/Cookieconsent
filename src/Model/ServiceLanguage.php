@@ -8,13 +8,12 @@
  * @license MIT
  */
 
-namespace Kreativsoehne\Cookieconsent;
+namespace Kreativsoehne\Cookieconsent\Model;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-/**
- * KreativsoehneCookieconsentBundle
- */
-class KreativsoehneCookieconsentBundle extends Bundle
+class ServiceLanguage extends \Contao\Model
 {
+    /**
+     * @inheritDoc
+     */
+    protected static $strTable = 'tl_ks_cc_service_language';
 }

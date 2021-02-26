@@ -1,196 +1,40 @@
 /* Javascript object start, services: { */
-<?php if (empty($this->info_necessary) === false) : ?>
-    phpsessid: {
-        category: "necessary",
-        type: "localcookie",
-        cookies: [
-            {
-                name: "PHPSESSID"
-            }
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "PHP Session"
-                }
-            }
-        }
-    },
-
-    contaocsrftoken: {
-        category: "necessary",
-        type: "localcookie",
-        cookies: [
-            {
-                name: "csrf_https-contao_csrf_token"
-            }
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "Contao CSRF Protection"
-                }
-            }
-        }
-    },
-<?php endif ?>
-
-<?php if (empty($this->info_analytics) === false) : ?>
-    googleanalytics: {
-        category: "analytics",
-        type: "dynamic-script",
+<?php foreach($this->services as $service): ?>
+    '<?= $service->alias ?>': {
+        category: '<?= $service->category->alias ?>',
+        type: '<?= $service->type ?>',
         search: [
-            "analytics",
-            "gtag",
-            "googletagmanager",
-            "gtm",
-            "bing"
+            <?php foreach($service->keywords as $keyword): ?>
+                '<?= $keyword ?>',
+            <?php endforeach?>
         ],
         cookies: [
-            {
-                name: "_gid"
-            },
-            {
-                name: /^_ga/
-            }
+            <?php foreach($service->cookies as $cookie): ?>
+                {
+                    name: '<?= $cookie ?>',
+                },
+            <?php endforeach?>
         ],
         language: {
             locale: {
-                en: {
-                    name: "Google Analytics"
-                }
+                <?php foreach($service->languages as $language): ?>
+                    <?= $language->language ?>: {
+                        name: function (el) {
+                            <?php
+                                $data = [
+                                    'cookies' => $service->cookies,
+                                    'description' => $language->description,
+                                    'duration' => $service->duration,
+                                    'name' => $language->name,
+                                ];
+                            ?>
+                            el.innerHTML = '<?= preg_replace('/\r|\n/', '', $this->insert('cookieconsent_services_description', $data)) ?>';
+                            return el;
+                        }
+                    },
+                <?php endforeach?>
             }
         }
     },
-
-    facebookanalytics: {
-        category: "analytics",
-        type: "dynamic-script",
-        search: ["facebook", "fbevents"],
-        cookies: [
-            {
-                name: "_fbp"
-            }
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "Facebook Analytics"
-                }
-            }
-        }
-    },
-<?php endif ?>
-
-<?php if (empty($this->info_advertisement) === false) : ?>
-    facebookca: {
-        category: "advertisement",
-        type: "dynamic-script",
-        search: ["facebook"],
-        language: {
-            locale: {
-                en: {
-                    name: "Facebook Custom Audiences"
-                }
-            }
-        }
-    },
-
-    googleanalyticsadvertising: {
-        category: "advertisement",
-        type: "dynamic-script",
-        search: [
-            "adservices",
-            "remarketing"
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "Google Analytics Advertising"
-                }
-            }
-        }
-    },
-
-    googleremarketing: {
-        category: "advertisement",
-        type: "dynamic-script",
-        search: [
-            "adservices",
-            "remarketing"
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "Google Ads Remarketing"
-                }
-            }
-        }
-    },
-<?php endif ?>
-
-<?php if (empty($this->info_measurements) === false) : ?>
-    googleconversion: {
-        category: "measurements",
-        type: "dynamic-script",
-        search: [
-            "adwords",
-            "conversion"
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "Google Ads Conversion"
-                }
-            }
-        }
-    },
-<?php endif ?>
-
-<?php if (empty($this->info_external) === false) : ?>
-    googlemaps: {
-        category: "external",
-        type: "dynamic-script",
-        search: ["gmap"],
-        language: {
-            locale: {
-                en: {
-                    name: "Google Maps"
-                }
-            }
-        }
-    },
-
-    youtube: {
-        category: "external",
-        type: "dynamic-script",
-        search: ["youtube"],
-        cookies: [
-            {
-                name: "_gid"
-            }
-        ],
-        language: {
-            locale: {
-                en: {
-                    name: "Youtube"
-                }
-            }
-        }
-    },
-
-    vimeo: {
-        category: "external",
-        type: "dynamic-script",
-        search: ["vimeo"],
-        cookies: [],
-        language: {
-            locale: {
-                en: {
-                    name: "Vimeo"
-                }
-            }
-        }
-    }
-<?php endif ?>
+<?php endforeach?>
 /* Javascript object end, } */
