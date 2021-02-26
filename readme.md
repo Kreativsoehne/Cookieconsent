@@ -2,6 +2,12 @@
 
 Cookie optin with [brainsum/cookieconsent](https://github.com/brainsum/cookieconsent) as the overlay and ways to block cookies and external resources.
 
+**Note**:
+Version 3 has significant breaking changes and is not compatible with older version. However, if you find bugs or issues within v2 kindly open a [issue](https://github.com/Kreativsoehne/Cookieconsent) with us and we'll see about updating v2 if necessary.
+
+**Note2**:
+Version 3 is currently in development and may contain bugs and issues. Use at your own discretion. The documentation may also not reflect all changes yet.
+
 ## Install
 
 Install through contao-manager or with `composer require kreativsoehne/cookieconsent`.
