@@ -28,10 +28,16 @@
                 el.innerHTML = '<?= $this->heading . $this->message ?>';
                 return el;
             },
-            barLinkSetting: "Datenschutzeinstellungen",
+            barLinkSetting: function (el) {
+                el.innerHTML = "Datenschutz[-]einstellungen";
+                return el;
+            },
             barBtnDenyAll: "Ablehnen",
             barBtnAcceptAll: "Akzeptieren",
-            modalMainTitle: "Datenschutzeinstellungen",
+            modalMainTitle: function (el) {
+                el.innerHTML = "Datenschutz[-]einstellungen";
+                return el;
+            },
             modalMainText: function (el) {
                 el.innerHTML = '<?= $this->settings_message ?>';
                 return el;
