@@ -147,9 +147,10 @@
 }
 
 #cconsent-modal .ccm__content {
+    max-height: 600px;
     max-width: 680px;
     min-height: 500px;
-    max-height: 600px;
+    min-width: 480px;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: #efefef;

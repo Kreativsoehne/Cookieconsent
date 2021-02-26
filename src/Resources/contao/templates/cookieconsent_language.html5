@@ -42,8 +42,8 @@
                 el.innerHTML = '<?= $this->settings_message ?>';
                 return el;
             },
-            modalBtnSave: "Einstellungen speichern",
-            modalBtnAcceptAll: "Akzeptieren und schliessen",
+            modalBtnSave: "Speichern",
+            modalBtnAcceptAll: "Akzeptieren & schliessen",
             modalAffectedSolutions: "Betroffene Dienste/Cookies:",
             barBtnPrivacyProtection: "Datenschutz",
             barBtnCookieInformation: "Weitere Informationen",
