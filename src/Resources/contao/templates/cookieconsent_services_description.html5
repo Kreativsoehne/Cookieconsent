@@ -9,9 +9,6 @@
 
 <div>
     <?= $this->name ?>
-    <?php if (empty(trim($this->cookies)) === false): ?>
-        (<?= implode(', ', $this->cookies) ?>)
-    <?php endif; ?>
 </div>
 
 <small>

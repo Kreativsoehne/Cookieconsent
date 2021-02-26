@@ -17,6 +17,7 @@ $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Edit cookie set
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_duration'] = 'Duration';
 
 $GLOBALS['TL_LANG']['tl_ks_cc_service']['duration'] = [
+    '' => '',
     'session' => 'Session',
     '1min' => '1 Minute',
     '2min' => '2 Minutes',
@@ -36,5 +37,4 @@ $GLOBALS['TL_LANG']['tl_ks_cc_service']['duration'] = [
     '2year' => '2 Years',
     '10year' => '10 Years',
     'forever' => 'Forever',
-    '' => '',
 ];
