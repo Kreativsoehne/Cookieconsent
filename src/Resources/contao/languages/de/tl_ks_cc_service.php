@@ -17,5 +17,5 @@ $GLOBALS['TL_LANG']['tl_ks_cc_service']['TYPE_TAG'] = 'Script-Tag';
 // $GLOBALS['TL_LANG']['tl_ks_cc_service']['TYPE_Wrapped'] = 'Wrapped Script';
 $GLOBALS['TL_LANG']['tl_ks_cc_service']['COOKIES'] = ['Cookies', 'Komma separierte Liste an Cookies von diesem Dienst die das Tool blockiert wenn nicht erlaubt. Kann auch RegExp-Einträge enthalten'];
 $GLOBALS['TL_LANG']['tl_ks_cc_service']['KEYWORDS'] = ['Schlagwörter', 'Komma separierte Liste an Schlagwörtern. Je nach Dienst-Typ wird Javascript mit diesen Wörtern blockiert wenn nicht erlaubt'];
-$GLOBALS['TL_LANG']['tl_ks_cc_service']['DURATION'] = ['Zeitdauer', 'Wie lange werden die Cookies dieses Dienstes gespeichert'];
+$GLOBALS['TL_LANG']['tl_ks_cc_service']['DURATION'] = ['Zeitdauer', 'Wie lange werden die Cookies dieses Dienstes gespeichert. Kann leer bleiben falls der Dienst mehrere Cookies enthält.'];
 $GLOBALS['TL_LANG']['tl_ks_cc_service_language']['general_legend'] = $GLOBALS['TL_LANG']['tl_ks_cc_common']['general_legend'];
