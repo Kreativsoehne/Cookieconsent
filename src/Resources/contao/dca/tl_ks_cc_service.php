@@ -63,11 +63,11 @@ $GLOBALS['TL_DCA']['tl_ks_cc_service'] = [
                 'icon' => 'delete.gif',
                 'attributes' => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
             ],
-            // 'toggle' => [
-            //     'icon' => 'visible.gif',
-            //     'attributes' => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
-            //     'button_callback' => ['Kreativsoehne\Cookieconsent\Backend\Service', 'toggleIcon']
-            // ],
+            'toggle' => [
+                'icon' => 'visible.gif',
+                'attributes' => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
+                'button_callback' => ['Kreativsoehne\Cookieconsent\Backend\Service', 'toggleIcon']
+            ],
             'show' => array
             (
                 'href' => 'act=show',

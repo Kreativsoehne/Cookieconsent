@@ -18,5 +18,10 @@ class Category extends AbstractBackend
     /**
      * @inheritDoc
      */
+    protected $strTable = 'tl_ks_cc_category';
+
+    /**
+     * @inheritDoc
+     */
     protected $sLanguageTable = 'tl_ks_cc_category_language';
 }

@@ -18,5 +18,10 @@ class Service extends AbstractBackend
     /**
      * @inheritDoc
      */
+    protected $strTable = 'tl_ks_cc_service';
+
+    /**
+     * @inheritDoc
+     */
     protected $sLanguageTable = 'tl_ks_cc_service_language';
 }

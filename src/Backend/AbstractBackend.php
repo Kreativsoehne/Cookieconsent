@@ -22,6 +22,13 @@ abstract class AbstractBackend extends \Contao\Backend
     protected $arrTranslations = [];
 
     /**
+     * Table name for Backend area
+     *
+     * @var string
+     */
+    protected $strTable = null;
+
+    /**
      * Language table name for Backend area
      *
      * @var string
@@ -36,7 +43,7 @@ abstract class AbstractBackend extends \Contao\Backend
      */
     public function listLanguageRows($arrRow)
     {
-        if ($this->sLanguageTable === null) {
+        if (empty($this->sLanguageTable) === true) {
             return 'Missing language table name. [1614331419]';
         }
 
@@ -110,7 +117,7 @@ abstract class AbstractBackend extends \Contao\Backend
      */
     public function validateLanguageField($varValue, \DataContainer $dc)
     {
-        if ($this->sLanguageTable === null) {
+        if (empty($this->sLanguageTable) === true) {
             throw new \Exception(sprintf('Missing sLanguageTable. [1614329292]', $dc->field));
         }
 
@@ -144,5 +151,143 @@ abstract class AbstractBackend extends \Contao\Backend
             ($arrClipboard['mode'] == 'cut' && $arrClipboard['id'] == $row['id'])
         ||  ($arrClipboard['mode'] == 'cutAll' && in_array($row['id'], $arrClipboard['id']))
         ||   $cr) ? \Contao\Image::getHtml('pasteafter_.svg') . ' ' : '<a href="' . $this->addToUrl('act=' . $arrClipboard['mode'] . '&amp;mode=1&amp;pid=' . $row['id'] . (!is_array($arrClipboard['id']) ? '&amp;id=' . $arrClipboard['id'] : '')) . '" title="' . \Contao\StringUtil::specialchars(sprintf($GLOBALS['TL_LANG'][$dc->table]['pasteafter'][1], $row['id'])) . '" onclick="Backend.getScrollOffset()">' . $imagePasteAfter . '</a> ';
+	}
+
+	/**
+	 * Return the "toggle visibility" button
+	 *
+	 * @param array $row
+	 * @param string $href
+	 * @param string $label
+	 * @param string $title
+	 * @param string $icon
+	 * @param string $attributes
+	 * @return string
+	 */
+	public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
+	{
+        if (empty($this->strTable) === true) {
+            return '';
+        }
+
+        if (\Contao\Input::get('tid'))
+        {
+            $this->toggleVisibility(\Contao\Input::get('tid'), (\Contao\Input::get('state') == 1), (@func_get_arg(12) ?: null));
+            $this->redirect($this->getReferer());
+        }
+
+        $href .= '&amp;tid=' . $row['id'] . '&amp;state=' . ($row['published'] ? '' : 1);
+
+        if (!$row['published']) {
+            $icon = 'invisible.svg';
+        }
+
+        return '<a href="' . $this->addToUrl($href) . '" title="' . \Contao\StringUtil::specialchars($title) . '"' . $attributes . '>' . \Contao\Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"') . '</a> ';
+	}
+
+	/**
+	 * Disable/enable a user group
+	 *
+	 * @param integer $intId
+	 * @param boolean $blnVisible
+	 * @param \Contao\DataContainer $dc
+	 * @throws \Contao\CoreBundle\Exception\AccessDeniedException
+	 */
+	public function toggleVisibility($intId, $blnVisible, \Contao\DataContainer $dc=null)
+	{
+        if (empty($this->strTable) === true) {
+            return;
+        }
+        $strTable = $this->strTable;
+
+        // Set the ID and action
+        \Contao\Input::setGet('id', $intId);
+        \Contao\Input::setGet('act', 'toggle');
+
+		if ($dc)
+		{
+            $dc->id = $intId; // see #8043
+		}
+
+		// Trigger the onload_callback
+		if (is_array($GLOBALS['TL_DCA'][$strTable]['config']['onload_callback']))
+		{
+            foreach ($GLOBALS['TL_DCA'][$strTable]['config']['onload_callback'] as $callback)
+			{
+                if (is_array($callback))
+				{
+                    $this->import($callback[0]);
+					$this->{$callback[0]}->{$callback[1]}($dc);
+				}
+				elseif (is_callable($callback))
+				{
+                    $callback($dc);
+				}
+			}
+		}
+
+		// Set the current record
+		if ($dc)
+		{
+			$objRow = $this->Database->prepare("SELECT * FROM $strTable WHERE id=?")
+									 ->limit(1)
+									 ->execute($intId);
+
+			if ($objRow->numRows)
+			{
+				$dc->activeRecord = $objRow;
+			}
+		}
+
+		$objVersions = new \Contao\Versions($strTable, $intId);
+		$objVersions->initialize();
+
+		// Trigger the save_callback
+		if (is_array($GLOBALS['TL_DCA'][$strTable]['fields']['published']['save_callback']))
+		{
+			foreach ($GLOBALS['TL_DCA'][$strTable]['fields']['published']['save_callback'] as $callback)
+			{
+				if (is_array($callback))
+				{
+					$this->import($callback[0]);
+					$blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $dc);
+				}
+				elseif (is_callable($callback))
+				{
+					$blnVisible = $callback($blnVisible, $dc);
+				}
+			}
+		}
+
+		$time = time();
+
+		// Update the database
+		$this->Database->prepare("UPDATE $strTable SET tstamp=$time, published='" . ($blnVisible ? '1' : '') . "' WHERE id=?")
+					   ->execute($intId);
+
+		if ($dc)
+		{
+			$dc->activeRecord->tstamp = $time;
+			$dc->activeRecord->published = ($blnVisible ? '1' : '');
+		}
+
+		// Trigger the onsubmit_callback
+		if (is_array($GLOBALS['TL_DCA'][$strTable]['config']['onsubmit_callback']))
+		{
+			foreach ($GLOBALS['TL_DCA'][$strTable]['config']['onsubmit_callback'] as $callback)
+			{
+				if (is_array($callback))
+				{
+					$this->import($callback[0]);
+					$this->{$callback[0]}->{$callback[1]}($dc);
+				}
+				elseif (is_callable($callback))
+				{
+					$callback($dc);
+				}
+			}
+		}
+
+		$objVersions->create();
 	}
 }
