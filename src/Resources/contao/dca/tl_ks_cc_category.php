@@ -35,6 +35,7 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category'] = [
 		'label' => [
 			'fields' => ['alias'],
 			'format' => "%s",
+            'label_callback' => ['Kreativsoehne\Cookieconsent\Backend\Category', 'itemIcon']
         ],
 		'global_operations' => [
 			'all' => [

@@ -154,6 +154,26 @@ abstract class AbstractBackend extends \Contao\Backend
 	}
 
 	/**
+	 * Add an image to each page in the tree
+	 *
+	 * @param array $row
+	 * @param string $label
+	 * @return string
+     * @todo Use custom icon for Category & Service
+	 */
+	public function itemIcon($row, $label)
+	{
+		$image = 'articles';
+
+		if (!$row['published'])
+		{
+			$image .= '_';
+		}
+
+        return \Contao\Image::getHtml($image . '.svg', '', 'data-icon="' . $image . '.svg" data-icon-disabled="' . rtrim($image, '_') . '_.svg"') . $label;
+	}
+
+	/**
 	 * Return the "toggle visibility" button
 	 *
 	 * @param array $row
