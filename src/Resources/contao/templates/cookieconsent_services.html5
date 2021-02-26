@@ -11,7 +11,12 @@
         cookies: [
             <?php foreach($service->cookies as $cookie): ?>
                 {
-                    name: '<?= $cookie ?>',
+                    <?php /* Check if its string or a valid RegExp */ ?>
+                    <?php if(@preg_match($cookie, null) === false): ?>
+                        name: '<?= $cookie ?>',
+                    <?php else : ?>
+                        name: <?= $cookie ?>,
+                    <?php endif ?>
                 },
             <?php endforeach?>
         ],
