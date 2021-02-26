@@ -43,7 +43,7 @@
                 return el;
             },
             modalBtnSave: "Speichern",
-            modalBtnAcceptAll: "Akzeptieren & schliessen",
+            modalBtnAcceptAll: "Akzeptieren & schließen",
             modalAffectedSolutions: "Betroffene Dienste/Cookies:",
             barBtnPrivacyProtection: "Datenschutz",
             barBtnCookieInformation: "Weitere Informationen",
