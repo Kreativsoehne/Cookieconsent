@@ -30,50 +30,44 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category'] = [
         ],
 		'global_operations' => [
 			'all' => [
-				'href'                => 'act=select',
-				'class'               => 'header_edit_all',
-				'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
+				'href' => 'act=select',
+				'class' => 'header_edit_all',
+				'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="e"'
             ]
         ],
         'operations' => [
             'edit' => [
-                'label'               => ['LB edit', 'Help'],
-                'href'                => 'act=edit',
-                'icon'                => 'edit.gif'
+                'href' => 'act=edit',
+                'icon' => 'edit.gif'
             ],
             'copy' => [
-                'label'               => ['LB copy', 'Help'],
-                'href'                => 'act=paste&amp;mode=copy',
-                'icon'                => 'copy.gif'
+                'href' => 'act=paste&amp;mode=copy',
+                'icon' => 'copy.gif'
             ],
             'cut' => [
-                'label'               => ['LB Cut', 'Help'],
-                'href'                => 'act=paste&amp;mode=cut',
-                'icon'                => 'cut.svg',
-                'attributes'          => 'onclick="Backend.getScrollOffset()"',
-                // 'button_callback'     => array('Kreativsoehne\Cookieconsent\Backend\Category', 'disableAction')
+                'href' => 'act=paste&amp;mode=cut',
+                'icon' => 'cut.svg',
+                'attributes' => 'onclick="Backend.getScrollOffset()"',
+                // 'button_callback'     => array('Kreativsoehne\Cookieconsent\Backend\Category', 'disableAction') // Do we need this at all?
             ],
             'delete' => [
-                'label'               => ['LB delete', 'Help'],
-                'href'                => 'act=delete',
-                'icon'                => 'delete.gif',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+                'href' => 'act=delete',
+                'icon' => 'delete.gif',
+                'attributes' => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
             ],
             // 'toggle' => [
-            //     'label'               => ['LB toggle', 'Help'],
-            //     'icon'                => 'visible.gif',
-            //     'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
-            //     'button_callback'     => ['Kreativsoehne\Cookieconsent\Backend\Category', 'toggleIcon']
+            //     'icon' => 'visible.gif',
+            //     'attributes' => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
+            //     'button_callback' => ['Kreativsoehne\Cookieconsent\Backend\Category', 'toggleIcon']
             // ],
             'show' => [
-                'label'               => ['LB show', 'Help'],
-                'href'                => 'act=show',
-                'icon'                => 'show.gif'
+                'href' => 'act=show',
+                'icon' => 'show.gif'
             ],
         ]
     ],
 	'palettes' => [
-        'default' => '{general_legend},alias,needed,wanted,checked;{languages_legend},languages;published',
+        'default' => '{general_legend},alias,needed,wanted,checked;languages;published',
     ],
     'fields' => [
         'id' => [
@@ -89,7 +83,7 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category'] = [
             'sql' => "int(10) unsigned NOT NULL default '0'",
         ],
 		'alias' => [
-			'label' => ['LB Alias', 'Help'],
+			'label' => $GLOBALS['TL_LANG']['tl_ks_cc_common']['ALIAS'],
 			'exclude' => true,
 			'inputType' => 'text',
 			'search' => true,
@@ -97,39 +91,39 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category'] = [
 			'sql' => "varchar(128) NOT NULL default ''"
         ],
         'needed' => [
-            'label' => ['LB Needed', 'Help'],
+            'label' => $GLOBALS['TL_LANG']['tl_ks_cc_category']['NEEDED'],
             'exclude' => true,
             'inputType' => 'checkbox',
             'eval' => ['doNotCopy'=>true, 'tl_class' => 'w50'],
             'sql' => "char(1) NOT NULL default ''",
         ],
         'wanted' => [
-            'label' => ['LB Wanted', 'Help'],
+            'label' => $GLOBALS['TL_LANG']['tl_ks_cc_category']['WANTED'],
             'exclude' => true,
             'inputType' => 'checkbox',
             'eval' => ['doNotCopy'=>true, 'tl_class' => 'w50'],
             'sql' => "char(1) NOT NULL default ''",
         ],
         'checked' => [
-            'label' => ['LB Checked', 'Help'],
+            'label' => $GLOBALS['TL_LANG']['tl_ks_cc_category']['CHECKED'],
             'exclude' => true,
             'inputType' => 'checkbox',
             'eval' => ['doNotCopy'=>true, 'tl_class' => 'w50'],
             'sql' => "char(1) NOT NULL default ''",
         ],
         'languages' => [
-            'label' => ['LB Language', 'Help'],
+            'label' => $GLOBALS['TL_LANG']['tl_ks_cc_common']['LANGUAGES'],
             'inputType' => 'dcaWizard',
             'foreignTable' => 'tl_ks_cc_category_language',
             'eval' => [
                 'listCallback' => ['Kreativsoehne\Cookieconsent\Backend\Category', 'generateLanguageWizardList'],
-                'editButtonLabel' => 'LB Edit Languages',
-                'applyButtonLabel' => 'LB Close',
+                'editButtonLabel' => $GLOBALS['TL_LANG']['tl_ks_cc_common']['EDIT_LANGUAGES'],
+                'applyButtonLabel' => $GLOBALS['TL_LANG']['MSC']['close'],
                 'tl_class' =>'clr'
             ]
         ],
         'published' => [
-            'label' => ['LB Published', 'Help'],
+            'label' => $GLOBALS['TL_LANG']['tl_ks_cc_common']['PUBLISHED'],
             'exclude' => true,
             'inputType' => 'checkbox',
             'eval' => ['doNotCopy'=>true],

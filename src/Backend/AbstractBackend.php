@@ -76,7 +76,7 @@ abstract class AbstractBackend extends \Contao\Backend
         $strReturn = '
 <table class="tl_listing showColumns">
 <thead>
-    <td class="tl_folder_tlist">' . 'LB Language'. '</td>
+    <td class="tl_folder_tlist">' . $GLOBALS['TL_LANG']['tl_ks_cc_common']['LANGUAGE'][0] . '</td>
     <td class="tl_folder_tlist"></td>
 </thead>
 <tbody>';
@@ -114,7 +114,7 @@ abstract class AbstractBackend extends \Contao\Backend
     {
         throw new \Exception(sprintf('validateLanguageField', $dc->field));
         if ($this->sLanguageTable === null) {
-            throw new \Exception(sprintf('LB Missing sLanguageTable', $dc->field));
+            throw new \Exception(sprintf('Missing sLanguageTable. [1614329292]', $dc->field));
         }
 
         $sLanguageTable = $this->sLanguageTable;

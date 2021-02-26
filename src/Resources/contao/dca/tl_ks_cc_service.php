@@ -30,51 +30,45 @@ $GLOBALS['TL_DCA']['tl_ks_cc_service'] = [
         ],
 		'global_operations' => [
 			'all' => [
-				'href'                => 'act=select',
-				'class'               => 'header_edit_all',
-				'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
+				'href' => 'act=select',
+				'class' => 'header_edit_all',
+				'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="e"'
             ]
         ],
         'operations' => [
             'edit' => [
-                'label'               => ['LB edit', 'Help'],
-                'href'                => 'act=edit',
-                'icon'                => 'edit.gif'
+                'href' => 'act=edit',
+                'icon' => 'edit.gif'
             ],
             'copy' => [
-                'label'               => ['LB copy', 'Help'],
-                'href'                => 'act=paste&amp;mode=copy',
-                'icon'                => 'copy.gif'
+                'href' => 'act=paste&amp;mode=copy',
+                'icon' => 'copy.gif'
             ],
             'cut' => [
-                'label'               => ['LB Cut', 'Help'],
-                'href'                => 'act=paste&amp;mode=cut',
-                'icon'                => 'cut.svg',
-                'attributes'          => 'onclick="Backend.getScrollOffset()"',
-                // 'button_callback'     => array('Kreativsoehne\Cookieconsent\Backend\Service', 'disableAction')
+                'href' => 'act=paste&amp;mode=cut',
+                'icon' => 'cut.svg',
+                'attributes' => 'onclick="Backend.getScrollOffset()"',
+                // 'button_callback' => array('Kreativsoehne\Cookieconsent\Backend\Service', 'disableAction') // Do we need this at all?
             ],
             'delete' => [
-                'label'               => ['LB delete', 'Help'],
-                'href'                => 'act=delete',
-                'icon'                => 'delete.gif',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+                'href' => 'act=delete',
+                'icon' => 'delete.gif',
+                'attributes' => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
             ],
             // 'toggle' => [
-            //     'label'               => ['LB toggle', 'Help'],
-            //     'icon'                => 'visible.gif',
-            //     'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
-            //     'button_callback'     => ['Kreativsoehne\Cookieconsent\Backend\Service', 'toggleIcon']
+            //     'icon' => 'visible.gif',
+            //     'attributes' => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
+            //     'button_callback' => ['Kreativsoehne\Cookieconsent\Backend\Service', 'toggleIcon']
             // ],
             'show' => array
             (
-                'label'               => ['LB show', 'Help'],
-                'href'                => 'act=show',
-                'icon'                => 'show.gif'
+                'href' => 'act=show',
+                'icon' => 'show.gif'
             )
         ]
     ],
 	'palettes' => [
-        'default' => '{general_legend},alias,category,type,duration,cookies,keywords;{languages_legend},languages;published',
+        'default' => '{general_legend},alias,category,type,duration,cookies,keywords;languages;published',
     ],
     'fields' => [
         'id' => [
@@ -90,7 +84,7 @@ $GLOBALS['TL_DCA']['tl_ks_cc_service'] = [
             'sql' => "int(10) unsigned NOT NULL default '0'",
         ],
 		'alias' => [
-			'label' => ['LB Alias', 'Help'],
+			'label' => $GLOBALS['TL_LANG']['tl_ks_cc_common']['ALIAS'],
 			'exclude' => true,
 			'inputType' => 'text',
 			'search' => true,
@@ -98,7 +92,7 @@ $GLOBALS['TL_DCA']['tl_ks_cc_service'] = [
 			'sql' => "varchar(128) NOT NULL default ''"
         ],
 		'category' => [
-			'label' => ['LB Category', 'Help'],
+			'label' => $GLOBALS['TL_LANG']['tl_ks_cc_service']['CATEGORY'],
 			'exclude' => true,
             'filter' => true,
 			'inputType' => 'select',
@@ -108,55 +102,55 @@ $GLOBALS['TL_DCA']['tl_ks_cc_service'] = [
             'sql' => "varchar(128) NOT NULL default ''"
         ],
         'type' => [
-            'label' => ['LB Type', 'Help'],
+            'label' => $GLOBALS['TL_LANG']['tl_ks_cc_service']['TYPE'],
             'exclude' => true,
             'inputType' => 'select',
             'default' => 'localcookie',
             'options' => [
-                'dynamic-script' => 'LB Dynamic Script',
-                'localcookie' => 'LB Localcookie',
-                'script-tag' => 'LB Script Tag',
-                // 'wrapped' => 'LB Wrapped'
+                'dynamic-script' => $GLOBALS['TL_LANG']['tl_ks_cc_service']['TYPE_DYNAMIC'],
+                'localcookie' => $GLOBALS['TL_LANG']['tl_ks_cc_service']['TYPE_LOCAL'],
+                'script-tag' => $GLOBALS['TL_LANG']['tl_ks_cc_service']['TYPE_TAG'],
+                // 'wrapped' => $GLOBALS['TL_LANG']['tl_ks_cc_service']['TYPE_WRAPPED'] // Currently not supported
             ],
             'eval' => ['mandatory' => true, 'tl_class' => '', 'maxlength'=>128, 'tl_class'=>'w50'],
             'sql' => "varchar(128) NOT NULL default ''"
         ],
         'cookies' => [
-            'label' => ['LB Cookies', 'LB Comma separated list of cookies (allows regexp)'],
+            'label' => $GLOBALS['TL_LANG']['tl_ks_cc_service']['COOKIES'],
             'exclude' => true,
             'inputType' => 'text',
             'eval' => ['mandatory' => false, 'tl_class' => '', 'maxlength'=>255, 'tl_class'=>'w50'],
             'sql' => "varchar(255) NOT NULL default ''"
         ],
         'keywords' => [
-            'label' => ['LB Keywords', 'LB Comma separated list of Keywords (allows regexp)'],
+            'label' => $GLOBALS['TL_LANG']['tl_ks_cc_service']['KEYWORDS'],
             'exclude' => true,
             'inputType' => 'text',
             'eval' => ['mandatory' => false, 'tl_class' => '', 'maxlength'=>255, 'tl_class'=>'w50'],
             'sql' => "varchar(255) NOT NULL default ''"
         ],
         'duration' => [
-            'label' => ['LB Duration', 'Help'],
+            'label' => $GLOBALS['TL_LANG']['tl_ks_cc_service']['DURATION'],
             'exclude' => true,
             'inputType' => 'select',
             'default' => 'session',
             'options' => $GLOBALS['TL_LANG']['tl_ks_cc_service']['duration'],
-            'eval' => ['mandatory' => true, 'tl_class' => '', 'maxlength'=>128, 'tl_class'=>'w50'],
+            'eval' => ['mandatory' => false, 'tl_class' => '', 'maxlength'=>128, 'tl_class'=>'w50'],
             'sql' => "varchar(128) NOT NULL default ''"
         ],
         'languages' => [
-            'label' => ['LB Language', 'Help'],
+            'label' => $GLOBALS['TL_LANG']['tl_ks_cc_common']['LANGUAGES'],
             'inputType' => 'dcaWizard',
             'foreignTable' => 'tl_ks_cc_service_language',
             'eval' => [
                 'listCallback' => ['Kreativsoehne\Cookieconsent\Backend\Service', 'generateLanguageWizardList'],
-                'editButtonLabel' => 'LB Edit Languages',
-                'applyButtonLabel' => 'LB Close',
+                'editButtonLabel' => $GLOBALS['TL_LANG']['tl_ks_cc_common']['EDIT_LANGUAGES'],
+                'applyButtonLabel' => $GLOBALS['TL_LANG']['MSC']['close'],
                 'tl_class' =>'clr'
             ]
         ],
         'published' => [
-            'label' => ['LB Published', 'Help'],
+            'label' => $GLOBALS['TL_LANG']['tl_ks_cc_common']['PUBLISHED'],
             'exclude' => true,
             'inputType' => 'checkbox',
             'eval' => ['doNotCopy'=>true],

@@ -8,14 +8,17 @@
  * @license MIT
  */
 
+// Add cookieconsent to frontend output, if enabled
 $GLOBALS['TL_HOOKS']['outputFrontendTemplate'][] = [Kreativsoehne\Cookieconsent\TemplateListener::class, 'onOutputFrontendTemplate'];
 
+// Categories
 $GLOBALS['BE_MOD']['kreativsoehne_cookieconsent']['kreativsoehne_cookieconsent_category'] = [
     'tables' => ['tl_ks_cc_category', 'tl_ks_cc_category_language'],
 ];
 $GLOBALS['TL_MODELS']['tl_ks_cc_category'] = 'Kreativsoehne\Cookieconsent\Model\Category';
 $GLOBALS['TL_MODELS']['tl_ks_cc_category_language'] = 'Kreativsoehne\Cookieconsent\Model\CategoryLanguage';
 
+// Services/Cookies
 $GLOBALS['BE_MOD']['kreativsoehne_cookieconsent']['kreativsoehne_cookieconsent_service'] = [
     'tables' => ['tl_ks_cc_service', 'tl_ks_cc_service_language'],
 ];

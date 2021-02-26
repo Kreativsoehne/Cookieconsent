@@ -14,6 +14,8 @@
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Leider sind externe Video Einbindungen ohne entsprechende Cookies Zustimmung nicht verfügbar.';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Cookie Einstellungen bearbeiten';
 
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_duration'] = 'Zeitdauer';
+
 $GLOBALS['TL_LANG']['tl_ks_cc_service']['duration'] = [
     'session' => 'Session',
     '1min' => '1 Minute',
@@ -34,4 +36,5 @@ $GLOBALS['TL_LANG']['tl_ks_cc_service']['duration'] = [
     '2year' => '2 Jahre',
     '10year' => '10 Jahre',
     'forever' => 'Ewig',
+    '' => '',
 ];
