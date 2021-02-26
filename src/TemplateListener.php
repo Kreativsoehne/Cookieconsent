@@ -54,9 +54,10 @@ class TemplateListener
 
             $template = new \Contao\FrontendTemplate('cookieconsent');
             $template = $this->setData($template);
-            $template->blocknotice = $this->getSubTemplateContent('cookieconsent_blocknotice');
+
+            $template->blocknotice = $this->renderTemplate('cookieconsent_blocknotice');
             $template->categories = $this->getCategoriesContent();
-            $template->languagesettings = $this->getSubTemplateContent('cookieconsent_language');
+            $template->languagesettings = $this->renderTemplate('cookieconsent_language');
             $template->services = $this->getServicesContent();
 
             $result = $template->parse();
@@ -151,22 +152,6 @@ class TemplateListener
         }
 
         return $template;
-    }
-
-    /**
-     * Get child template content
-     * @param string $name
-     * @return \Contao\FrontendTemplate
-     */
-    protected function getSubTemplateContent($template, $trimNewlines = true) {
-        $template = new \Contao\FrontendTemplate($template);
-        $template = $this->setData($template);
-        $result = $template->parse();
-        if ($trimNewlines === true) {
-            $result = $this->trimNewslines($result);
-        }
-
-        return $result;
     }
 
     /**

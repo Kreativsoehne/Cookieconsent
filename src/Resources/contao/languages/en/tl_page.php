@@ -17,12 +17,6 @@ $GLOBALS['TL_LANG']['tl_page']['cookieconsent_privacy_link'] = ['Privacy protect
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_cookie_link'] = ['Cookie information link', 'Link to cookie information site.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_message'] = ['Initial message', '1st layer message about cookie usage.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_settings_message'] = ['Settings description', '2nd Layer explanation text about cookie settings.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_necessary'] = ['Necessary cookies', 'Information for the specific category. Leave empty to disable the category.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_analytics'] = ['Static analysis', 'Information for the specific category. Leave empty to disable the category.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_recommendations'] = ['Individual product recommendations', 'Information for the specific category. Leave empty to disable the category.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_advertisement'] = ['Individualized advertisement', 'Information for the specific category. Leave empty to disable the category.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_measurements'] = ['Coverage measurements', 'Information for the specific category. Leave empty to disable the category.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_external'] = ['External services', 'Information for the specific category. Leave empty to disable the category.'];
 
 /*
  * Legends
