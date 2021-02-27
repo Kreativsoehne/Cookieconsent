@@ -3,23 +3,27 @@
     '<?= $service->alias ?>': {
         category: '<?= $service->category->alias ?>',
         type: '<?= $service->type ?>',
-        search: [
-            <?php foreach($service->keywords as $keyword): ?>
-                '<?= $keyword ?>',
-            <?php endforeach?>
-        ],
-        cookies: [
-            <?php foreach($service->cookies as $cookie): ?>
-                {
-                    <?php /* Check if its string or a valid RegExp */ ?>
-                    <?php if(@preg_match($cookie, null) === false): ?>
-                        name: '<?= $cookie ?>',
-                    <?php else : ?>
-                        name: <?= $cookie ?>,
-                    <?php endif ?>
-                },
-            <?php endforeach?>
-        ],
+        <?php if(empty($service->keywords) === false): ?>
+            search: [
+                <?php foreach($service->keywords as $keyword): ?>
+                    '<?= $keyword ?>',
+                <?php endforeach?>
+            ],
+        <?php endif ?>
+        <?php if(empty($service->cookies) === false): ?>
+            cookies: [
+                <?php foreach($service->cookies as $cookie): ?>
+                    {
+                        <?php /* Check if its string or a valid RegExp */ ?>
+                        <?php if(@preg_match($cookie, null) === false): ?>
+                            name: '<?= $cookie ?>',
+                        <?php else : ?>
+                            name: <?= $cookie ?>,
+                        <?php endif ?>
+                    },
+                <?php endforeach?>
+            ],
+        <?php endif ?>
         language: {
             locale: {
                 <?php foreach($service->languages as $language): ?>

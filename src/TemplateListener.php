@@ -110,9 +110,9 @@ class TemplateListener
             $languages = ServiceLanguage::findByPid($service->id);
             if (count($languages) > 0) {
                 $service->languages = $languages;
-                $service->cookies = explode(',', $service->cookies);
+                $service->cookies = empty(trim($service->cookies)) === false ? explode(',', $service->cookies) : [];
                 $service->category = Category::findBy(['id = ?', 'published = ?'], [$service->category, 1]);
-                $service->keywords = explode(',', $service->keywords);
+                $service->keywords = empty(trim($service->keywords)) === false ?explode(',', $service->keywords) : [];
                 $services[] = $service;
             }
         }
