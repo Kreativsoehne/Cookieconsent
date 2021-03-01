@@ -113,7 +113,6 @@ abstract class AbstractBackend extends \Contao\Backend
      * @param \DataContainer $dc
      * @return mixed
      * @throws \Exception
-     * @todo Currently unused
      */
     public function validateLanguageField($varValue, \DataContainer $dc)
     {

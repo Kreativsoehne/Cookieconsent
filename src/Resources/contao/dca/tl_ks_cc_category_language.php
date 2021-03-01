@@ -74,7 +74,9 @@ $GLOBALS['TL_DCA']['tl_ks_cc_category_language'] = [
             'options' => \System::getLanguages(),
             'eval' => ['mandatory'=>true, 'chosen'=>true, 'tl_class'=>'w50'],
             'sql' => "varchar(5) NOT NULL default ''",
-            // 'save_callback' => ['Kreativsoehne\Cookieconsent\Backend\Category', 'validateLanguageField'], // Doesn't appear to be called
+            'save_callback' => [
+                ['Kreativsoehne\Cookieconsent\Backend\Category', 'validateLanguageField']
+            ],
         ],
 		'name' => [
             'label' => $GLOBALS['TL_LANG']['tl_ks_cc_common']['NAME'],
