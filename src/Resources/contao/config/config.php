@@ -11,7 +11,6 @@
 // Add cookieconsent to frontend output, if enabled
 $GLOBALS['TL_HOOKS']['outputFrontendTemplate'][] = [Kreativsoehne\Cookieconsent\TemplateListener::class, 'onOutputFrontendTemplate'];
 
-// Categories
 $GLOBALS['BE_MOD']['kreativsoehne_cookieconsent']['kreativsoehne_cookieconsent_category'] = [
     'tables' => ['tl_ks_cc_category', 'tl_ks_cc_category_language'],
 ];
@@ -24,3 +23,7 @@ $GLOBALS['BE_MOD']['kreativsoehne_cookieconsent']['kreativsoehne_cookieconsent_s
 ];
 $GLOBALS['TL_MODELS']['tl_ks_cc_service'] = 'Kreativsoehne\Cookieconsent\Model\Service';
 $GLOBALS['TL_MODELS']['tl_ks_cc_service_language'] = 'Kreativsoehne\Cookieconsent\Model\ServiceLanguage';
+
+if (TL_MODE === 'BE') {
+    $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/backend/cookieconsent.css';
+}
