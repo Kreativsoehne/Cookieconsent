@@ -7,7 +7,7 @@
                 return el;
             },
             barLinkSetting: "Privacy protection settings",
-            barBtnDenyAll: "Deny",
+            barBtnDenyAll: "Reject",
             barBtnAcceptAll: "Accept",
             modalMainTitle: "Privacy protection settings",
             modalMainText: function (el) {
