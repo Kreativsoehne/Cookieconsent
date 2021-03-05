@@ -1,5 +1,5 @@
 /* Javascript object start, language: { */
-    current: "<?= $GLOBALS['TL_LANGUAGE'] ?? 'en' ?>",
+    current: "<?= str_replace('_', '-', $GLOBALS['TL_LANGUAGE'] ?? 'en') ?>",
     locale: {
         en: {
             barMainText: function (el) {

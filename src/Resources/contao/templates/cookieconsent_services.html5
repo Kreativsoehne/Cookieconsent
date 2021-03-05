@@ -27,7 +27,7 @@
         language: {
             locale: {
                 <?php foreach($service->languages as $language): ?>
-                    '<?= $language->language ?>': {
+                    '<?= str_replace('_', '-', $language->language) ?>': {
                         name: function (el) {
                             <?php
                                 $data = [

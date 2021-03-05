@@ -8,7 +8,7 @@
         language: {
             locale: {
                 <?php foreach($category->languages as $language): ?>
-                    '<?= $language->language ?>': {
+                    '<?= str_replace('_', '-', $language->language) ?>': {
                         name: '<?= $language->name ?>',
                         description: function (el) {
                             el.innerHTML = '<?= $language->description ?>';
