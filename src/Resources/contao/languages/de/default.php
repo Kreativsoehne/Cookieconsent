@@ -11,7 +11,7 @@
 /**
  * Frontend
  */
-$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Leider sind externe Video Einbindungen ohne entsprechende Cookies Zustimmung nicht verfügbar.';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Leider sind externe Einbindungen ohne entsprechende Cookies Zustimmung nicht verfügbar.';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Cookie Einstellungen bearbeiten';
 
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_duration'] = 'Zeitdauer';

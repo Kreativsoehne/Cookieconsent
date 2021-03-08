@@ -11,7 +11,7 @@
 /**
  * Frontend
  */
-$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Unfortunately external video integration is not available without cookies acceptance.';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Unfortunately external integrations are not available without cookies acceptance.';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Edit cookie settings';
 
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_duration'] = 'Duration';
