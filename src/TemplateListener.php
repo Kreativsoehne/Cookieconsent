@@ -2,13 +2,18 @@
 
 /*
  * Cookieconsent module for Contao Open Source CMS
- * Copyright (C) 2020 Kreativ&Söhne GmbH
+ * Copyright (C) 2021 Kreativ&Söhne GmbH
 
  * @author  Kreativ&Söhne GmbH <https://www.kreativundsoehne.de>
  * @license MIT
  */
 
 namespace Kreativsoehne\Cookieconsent;
+
+use \Kreativsoehne\Cookieconsent\Model\Category;
+use \Kreativsoehne\Cookieconsent\Model\CategoryLanguage;
+use \Kreativsoehne\Cookieconsent\Model\Service;
+use \Kreativsoehne\Cookieconsent\Model\ServiceLanguage;
 
 /**
  * TemplateListener
@@ -49,10 +54,11 @@ class TemplateListener
 
             $template = new \Contao\FrontendTemplate('cookieconsent');
             $template = $this->setData($template);
-            $template->blocknotice = $this->getSubTemplateContent('cookieconsent_blocknotice');
-            $template->categories = $this->getSubTemplateContent('cookieconsent_categories');
-            $template->languagesettings = $this->getSubTemplateContent('cookieconsent_language');
-            $template->services = $this->getSubTemplateContent('cookieconsent_services');
+
+            $template->blocknotice = $this->renderTemplate('cookieconsent_blocknotice');
+            $template->categories = $this->getCategoriesContent();
+            $template->languagesettings = $this->renderTemplate('cookieconsent_language');
+            $template->services = $this->getServicesContent();
 
             $result = $template->parse();
             $buffer = str_replace('</body>', $result . '</body>', $buffer);
@@ -64,17 +70,54 @@ class TemplateListener
     }
 
     /**
-     * Get root data
-     * @param \Contao\FrontendTemplate $template
-     * @param \Contao\PageModel $rootPage
-     * @return array
+     * Get categories
+     *
+     * @return string
      */
-    protected function setData($template) {
-        foreach ($this->rootData as $key => $value) {
-            $template->{$key} = $value;
+    protected function getCategoriesContent() {
+        $availableCategories = Category::findBy(['published = ?'], [1], ['order' => 'sorting ASC']);
+        $categories = [];
+
+        if (count($availableCategories) < 1) {
+            return '';
         }
 
-        return $template;
+        foreach ($availableCategories as $category) {
+            $languages = CategoryLanguage::findByPid($category->id);
+            if (count($languages) > 0) {
+                $category->languages = $languages;
+                $categories[] = $category;
+            }
+        }
+
+        return $this->renderTemplate('cookieconsent_categories', ['categories' => $categories]);
+    }
+
+    /**
+     * Get services content
+     *
+     * @return string
+     */
+    protected function getServicesContent() {
+        $availableServices = Service::findBy(['published = ?'], [1], ['order' => 'sorting ASC']);
+        $services = [];
+
+        if (count($availableServices) < 1) {
+            return '';
+        }
+
+        foreach ($availableServices as $service) {
+            $languages = ServiceLanguage::findByPid($service->id);
+            if (count($languages) > 0) {
+                $service->languages = $languages;
+                $service->cookies = empty(trim($service->cookies)) === false ? explode(',', $service->cookies) : [];
+                $service->category = Category::findBy(['id = ?', 'published = ?'], [$service->category, 1]);
+                $service->keywords = empty(trim($service->keywords)) === false ?explode(',', $service->keywords) : [];
+                $services[] = $service;
+            }
+        }
+
+        return $this->renderTemplate('cookieconsent_services', ['services' => $services]);
     }
 
     /**
@@ -82,15 +125,33 @@ class TemplateListener
      * @param string $name
      * @return \Contao\FrontendTemplate
      */
-    protected function getSubTemplateContent($template, $trimNewlines = true) {
+    protected function renderTemplate($template, $data = null, $trimNewlines = true) {
         $template = new \Contao\FrontendTemplate($template);
-        $template = $this->setData($template);
+        $template = $this->setData($template, $data);
         $result = $template->parse();
         if ($trimNewlines === true) {
             $result = $this->trimNewslines($result);
         }
 
         return $result;
+    }
+
+    /**
+     * Get root data
+     * @param \Contao\FrontendTemplate $template
+     * @param \Contao\PageModel $rootPage
+     * @return array
+     */
+    protected function setData($template, $data = null) {
+        if ($data === null) {
+            $data = $this->rootData;
+        }
+
+        foreach ($data as $key => $value) {
+            $template->{$key} = $value;
+        }
+
+        return $template;
     }
 
     /**

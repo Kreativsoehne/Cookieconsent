@@ -8,13 +8,15 @@
  * @license MIT
  */
 
-namespace Kreativsoehne\Cookieconsent;
-
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+namespace Kreativsoehne\Cookieconsent\Model;
 
 /**
- * KreativsoehneCookieconsentBundle
+ * Category
  */
-class KreativsoehneCookieconsentBundle extends Bundle
+class Category extends \Contao\Model
 {
+    /**
+     * @inheritDoc
+     */
+    protected static $strTable = 'tl_ks_cc_category';
 }

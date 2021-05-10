@@ -2,7 +2,7 @@
 
 /*
  * Cookieconsent module for Contao Open Source CMS
- * Copyright (C) 2020 Kreativ&Söhne GmbH
+ * Copyright (C) 2021 Kreativ&Söhne GmbH
 
  * @author  Kreativ&Söhne GmbH <https://www.kreativundsoehne.de>
  * @license MIT
@@ -17,12 +17,6 @@ $GLOBALS['TL_LANG']['tl_page']['cookieconsent_privacy_link'] = ['Datenschutz Lin
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_cookie_link'] = ['Cookie Informationen Link', 'Link zur Cookie Informations-Seite.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_message'] = ['Hinweis Meldung', 'Der 1st Layer Hinweistext über Cookie Nutzung.'];
 $GLOBALS['TL_LANG']['tl_page']['cookieconsent_settings_message'] = ['Einstellungen Erklärung', 'Der 2nd Layer Erklärungstext über die Cookie-Einstellungen.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_necessary'] = ['Notwendige Cookies', 'Hinweistext zur entsprechenden Kategorie. Leer lassen um die Kategorie auszuschliessen.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_analytics'] = ['Statistische Analyse', 'Hinweistext zur entsprechenden Kategorie. Leer lassen um die Kategorie auszuschliessen.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_recommendations'] = ['Individuelle Produktempfehlungen', 'Hinweistext zur entsprechenden Kategorie. Leer lassen um die Kategorie auszuschliessen.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_advertisement'] = ['Individualisierte Werbung', 'Hinweistext zur entsprechenden Kategorie. Leer lassen um die Kategorie auszuschliessen.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_measurements'] = ['Reichweitenmessung', 'Hinweistext zur entsprechenden Kategorie. Leer lassen um die Kategorie auszuschliessen.'];
-$GLOBALS['TL_LANG']['tl_page']['cookieconsent_info_external'] = ['Externe Dienste', 'Hinweistext zur entsprechenden Kategorie. Leer lassen um die Kategorie auszuschliessen.'];
 
 /*
  * Legends
