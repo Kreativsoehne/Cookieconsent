@@ -6,7 +6,7 @@ Cookie optin with [brainsum/cookieconsent](https://github.com/brainsum/cookiecon
 Version 3 has significant breaking changes and is not compatible with older version. However, if you find bugs or issues within v2 kindly open a [issue](https://github.com/Kreativsoehne/Cookieconsent/issues) with us and we'll see about updating v2 if necessary.
 
 **Note2**:
-Version 3 is currently in development and may contain bugs and issues. Use at your own discretion. The documentation may also not reflect all changes yet.
+Version 3 is currently in development and may contain bugs and issues. Use at your own discretion.
 
 ## Install
 
@@ -24,9 +24,11 @@ See cookieconsent [documentation](https://github.com/brainsum/cookieconsent/blob
 
 #### Default categories & services
 
-You can download a database dump ~~here~~ (not yet avaiable) which contains a list of categories, services and general configurations which we found to be GDPR compliant (so far).
-It only contains german translations for the most part, but we'll update it with new languages once we have translations for them (if you'd like to help, kindly open a [issue](https://github.com/Kreativsoehne/Cookieconsent/issues) with us and we'll update the database dump with your translation).
-You can import it through phpmyadmin and similar.
+You can download a database dump [here](https://raw.githubusercontent.com/Kreativsoehne/Cookieconsent/master/sql_dumps/cookieconsent_base.sql) which contains a list of categories and cookies/services which we found to be common enough and GDPR compliant (so far).
+It contains only english and german translations for the most part, but we'll update them with new languages as we get them (if you'd like to help, kindly open a [issue](https://github.com/Kreativsoehne/Cookieconsent/issues) or [pull request](https://github.com/Kreativsoehne/Cookieconsent/pulls) and we'll update the database dump with your translations).
+There are also separate dumps for the rootpage configuration, one for each languages: [English](https://raw.githubusercontent.com/Kreativsoehne/Cookieconsent/master/sql_dumps/cookieconsent_rootpage_en.sql) and [German](https://raw.githubusercontent.com/Kreativsoehne/Cookieconsent/master/sql_dumps/cookieconsent_rootpage_de.sql), which contain the basic texts for the cookieconsent layer itself.
+
+You can import these through phpmyadmin and similar.
 **Note**: Use at your own discretion. Do not import anything into a Live system without testing first!
 
 #### Languages
