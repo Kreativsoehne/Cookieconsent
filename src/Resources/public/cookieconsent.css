@@ -135,8 +135,8 @@
     }
 }
 
-#cconsent-modal h2,
-#cconsent-modal h3 {
+#cconsent-modal .h2,
+#cconsent-modal .h3 {
     color: #333;
 }
 
@@ -173,7 +173,7 @@
     position: relative;
 }
 
-#cconsent-modal .ccm__content > .ccm__content__heading h2 {
+#cconsent-modal .ccm__content > .ccm__content__heading .h2 {
     font-size: 21px;
     font-weight: 600;
     color: #333;
@@ -190,8 +190,8 @@
     top: 15px;
 }
 
-#cconsent-modal h2,
-#cconsent-modal h3 {
+#cconsent-modal .h2,
+#cconsent-modal .h3 {
     margin-top: 0;
 }
 
@@ -504,7 +504,7 @@
     }
 }
 
-#cconsent-modal .ccm__content > .ccm__content__body .ccm__tab-content h3 {
+#cconsent-modal .ccm__content > .ccm__content__body .ccm__tab-content .h3 {
     font-size: 18px;
     margin-bottom: 10px;
     line-height: 1;
