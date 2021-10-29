@@ -3,7 +3,7 @@
     "description": "Cookieconsent overlay with required optin and ways to block cookies and external resources",
     "keywords": ["contao", "cookie", "cookiebar", "cookieconsent", "gdpr"],
     "type": "contao-bundle",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "license": "MIT",
     "authors": [
         {
