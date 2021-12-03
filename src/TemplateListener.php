@@ -108,11 +108,19 @@ class TemplateListener
 
         foreach ($availableServices as $service) {
             $languages = ServiceLanguage::findByPid($service->id);
+
             if (count($languages) > 0) {
                 $service->languages = $languages;
-                $service->cookies = empty(trim($service->cookies)) === false ? explode(',', $service->cookies) : [];
+
+                if (gettype($service->cookies) === 'string') {
+                    $service->cookies = empty(trim($service->cookies)) === false ? explode(',', $service->cookies) : [];
+                }
+                if (gettype($service->keywords) === 'string') {
+                    $service->keywords = empty(trim($service->keywords)) === false ? explode(',', $service->keywords) : [];
+                }
+
                 $service->category = Category::findBy(['id = ?', 'published = ?'], [$service->category, 1]);
-                $service->keywords = empty(trim($service->keywords)) === false ?explode(',', $service->keywords) : [];
+
                 $services[] = $service;
             }
         }
