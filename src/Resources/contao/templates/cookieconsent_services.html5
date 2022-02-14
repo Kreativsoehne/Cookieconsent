@@ -1,7 +1,7 @@
 /* Javascript object start, services: { */
 <?php foreach($this->services as $service): ?>
     '<?= $service->alias ?>': {
-        category: '<?= $service->category->alias ?>',
+        category: '<?= $service->category ?>',
         type: '<?= $service->type ?>',
         <?php if(empty($service->keywords) === false): ?>
             search: [

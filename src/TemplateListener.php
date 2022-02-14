@@ -10,10 +10,10 @@
 
 namespace Kreativsoehne\Cookieconsent;
 
-use \Kreativsoehne\Cookieconsent\Model\Category;
-use \Kreativsoehne\Cookieconsent\Model\CategoryLanguage;
-use \Kreativsoehne\Cookieconsent\Model\Service;
-use \Kreativsoehne\Cookieconsent\Model\ServiceLanguage;
+use Kreativsoehne\Cookieconsent\Model\Category;
+use Kreativsoehne\Cookieconsent\Model\CategoryLanguage;
+use Kreativsoehne\Cookieconsent\Model\Service;
+use Kreativsoehne\Cookieconsent\Model\ServiceLanguage;
 
 /**
  * TemplateListener
@@ -47,7 +47,6 @@ class TemplateListener
         }
 
         if ($rootPage !== null && empty($this->rootData['enable']) === false) {
-
             // Temporarily disable debug-mode to prevent template-hints within javascript-code
             $blDebugMode = \Contao\Config::get('debugMode');
             \Contao\Config::set('debugMode', false);
@@ -55,10 +54,12 @@ class TemplateListener
             $template = new \Contao\FrontendTemplate('cookieconsent');
             $template = $this->setData($template);
 
+            $categories = $this->getCategories();
+            $services = $this->getServices();
             $template->blocknotice = $this->renderTemplate('cookieconsent_blocknotice');
-            $template->categories = $this->getCategoriesContent();
+            $template->categories = $this->getCategoriesContent($categories);
             $template->languagesettings = $this->renderTemplate('cookieconsent_language');
-            $template->services = $this->getServicesContent();
+            $template->services = $this->getServicesContent($services, $categories);
 
             $result = $template->parse();
             $buffer = str_replace('</body>', $result . '</body>', $buffer);
@@ -71,22 +72,19 @@ class TemplateListener
 
     /**
      * Get categories
-     *
+     * @param array $categories
      * @return string
      */
-    protected function getCategoriesContent() {
-        $availableCategories = Category::findBy(['published = ?'], [1], ['order' => 'sorting ASC']);
-        $categories = [];
-
-        if (count($availableCategories) < 1) {
+    protected function getCategoriesContent(array $categories): string
+    {
+        if (count($categories) < 1) {
             return '';
         }
 
-        foreach ($availableCategories as $category) {
+        foreach ($categories as $category) {
             $languages = CategoryLanguage::findByPid($category->id);
             if (count($languages) > 0) {
                 $category->languages = $languages;
-                $categories[] = $category;
             }
         }
 
@@ -95,25 +93,32 @@ class TemplateListener
 
     /**
      * Get services content
-     *
+     * @param array $categories
      * @return string
      */
-    protected function getServicesContent() {
-        $availableServices = Service::findBy(['published = ?'], [1], ['order' => 'sorting ASC']);
-        $services = [];
-
-        if (count($availableServices) < 1) {
+    protected function getServicesContent(array $services, array $categories): string
+    {
+        if (count($services) < 1) {
             return '';
         }
 
-        foreach ($availableServices as $service) {
+        foreach ($services as $service) {
             $languages = ServiceLanguage::findByPid($service->id);
+
             if (count($languages) > 0) {
                 $service->languages = $languages;
-                $service->cookies = empty(trim($service->cookies)) === false ? explode(',', $service->cookies) : [];
-                $service->category = Category::findBy(['id = ?', 'published = ?'], [$service->category, 1]);
-                $service->keywords = empty(trim($service->keywords)) === false ?explode(',', $service->keywords) : [];
-                $services[] = $service;
+
+                if (gettype($service->cookies) === 'string') {
+                    $service->cookies = empty(trim($service->cookies)) === false ? explode(',', $service->cookies) : [];
+                }
+                if (gettype($service->keywords) === 'string') {
+                    $service->keywords = empty(trim($service->keywords)) === false ? explode(',', $service->keywords) : [];
+                }
+
+                $category = $categories[$service->category];
+                if (empty($category) === false) {
+                    $service->category = $category->alias;
+                }
             }
         }
 
@@ -121,11 +126,44 @@ class TemplateListener
     }
 
     /**
+     * Getter available categories with category ID as key
+     * @return [Category]
+     */
+    protected function getCategories(): array
+    {
+        $result = [];
+
+        $availableCategories = Category::findBy(['published = ?'], [1], ['order' => 'sorting ASC']);
+        foreach ($availableCategories as $id => $category) {
+            $result[$category->id] = $category;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Getter available services with service ID as key
+     * @return [Service]
+     */
+    protected function getServices(): array
+    {
+        $result = [];
+
+        $availableServices = Service::findBy(['published = ?'], [1], ['order' => 'sorting ASC']);
+        foreach ($availableServices as $id => $service) {
+            $result[$service->id] = $service;
+        }
+
+        return $result;
+    }
+
+    /**
      * Get child template content
      * @param string $name
      * @return \Contao\FrontendTemplate
      */
-    protected function renderTemplate($template, $data = null, $trimNewlines = true) {
+    protected function renderTemplate($template, $data = null, $trimNewlines = true)
+    {
         $template = new \Contao\FrontendTemplate($template);
         $template = $this->setData($template, $data);
         $result = $template->parse();
@@ -142,7 +180,8 @@ class TemplateListener
      * @param \Contao\PageModel $rootPage
      * @return array
      */
-    protected function setData($template, $data = null) {
+    protected function setData($template, $data = null)
+    {
         if ($data === null) {
             $data = $this->rootData;
         }
@@ -160,7 +199,8 @@ class TemplateListener
      * @param string $value
      * @return stringd
      */
-    protected function trimNewslines(string $value) {
+    protected function trimNewslines(string $value)
+    {
         return preg_replace('/\r|\n/', '', $value);
     }
 }
