@@ -18,7 +18,7 @@
             modalBtnAcceptAll: "Accept and close",
             modalAffectedSolutions: "Affected solutions/cookies:",
             barBtnPrivacyProtection: "Privacy protection",
-            barBtnCookieInformation: "Additional information",
+            barBtnCookieInformation: "Imprint",
             learnMore: "Learn More",
             on: "On",
             off: "Off"
@@ -46,7 +46,7 @@
             modalBtnAcceptAll: "Akzeptieren & schließen",
             modalAffectedSolutions: "Betroffene Dienste/Cookies:",
             barBtnPrivacyProtection: "Datenschutz",
-            barBtnCookieInformation: "Weitere Informationen",
+            barBtnCookieInformation: "Impressum",
             learnMore: "Mehr erfahren",
             on: "An",
             off: "Aus"
