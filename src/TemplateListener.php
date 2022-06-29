@@ -72,7 +72,7 @@ class TemplateListener
 
     /**
      * Get categories
-     * @param array $categories
+     * @param array[Category] $categories
      * @return string
      */
     protected function getCategoriesContent(array $categories): string
@@ -93,41 +93,48 @@ class TemplateListener
 
     /**
      * Get services content
-     * @param array $categories
+     * @param array[Service] $services
+     * @param array[Category] $categories
      * @return string
      */
     protected function getServicesContent(array $services, array $categories): string
     {
-        if (count($services) < 1) {
+        if (empty($services) === true) {
             return '';
         }
+        $renderableServices = [];
 
         foreach ($services as $service) {
+            $category = isset($categories[$service->category]) === true ? $categories[$service->category] : null;
             $languages = ServiceLanguage::findByPid($service->id);
 
-            if (count($languages) > 0) {
-                $service->languages = $languages;
-
-                if (gettype($service->cookies) === 'string') {
-                    $service->cookies = empty(trim($service->cookies)) === false ? explode(',', $service->cookies) : [];
-                }
-                if (gettype($service->keywords) === 'string') {
-                    $service->keywords = empty(trim($service->keywords)) === false ? explode(',', $service->keywords) : [];
-                }
-
-                $category = $categories[$service->category];
-                if (empty($category) === false) {
-                    $service->category = $category->alias;
-                }
+            // Nothing to do without category or languages
+            if (!$category instanceof Category || empty($languages) === true) {
+                continue;
             }
+
+            // We need the proper alias, not the ID of the category
+            $service->category = $category->alias;
+
+            $service->languages = $languages;
+
+            if (gettype($service->cookies) === 'string') {
+                $service->cookies = empty(trim($service->cookies)) === false ? explode(',', $service->cookies) : [];
+            }
+
+            if (gettype($service->keywords) === 'string') {
+                $service->keywords = empty(trim($service->keywords)) === false ? explode(',', $service->keywords) : [];
+            }
+
+            $renderableServices[] = $service;
         }
 
-        return $this->renderTemplate('cookieconsent_services', ['services' => $services]);
+        return $this->renderTemplate('cookieconsent_services', ['services' => $renderableServices]);
     }
 
     /**
      * Getter available categories with category ID as key
-     * @return [Category]
+     * @return array[Category]
      */
     protected function getCategories(): array
     {
@@ -143,7 +150,7 @@ class TemplateListener
 
     /**
      * Getter available services with service ID as key
-     * @return [Service]
+     * @return array[Service]
      */
     protected function getServices(): array
     {
