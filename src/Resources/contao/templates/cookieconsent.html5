@@ -48,7 +48,7 @@ window.addEventListener("load", function() {
 window.CookieConsent.init({
   modalMainTextMoreLink: '<?= $this->cookie_link ?>',
   modalMainTextPrivacyLink: '<?= $this->privacy_link ?>',
-  barTimeout: 0,
+  barTimeout: <?= $this->barTimeout ?>,
 
   language: {
     <?= $this->languagesettings ?>
