@@ -184,8 +184,6 @@ class TemplateListener
         preg_match('/^{{link_url::(\d+)/', $privacyLink, $privacyMatches);
         $privacyPageId = count($privacyMatches) > 1 ? $privacyMatches[1] : null;
 
-        dump([$currentPageId, $currentPageUrl, $imprintLink, $privacyLink, $imprintPageId, $privacyPageId]);
-
         return (
             $currentPageId === $imprintPageId ||
             $currentPageId === $privacyPageId ||
