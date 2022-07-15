@@ -27,3 +27,6 @@ $GLOBALS['TL_MODELS']['tl_ks_cc_service_language'] = 'Kreativsoehne\Cookieconsen
 if (TL_MODE === 'BE') {
     $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/backend/cookieconsent.css';
 }
+
+$GLOBALS['TL_CTE']['miscellaneous']['cookieconsent_toggle'] =
+    \Kreativsoehne\Cookieconsent\Content\ToggleContentElement::class;
