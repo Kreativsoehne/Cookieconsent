@@ -2,7 +2,7 @@
 
 /*
  * Cookieconsent module for Contao Open Source CMS
- * Copyright (C) 2021 Kreativ&Söhne GmbH
+ * Copyright (C) 2022 Kreativ&Söhne GmbH
 
  * @author  Kreativ&Söhne GmbH <https://www.kreativundsoehne.de>
  * @license MIT
@@ -56,6 +56,7 @@ class TemplateListener
 
             $categories = $this->getCategories();
             $services = $this->getServices();
+            $template->barTimeout = $this->isImprintOrPrivacyPage() === true ? 3600000 : 0; // 1h
             $template->blocknotice = $this->renderTemplate('cookieconsent_blocknotice');
             $template->categories = $this->getCategoriesContent($categories);
             $template->languagesettings = $this->renderTemplate('cookieconsent_language');
@@ -164,12 +165,39 @@ class TemplateListener
         return $result;
     }
 
+
+    /**
+     * Check if current page is imprint or privacy page
+     * @return bool
+     */
+    protected function isImprintOrPrivacyPage(): bool
+    {
+        $currentPageId = $GLOBALS['objPage']->id;
+        $currentPageUrl = $GLOBALS['objPage']->getFrontendUrl();
+
+        $imprintLink = $this->rootData['cookie_link'];
+        $privacyLink = $this->rootData['privacy_link'];
+
+        preg_match('/^{{link_url::(\d+)/', $imprintLink, $imprintMatches);
+        $imprintPageId = count($imprintMatches) > 1 ? $imprintMatches[1] : null;
+
+        preg_match('/^{{link_url::(\d+)/', $privacyLink, $privacyMatches);
+        $privacyPageId = count($privacyMatches) > 1 ? $privacyMatches[1] : null;
+
+        return (
+            $currentPageId === $imprintPageId ||
+            $currentPageId === $privacyPageId ||
+            $currentPageUrl === $imprintLink ||
+            $currentPageUrl === $privacyLink
+        );
+    }
+
     /**
      * Get child template content
      * @param string $name
-     * @return \Contao\FrontendTemplate
+     * @return string
      */
-    protected function renderTemplate($template, $data = null, $trimNewlines = true)
+    protected function renderTemplate($template, $data = null, $trimNewlines = true): string
     {
         $template = new \Contao\FrontendTemplate($template);
         $template = $this->setData($template, $data);

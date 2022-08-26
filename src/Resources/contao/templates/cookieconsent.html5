@@ -7,15 +7,17 @@
 <!-- indexer::stop -->
 <script>
 window.addEventListener("load", function() {
+    // Retrieve current cconsent cookie data
     var ccChoices = document.cookie.match(new RegExp('(^| )cconsent=([^;]+)'));
-    if (ccChoices !== null) {
+    if (Array.isArray(ccChoices) === true && ccChoices.length > 2) {
         try {
-            ccChoices = JSON.parse(ccChoices[2]);
+            ccChoices = JSON.parse(ccChoices.pop());
         } catch (e) {
             ccChoices = null;
         }
     }
 
+    // Reload on any changes to the cookie consent settings
     var ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,button.consent-give,button.consent-deny');
     for(let ccButton of ccButtons) {
         ccButton.addEventListener('click', function() {
@@ -23,8 +25,8 @@ window.addEventListener("load", function() {
         });
     }
 
+    // If we got choices and allow category external, don't bother with blocknotice
     try {
-        // If we got choices and allow category external, don't bother with blocknotices
         if (ccChoices !== null
         && typeof ccChoices === 'object'
         && typeof ccChoices.categories.external === 'object'
@@ -33,7 +35,8 @@ window.addEventListener("load", function() {
         }
     } catch (e) {}
 
-    var notice = document.querySelector('.cc-blocknotice-wrapper');
+    // Replace iframes with blocknotice when external cookies are not allowed
+    var notice = document.querySelector('#cconsent-global-blocknotice>.cconsent-blocknotice-wrapper');
     var iFrames = document.querySelectorAll('iframe[src*="youtube"],iframe[src*="vimeo"],embed[src*="youtube"],embed[src*="vimeo"]');
 
     iFrames.forEach(function(item) {
@@ -48,7 +51,7 @@ window.addEventListener("load", function() {
 window.CookieConsent.init({
   modalMainTextMoreLink: '<?= $this->cookie_link ?>',
   modalMainTextPrivacyLink: '<?= $this->privacy_link ?>',
-  barTimeout: 0,
+  barTimeout: <?= $this->barTimeout ?>,
 
   language: {
     <?= $this->languagesettings ?>
@@ -64,5 +67,7 @@ window.CookieConsent.init({
 });
 </script>
 
-<div data-nosnippet style="display: none;"><?= $this->blocknotice ?></div>
+<div id="cconsent-global-blocknotice" data-nosnippet style="display: none;">
+    <?= $this->blocknotice ?>
+</div>
 <!-- indexer::continue -->

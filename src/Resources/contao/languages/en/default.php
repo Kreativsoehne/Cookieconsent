@@ -2,7 +2,7 @@
 
 /*
  * Cookieconsent module for Contao Open Source CMS
- * Copyright (C) 2021 Kreativ&Söhne GmbH
+ * Copyright (C) 2022 Kreativ&Söhne GmbH
 
  * @author  Kreativ&Söhne GmbH <https://www.kreativundsoehne.de>
  * @license MIT
@@ -11,8 +11,10 @@
 /**
  * Frontend
  */
+
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Unfortunately external integrations are not available without cookies acceptance.';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Edit cookie settings';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_toggle_label'] = 'Privacy settings';
 
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_duration'] = 'Duration';
 
@@ -38,3 +40,9 @@ $GLOBALS['TL_LANG']['tl_ks_cc_service']['duration'] = [
     '10year' => '10 Years',
     'forever' => 'Forever',
 ];
+
+/**
+ * Backend
+ */
+
+$GLOBALS['TL_LANG']['CTE']['cookieconsent_toggle'][0] = "Cookieconsent Toggle";

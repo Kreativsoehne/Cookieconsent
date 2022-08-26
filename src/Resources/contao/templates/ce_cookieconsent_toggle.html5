@@ -1,0 +1,19 @@
+<?php
+    $iconClass = isset($this->iconClass) === true ? $this->iconClass : 'fa fa-cookie-bite';
+    $label = isset($this->label) === true ? $this->label : $GLOBALS['TL_LANG']['MCS']['cookieconsent_toggle_label'];
+?>
+
+<!-- indexer::stop -->
+<a
+    class="cconsent-toggle <?php echo $this->class; ?>"
+    href="#"
+    onclick="document.querySelector('#cconsent-modal').classList.add('ccm--visible'); return false;"
+    <?php echo $this->cssID; ?>
+    <?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>
+>
+  <?php if (empty($iconClass) === false) : ?>
+    <i class="icon <?= $iconClass ?>" aria-hidden="true"></i>
+  <?php endif; ?>
+  <span class="label"><?= $label ?></span>
+</a>
+<!-- indexer::continue -->

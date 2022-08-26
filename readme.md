@@ -35,11 +35,23 @@ The format is a basic javascript object.
 
 #### Opening the settings layer
 
-If you require a link to open the cookie settings (2nd layer):
+If you require a link/button to open the cookie settings (2nd layer), you can use the content element "Cookieconsent Toggle".
 
-```html
-<a href="#" onclick="document.querySelector('#cconsent-modal').classList.add('ccm--visible'); return false;">Cookie settings</a>
+It is also possible to manually render its template:
+
+```php
+    <?= $this->insert('ce_cookieconsent_toggle', [
+        'iconClass' => 'fa fa-cookie-bite',
+        'label' => 'Cookie Settings',
+    ]) ?>
 ```
+
+The options are:
+
+Name|Description|Default
+----|-----------|-------
+iconClass|Optional list of icon classes (ie. Fontawesome).<br>Leave empty to not render an icon.|`fa fa-cookie-bite`
+label|The label of the button|`$GLOBALS['TL_LANG']['MCS']['cookieconsent_togglebutton_label']`
 
 ### Categories
 
