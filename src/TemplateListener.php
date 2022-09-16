@@ -165,7 +165,6 @@ class TemplateListener
         return $result;
     }
 
-
     /**
      * Check if current page is imprint or privacy page
      * @return bool
@@ -173,7 +172,15 @@ class TemplateListener
     protected function isImprintOrPrivacyPage(): bool
     {
         $currentPageId = $GLOBALS['objPage']->id;
-        $currentPageUrl = $GLOBALS['objPage']->getFrontendUrl();
+        $currentPageUrl = null;
+
+        /** @note Contao 4.13 (and above): Pages with requireItem can not get urls generated without parameters */
+        if (
+            null === $GLOBALS['objPage']->requireItem ||
+            true === empty($GLOBALS['objPage']->requireItem)
+        ) {
+            $currentPageUrl = $GLOBALS['objPage']->getFrontendUrl();
+        }
 
         $imprintLink = $this->rootData['cookie_link'];
         $privacyLink = $this->rootData['privacy_link'];
