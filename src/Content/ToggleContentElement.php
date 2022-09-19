@@ -18,10 +18,13 @@ use Contao\ContentElement;
  */
 class ToggleContentElement extends ContentElement
 {
+    /** @var string */
+    public const TYPE = 'cookieconsent_toggle';
+
     /**
      * @inheritDoc
      */
-    protected $strTemplate = 'ce_cookieconsent_toggle';
+    protected $strTemplate = 'ce_ks_cookieconsent_toggle';
 
     /**
      * @inheritDoc

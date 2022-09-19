@@ -8,8 +8,8 @@
  * @license MIT
  */
 
-use Kreativsoehne\Cookieconsent\Frontend\CookieconsentModule;
 use Kreativsoehne\Cookieconsent\Content\ToggleContentElement;
+use Kreativsoehne\Cookieconsent\Frontend\CookieconsentModule;
 
 $GLOBALS['BE_MOD']['kreativsoehne_cookieconsent']['kreativsoehne_cookieconsent_category'] = [
     'tables' => ['tl_ks_cc_category', 'tl_ks_cc_category_language'],
@@ -28,7 +28,7 @@ if (TL_MODE === 'BE') {
     $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/backend/cookieconsent.css';
 }
 
-$GLOBALS['TL_CTE']['miscellaneous']['cookieconsent_toggle'] = ToggleContentElement::class;
+$GLOBALS['TL_CTE']['miscellaneous'][ToggleContentElement::TYPE] = ToggleContentElement::class;
 
 // No clue why the @FrontendModule doesn't work
 $GLOBALS['FE_MOD']['miscellaneous'][CookieconsentModule::TYPE] = CookieconsentModule::class;

@@ -40,7 +40,7 @@ If you require a link/button to open the cookie settings (2nd layer), you can us
 It is also possible to manually render its template:
 
 ```php
-    <?= $this->insert('ce_cookieconsent_toggle', [
+    <?= $this->insert('ce_ks_cookieconsent_toggle', [
         'iconClass' => 'fa fa-cookie-bite',
         'label' => 'Cookie Settings',
     ]) ?>

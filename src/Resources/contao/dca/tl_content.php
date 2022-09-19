@@ -8,5 +8,7 @@
  * @license MIT
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['cookieconsent_toggle'] =
+use Kreativsoehne\Cookieconsent\Content\ToggleContentElement;
+
+$GLOBALS['TL_DCA']['tl_content']['palettes'][ToggleContentElement::TYPE] =
     '{type_legend},type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';

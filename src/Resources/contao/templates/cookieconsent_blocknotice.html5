@@ -2,7 +2,7 @@
 <div class="cconsent-blocknotice-wrapper cc-blocknotice-wrapper">
     <div class="cconsent-blocknotice cc-blocknotice">
         <strong><?= $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] ?></strong>
-        <?= $this->insert('ce_cookieconsent_toggle', [
+        <?= $this->insert('ce_ks_cookieconsent_toggle', [
             'iconClass' => false,
             'label' => $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'],
         ]) ?>

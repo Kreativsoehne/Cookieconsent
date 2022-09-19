@@ -8,10 +8,11 @@
  * @license MIT
  */
 
+use Kreativsoehne\Cookieconsent\Content\ToggleContentElement;
+
 /**
  * Frontend
  */
-
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Unfortunately external integrations are not available without cookies acceptance.';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Edit cookie settings';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_toggle_label'] = 'Privacy settings';
@@ -44,5 +45,4 @@ $GLOBALS['TL_LANG']['tl_ks_cc_service']['duration'] = [
 /**
  * Backend
  */
-
-$GLOBALS['TL_LANG']['CTE']['cookieconsent_toggle'][0] = "Cookieconsent Toggle";
+$GLOBALS['TL_LANG']['CTE'][ToggleContentElement::TYPE][0] = "Cookieconsent Toggle";
