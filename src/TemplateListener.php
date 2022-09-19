@@ -34,6 +34,12 @@ class TemplateListener
     public function onOutputFrontendTemplate($buffer)
     {
         $rootPage = \Contao\PageModel::findByPk($GLOBALS['objPage']->rootId);
+
+        /** @note Contao 4.13 (and above): the global rootId is not always available */
+        if (null === $rootPage) {
+            return $buffer;
+        }
+
         $rootData = $rootPage->row();
 
         foreach ($rootData as $key => $value) {
