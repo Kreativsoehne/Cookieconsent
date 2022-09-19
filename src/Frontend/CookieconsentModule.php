@@ -69,9 +69,9 @@ class CookieconsentModule extends \Contao\Module
         $services = $this->getServices();
 
         $this->Template->barTimeout = $this->isImprintOrPrivacyPage() === true ? 3600000 : 0; // 1h
-        $this->Template->blocknotice = $this->renderTemplate('cookieconsent_blocknotice');
+        $this->Template->blocknotice = $this->renderTemplate('cookieconsent_blocknotice', $this->rootData);
         $this->Template->categories = $this->getCategoriesContent($categories);
-        $this->Template->languagesettings = $this->renderTemplate('cookieconsent_language');
+        $this->Template->languagesettings = $this->renderTemplate('cookieconsent_language', $this->rootData);
         $this->Template->services = $this->getServicesContent($services, $categories);
 
         \Contao\Config::set('debugMode', $blDebugMode);
@@ -228,7 +228,7 @@ class CookieconsentModule extends \Contao\Module
      * @param array $data
      * @return string
      */
-    protected function renderTemplate(string $template, array $data = []): string
+    protected function renderTemplate(string $template, array $data): string
     {
         $template = new \Contao\FrontendTemplate($template);
         $this->setTemplateData($template, $data);
