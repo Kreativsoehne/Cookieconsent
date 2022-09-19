@@ -1,12 +1,19 @@
 <?php
 
-/*
+/**
  * Cookieconsent module for Contao Open Source CMS
  * Copyright (C) 2022 Kreativ&Söhne GmbH
-
+ *
  * @author  Kreativ&Söhne GmbH <https://www.kreativundsoehne.de>
  * @license MIT
  */
+
+use Kreativsoehne\Cookieconsent\Frontend\CookieconsentModule;
+
+$GLOBALS['TL_LANG']['FMD'][CookieconsentModule::TYPE] = [
+    'Cookieconsent',
+    'Rendert das Cookieconsent',
+];
 
 $GLOBALS['TL_LANG']['MOD']['kreativsoehne_cookieconsent'] = ['Cookieconsent', 'Verwalte Cookieconsent'];
 $GLOBALS['TL_LANG']['MOD']['kreativsoehne_cookieconsent_category'] = ['Kategorien', 'Cookieconsent Kategorien'];

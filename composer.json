@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": "^7.1|^7.2|^7.3|^7.4",
-        "contao/core-bundle": "~4.4 || ~4.9 || ~4.13",
+        "contao/core-bundle": "~4.9 || ~4.13",
         "terminal42/dcawizard":"2.*"
     },
     "require-dev": { },
