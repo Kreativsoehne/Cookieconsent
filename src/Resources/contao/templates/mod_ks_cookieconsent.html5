@@ -54,7 +54,7 @@ window.CookieConsent.init({
   barTimeout: <?= $this->barTimeout ?>,
 
   language: {
-    <?= $this->languagesettings ?>
+    <?= $this->language ?>
   },
 
   categories: {

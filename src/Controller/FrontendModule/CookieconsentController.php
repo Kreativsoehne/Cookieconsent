@@ -48,7 +48,7 @@ class CookieconsentController extends AbstractFrontendModuleController
         $template->barTimeout = $this->isImprintOrPrivacyPage() === true ? 3600000 : 0; // 1h
         $template->blocknotice = $this->renderTemplate('cookieconsent_blocknotice', $this->rootData);
         $template->categories = $this->getCategoriesContent($categories);
-        $template->languagesettings = $this->renderTemplate('cookieconsent_language', $this->rootData);
+        $template->language = $this->renderTemplate('cookieconsent_language', $this->rootData);
         $template->services = $this->getServicesContent($services, $categories);
 
         \Contao\Config::set('debugMode', $blDebugMode);
@@ -65,7 +65,10 @@ class CookieconsentController extends AbstractFrontendModuleController
             $this->rootData[substr($field, strlen('ks_cc_'))] = $model->{$field};
         }
 
-        $this->rootData['heading'] = '<div class="h4 ccb__heading">' . html_entity_decode($this->rootData['heading']) . '</div>';
+        // Generate headline from serialized data
+        $headline = unserialize($model->headline);
+        $this->rootData['headline'] =
+            '<' . $headline['unit'] . ' class="ccb__heading">' . html_entity_decode($headline['value']) . '</' . $headline['unit'] . '>';
     }
 
     /**

@@ -3,7 +3,7 @@
     locale: {
         en: {
             barMainText: function (el) {
-                el.innerHTML = '<?= $this->heading . $this->message ?>';
+                el.innerHTML = '<?= $this->headline . $this->message ?>';
                 return el;
             },
             barLinkSetting: "Privacy protection settings",
@@ -25,7 +25,7 @@
         },
         de: {
             barMainText: function (el) {
-                el.innerHTML = '<?= $this->heading . $this->message ?>';
+                el.innerHTML = '<?= $this->headline . $this->message ?>';
                 return el;
             },
             barLinkSetting: function (el) {
