@@ -8,7 +8,7 @@
  * @license MIT
  */
 
-use Kreativsoehne\Cookieconsent\Content\ToggleContentElement;
+use Kreativsoehne\Cookieconsent\Controller\ContentElement\ToogleCookieconsentController;
 
 /**
  * Frontend
@@ -46,4 +46,8 @@ $GLOBALS['TL_LANG']['tl_ks_cc_service']['duration'] = [
 /**
  * Backend
  */
-$GLOBALS['TL_LANG']['CTE'][ToggleContentElement::TYPE][0] = "Cookieconsent Umschalter";
+$GLOBALS['TL_LANG']['CTE'][ToogleCookieconsentController::TYPE] = [
+    "Cookieconsent Umschalter",
+    "Umschalter-Button für die Cookieconsent Einstellungen",
+];
+

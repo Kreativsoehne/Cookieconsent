@@ -1,0 +1,7 @@
+services:
+    _defaults:
+        autoconfigure: true
+    Kreativsoehne\Cookieconsent\Controller\FrontendModule\CookieconsentController:
+
+    Kreativsoehne\Cookieconsent\Controller\ContentElement\ToogleCookieconsentController:
+

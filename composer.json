@@ -24,11 +24,6 @@
     },
     "replace": {},
     "extra": {
-        "contao": {
-            "sources": {
-                "": "system/modules/kreativsoehne_cookieconsent"
-            }
-        },
         "contao-manager-plugin": "Kreativsoehne\\Cookieconsent\\ContaoManager\\Plugin"
     }
 }

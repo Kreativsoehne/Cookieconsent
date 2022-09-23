@@ -1,91 +1,68 @@
 <?php
 
-/**
- * Cookieconsent module for Contao Open Source CMS
- * Copyright (C) 2022 Kreativ&Söhne GmbH
- *
- * @author  Kreativ&Söhne GmbH <https://www.kreativundsoehne.de>
- * @license MIT
- */
+namespace Kreativsoehne\Cookieconsent\Controller\FrontendModule;
 
-namespace Kreativsoehne\Cookieconsent\Frontend;
-
-use Contao\Module;
+use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
+use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
+use Contao\ModuleModel;
+use Contao\Template;
 use Kreativsoehne\Cookieconsent\Model\Category;
 use Kreativsoehne\Cookieconsent\Model\CategoryLanguage;
 use Kreativsoehne\Cookieconsent\Model\Service;
 use Kreativsoehne\Cookieconsent\Model\ServiceLanguage;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @todo Implement as actual FrontendModuleController, didn't work yet though
+ * @FrontendModule(CookieconsentController::TYPE, category="miscellaneous", template="mod_ks_cookieconsent")
  */
-class CookieconsentModule extends \Contao\Module
+class CookieconsentController extends AbstractFrontendModuleController
 {
     /** @var string */
     public const TYPE = 'kreativsoehne_cookieconsent';
 
-    /**
-     * @inheritDoc
-     */
-    protected $strTemplate = 'mod_ks_cookieconsent';
+    /** @var string[] */
+    protected const MODULE_FIELDS = [
+        'ks_cc_heading',
+        'ks_cc_privacy_link',
+        'ks_cc_cookie_link',
+        'ks_cc_message',
+        'ks_cc_settings_message',
+    ];
 
     /** @var mixed[] */
     protected $rootData = [];
 
-    /**
-     * @inheritDoc
-     */
-    protected function compile()
-    {
-        if (TL_MODE === 'BE') {
-            $this->compileForBackend();
-        } else {
-            $this->compileForFrontend();
-        }
-    }
-
-    /**
-     * Compile for backend view
-     */
-    protected function compileForBackend()
-    {
-        $this->strTemplate = 'be_wildcard';
-        $this->Template = new BackendTemplate($this->strTemplate);
-        $this->Template->title = $GLOBALS['TL_LANG']['FMD'][self::TYPE][0];
-    }
-
-    /**
-     * Compile for frontend view
-     */
-    protected function compileForFrontend()
+    /** @inheritDoc */
+    protected function getResponse(Template $template, ModuleModel $model, Request $request): Response
     {
         $blDebugMode = \Contao\Config::get('debugMode');
         \Contao\Config::set('debugMode', false);
 
-        $this->prepareRotData();
-        $this->setTemplateData($this->Template, $this->rootData);
+        $this->prepareRootData($model);
+        $this->setTemplateData($template, $this->rootData);
 
         $categories = $this->getCategories();
         $services = $this->getServices();
 
-        $this->Template->barTimeout = $this->isImprintOrPrivacyPage() === true ? 3600000 : 0; // 1h
-        $this->Template->blocknotice = $this->renderTemplate('cookieconsent_blocknotice', $this->rootData);
-        $this->Template->categories = $this->getCategoriesContent($categories);
-        $this->Template->languagesettings = $this->renderTemplate('cookieconsent_language', $this->rootData);
-        $this->Template->services = $this->getServicesContent($services, $categories);
+        $template->barTimeout = $this->isImprintOrPrivacyPage() === true ? 3600000 : 0; // 1h
+        $template->blocknotice = $this->renderTemplate('cookieconsent_blocknotice', $this->rootData);
+        $template->categories = $this->getCategoriesContent($categories);
+        $template->languagesettings = $this->renderTemplate('cookieconsent_language', $this->rootData);
+        $template->services = $this->getServicesContent($services, $categories);
 
         \Contao\Config::set('debugMode', $blDebugMode);
+
+        return $template->getResponse();
     }
 
     /**
      * Readout and prepare root data
      */
-    protected function prepareRotData()
+    protected function prepareRootData(ModuleModel $model)
     {
-        foreach ($this->arrData as $key => $value) {
-            if (strpos($key, 'ks_cc_') === 0) {
-                $this->rootData[substr($key, strlen('ks_cc_'))] = $value;
-            }
+        foreach (self::MODULE_FIELDS as $field) {
+            $this->rootData[substr($field, strlen('ks_cc_'))] = $model->{$field};
         }
 
         $this->rootData['heading'] = '<div class="h4 ccb__heading">' . html_entity_decode($this->rootData['heading']) . '</div>';

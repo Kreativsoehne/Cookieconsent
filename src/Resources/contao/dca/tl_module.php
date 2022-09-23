@@ -8,9 +8,9 @@
  * @license MIT
  */
 
-use Kreativsoehne\Cookieconsent\Frontend\CookieconsentModule;
+use Kreativsoehne\Cookieconsent\Controller\FrontendModule\CookieconsentController;
 
-$GLOBALS['TL_DCA']['tl_module']['palettes'][CookieconsentModule::TYPE] =
+$GLOBALS['TL_DCA']['tl_module']['palettes'][CookieconsentController::TYPE] =
     '{title_legend},name,type;{ks_cc_legend},ks_cc_heading,ks_cc_privacy_link,ks_cc_cookie_link,ks_cc_message,ks_cc_settings_message';
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['ks_cc_privacy_link'] = [

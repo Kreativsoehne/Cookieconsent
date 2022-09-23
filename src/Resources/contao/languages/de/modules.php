@@ -8,9 +8,9 @@
  * @license MIT
  */
 
-use Kreativsoehne\Cookieconsent\Frontend\CookieconsentModule;
+use Kreativsoehne\Cookieconsent\Controller\FrontendModule\CookieconsentController;
 
-$GLOBALS['TL_LANG']['FMD'][CookieconsentModule::TYPE] = [
+$GLOBALS['TL_LANG']['FMD'][CookieconsentController::TYPE] = [
     'Cookieconsent',
     'Rendert das Cookieconsent',
 ];
