@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Cookieconsent module for Contao Open Source CMS
+ * Copyright (C) 2022 Kreativ&Söhne GmbH
+ *
+ * @author  Kreativ&Söhne GmbH <https://www.kreativundsoehne.de>
+ * @license MIT
+ */
+
 namespace Kreativsoehne\Cookieconsent\Controller\ContentElement;
 
 use Contao\ContentModel;

@@ -5,3 +5,10 @@ services:
 
     Kreativsoehne\Cookieconsent\Controller\ContentElement\ToogleCookieconsentController:
 
+    Kreativsoehne\Cookieconsent\Migration\Version4\CategoryMigration:
+        arguments:
+            - '@database_connection'
+
+    Kreativsoehne\Cookieconsent\Migration\Version4\ServiceMigration:
+        arguments:
+            - '@database_connection'
