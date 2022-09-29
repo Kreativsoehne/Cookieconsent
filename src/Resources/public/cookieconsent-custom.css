@@ -55,6 +55,10 @@ body > #cconsent-bar .ccb__button > .ccb__edit {
 .cconsent-blocknotice-wrapper,
 .cc-blocknotice-wrapper {
     display: inline-block;
+    max-height: 100%;
+    max-width: 100%;
+    min-height: 480px;
+    min-width: 480px;
     position: relative;
     overflow: hidden;
     z-index: 10;

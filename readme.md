@@ -1,6 +1,6 @@
 # Kreativsoehne - Cookieconsent
 
-Cookie optin with [brainsum/cookieconsent](https://github.com/brainsum/cookieconsent) as the overlay and ways to block cookies and external resources.
+Cookie optin with [brainsum/cookieconsent](https://github.com/brainsum/cookieconsent) as a two-layer overlay and ways to block cookies and external resources from loading if a user does not optin.
 
 **Note**:
 Version 4 has significant breaking changes and is not compatible with older version. However, if you find bugs or issues within v3 kindly open a [issue](https://github.com/Kreativsoehne/Cookieconsent/issues) with us and we'll see about updating and fixing v3 if necessary.
@@ -8,25 +8,25 @@ Version 4 has significant breaking changes and is not compatible with older vers
 ## Install
 
 Install through contao-manager or with `composer require kreativsoehne/cookieconsent`.
-The latter might require a `cache:clear` and `contao:migrate` afterwards.
-The database migration will insert a few common cookie categories and services.
+The latter might require a manual `cache:clear` and `contao:migrate` afterwards.
+The database migrations will insert a few common cookie categories and services.
 
 ## Usage
 
 This package offers these parts:
 
 * Two [Backend](#backend) areas for creating and managing the cookie categories and services
-* A [Frontend-Module](#frontend-modules) for rendering the cookieconsent in frontend
-* A [Content-Element](#content-elements) for rendering a link to manually open cookieconsent again
+* A [Frontend-Module](#frontend-modules) for rendering the entire cookieconsent in frontend
+* A [Content-Element](#content-elements) for rendering a link to manually open the cookieconsent 2nd layer
 
-### Backend
+#### Backend
 
 The two new backend areas `Categories` and `Services / Cookies` allow you to create and manage cookie categories and services, respectively.
 A few common categories and cookies/services will have been created on first install automatically.
 
-#### Categories
+##### Categories
 
-These are used to split the cookies/services into chunks within the 2nd layer, which there can be allowed or not by the users.
+These are used to split the cookies/services into chunks within the 2nd layer, where these can be allowed or not by the users.
 They have only few settings and can be translated into multiple languages.
 
 <!-- **TODO** Settings table -->
@@ -37,18 +37,18 @@ By default you should have at least these three categories, depending on the ser
 * Analytics (alias: `analytics`, ie. Google Analytics/Tag Manager)
 * External (alias `external`, ie. Youtube/Vimeo)
 
-Their aliases are used to enable or disable specific features later on.
+Their aliases are used to enable or disable specific features like auto-blocking later on.
+If these don't exist, chances are it won't work.
 
-
-#### Services / Cookies
+##### Services / Cookies
 
 Each of these will represent a single cookie or service (with multiple cookies) that is used on your website, fe. Contao Session or Google Analytics. They can be assigned to a category, have a few settings and can be translated into multiple languages.
 
 <!-- **TODO** Settings table -->
 
-##### Types
+###### Types
 
-Each service may have a specific type. Based on the type, the cookieconsent tool will try to block the service (or its cookies) if their category was not allowed by the user.
+Each service may have a specific type. Based on the type, the cookieconsent tool will try to block the service (or its cookies) if their category was not allowed by the user:
 
 | Name           | Description
 | ---------------|-------------
@@ -57,43 +57,39 @@ Each service may have a specific type. Based on the type, the cookieconsent tool
 | Script-Tag     | These are javascript which are written as script tags within your site (ie. custom theme javascript files)
 
 **Note**: The automatic blocking through any of these may not always work, as it greatly depends on the services or cookies and how these are set.
-A few ways to block things manually through templating, PHP or Javascript:
+A few ways to block things manually through templating, PHP or Javascript can be found [here](#manual-blocking).
 
-* [Blocking Analytics](#blocking-analytics)
-* [Blocking Youtube & Vimeo](#blocking-youtube-vimeo)
-* [Blocking anything else](#blocking-anything-else)
+#### Frontend-Modules
 
-### Frontend-Modules
+##### Cookieconsent
 
-#### Cookieconsent
-
-Renders the entire cookieconsent overlay into the frontend.
-Contains a few basic text- and editor-fields for customizing the 1st layer content. See the file `cookie-text.md` for some common texts.
+Renders the entire cookieconsent overlay (both 1st and 2nd layer) into the frontend.
+Contains a few basic text- and editor-fields for customizing the layers content & description-texts. See the file `gdpr-texts.md` for some common texts.
 It also offers two fields for selecting or linking the imprint & privacy policy pages.
-These will be linked within the overlay and the cookieconsent will not automatically open on these pages.
+These will be linked within the 1st layer and the cookieconsent will not automatically open on these pages.
 
 
-### Content-Elements
+#### Content-Elements
 
 Name|Description|Settings
 ----|-----------|--------
-*Cookieconsent Toggle*|Renders a link to open the cookieconsent overlay again|No further settings
+*Cookieconsent Toggle*|Renders a link to open the cookieconsent 2nd layer again|No further settings
 
 
 ### Cookieconsent Layer Customization
 
 See cookieconsent [documentation](https://github.com/brainsum/cookieconsent/blob/master/readme.md) for further information into specific settings.
 
-#### Languages
+#### Translations & Locales
 
-Through the template file `cookieconsent_language` several of the frontend languages settings can be customized or additional ones added as required.
+Through the template file `cookieconsent_language` several of the frontend locales can be customized or additional ones added as required.
 The format is a basic javascript object.
 
-### Opening the settings layer
+### Opening the settings layer manually
 
 If you require a link/button to open the cookie settings (2nd layer), you can use the content element *Cookieconsent Toggle*.
 
-It is also possible to manually render its template:
+It is also possible to just render its template:
 
 ```php
     <?= $this->insert('ce_ks_cookieconsent_toggle', [
@@ -109,50 +105,30 @@ Name|Description|Default
 iconClass|Optional list of icon classes (ie. Fontawesome).<br>Leave empty to not render an icon.|`fa fa-cookie-bite`
 label|The label of the button|`$GLOBALS['TL_LANG']['MCS']['cookieconsent_togglebutton_label']`
 
-### Blocking analytics
+### Auto blocked content & templates
 
-This is for Contao 4.9 and above.
-If you wish to block analytics and similar. Extend the template `analytics_google.html5` and replace this line:
+A few common templates are auto blocked, when their category was not allowed by the user.
+If something is blocked that way and Contao' debug mode is enabled, the cookieconsent will output a html-comment noting the block.
+Within that comment you can find the content/template name and category alias
 
-```diff
-+ $ccChoices = json_decode(html_entity_decode(\Input::cookie('cconsent')));
-+ $allowedAnalyticsCookies = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->analytics) && $ccChoices->categories->analytics->wanted === true;
-+
-- if ($GoogleAnalyticsId != 'UA-XXXXX-X' && !BE_USER_LOGGED_IN && !$this->hasAuthenticatedBackendUser()): ?>
-+ if ($GoogleAnalyticsId != 'UA-XXXXX-X' && !BE_USER_LOGGED_IN && !$this->hasAuthenticatedBackendUser() && $allowedAnalyticsCookies == true): ?>
-```
+Approx. template|Wanted category
+---|---
+analytics_xyz|analytics
+youtube\|vimeo|external
+gmap\|googlemaps|external
 
-This way the analytics and any other code there won't be rendered unless the analytics category was accepted by the user beforehand.
+If you have any template, frontend module or content element you'd like to be auto blocked also, kindly open a [issue](https://github.com/Kreativsoehne/Cookieconsent/issues) with us and we'll see about adding it.
 
-### Blocking Youtube & Vimeo
-
-The content elements for Youtube and Vimeo will be blocked automatically if the user did not accept cookies for measurement usage. You can edit the block message through the template `cookieconsent_blocknotice.html5` and its text through the `TL_LANG` variables.
-
-### Blocking anything else
+### Manual blocking
 
 If you require anything else to be blocked then these if-condition should help.
-In these examples we check if `Analytics` services/cookies were accepted by user:
-
-In PHP:
-
-```php
-<?php
-$ccChoices = json_decode(html_entity_decode(\Input::cookie('cconsent')));
-$allowedAnalyticsCookies = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->analytics) &&
-$ccChoices->categories->analytics->wanted === true;
-
-if ($allowedAnalyticsCookies === true) {
-    // User allowed cookies of category "analytics"
-    // Your php code here
-}
-?>
-```
+In these examples we check if the category `Analytics` was accepted by the user:
 
 In templates:
 
 ```php
 <?php
-$ccChoices = json_decode(html_entity_decode(\Input::cookie('cconsent')));
+$ccChoices = json_decode(\Input::cookie('cconsent', true));
 $allowedAnalyticsCookies = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->analytics) &&
 $ccChoices->categories->analytics->wanted === true;
 ?>
@@ -161,6 +137,21 @@ $ccChoices->categories->analytics->wanted === true;
     // User allowed cookies of category "analytics"
     // Your template code here
 <?php endif; ?>
+```
+
+In PHP:
+
+```php
+<?php
+$ccChoices = json_decode(\Input::cookie('cconsent', true));
+$allowedAnalyticsCookies = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->analytics) &&
+$ccChoices->categories->analytics->wanted === true;
+
+if ($allowedAnalyticsCookies === true) {
+    // User allowed cookies of category "analytics"
+    // Your php code here
+}
+?>
 ```
 
 In Javascript:

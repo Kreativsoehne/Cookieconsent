@@ -1,9 +1,13 @@
+# I don't know why, but all services classes need to be listed here,
+# even though most use annotations for service registration...
 services:
     _defaults:
         autoconfigure: true
     Kreativsoehne\Cookieconsent\Controller\FrontendModule\CookieconsentController:
 
     Kreativsoehne\Cookieconsent\Controller\ContentElement\ToogleCookieconsentController:
+
+    Kreativsoehne\Cookieconsent\EventListener\ParseFrontendTemplateListener:
 
     Kreativsoehne\Cookieconsent\Migration\Version4\CategoryMigration:
         arguments:

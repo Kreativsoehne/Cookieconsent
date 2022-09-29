@@ -13,6 +13,7 @@ use Kreativsoehne\Cookieconsent\Controller\ContentElement\ToogleCookieconsentCon
 /**
  * Frontend
  */
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blockcomment'] = '<!-- Template "##templateName##" durch Kreativsoehne\Cookieconsent geblockt, Cookie-Kategorie "##category##" ist vom User nicht erwünscht -->';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Leider sind externe Einbindungen ohne entsprechende Cookies Zustimmung nicht verfügbar.';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Cookie Einstellungen bearbeiten';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_toggle_label'] = 'Datenschutz&shy;einstellungen';
