@@ -12,6 +12,7 @@ namespace Kreativsoehne\Cookieconsent\EventListener;
 
 use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\FrontendTemplate;
+use Kreativsoehne\Cookieconsent\Model\Category;
 
 /**
  * @Hook("parseFrontendTemplate")
@@ -29,12 +30,6 @@ class ParseFrontendTemplateListener
     ];
 
     /**
-     * Cache of Cookie Categories with their wanted state
-     * @var array[string]
-     */
-    protected static $categoryStates = null;
-
-    /**
      * @param string $buffer
      * @param string $template
      * @param FrontendTemplate $frontendTemplate
@@ -44,7 +39,7 @@ class ParseFrontendTemplateListener
     {
         $category = $this->getCategoryForTemplate($templateName);
 
-        if (null === $category || true === $this->isCategoryWanted($category)) {
+        if (null === $category || true === Category::isCategoryWanted($category)) {
             return $buffer;
         }
 
@@ -74,48 +69,6 @@ class ParseFrontendTemplateListener
         }
 
         return null;
-    }
-
-    /**
-     * Get the wanted states of all cookie categories
-     * @return array[bool]
-     */
-    protected function getCookieCategoryStates(): array
-    {
-        $ccChoices = json_decode(html_entity_decode(\Input::cookie('cconsent')));
-
-        if (
-            null === $ccChoices ||
-            false === is_object($ccChoices) ||
-            false === is_object($ccChoices->categories)
-        ) {
-            return [];
-        }
-
-        $result = [];
-        foreach ($ccChoices->categories as $category => $settings) {
-            $result[$category] = false;
-
-            if (true === is_object($settings)) {
-                $result[$category] = $settings->wanted === true;
-            }
-        }
-
-        return $result;
-    }
-
-    /**
-     * Check if category is wanted
-     * @param string $category
-     * @return bool
-     */
-    protected function isCategoryWanted(string $category): bool
-    {
-        if (self::$categoryStates === null) {
-            self::$categoryStates = $this->getCookieCategoryStates();
-        }
-
-        return self::$categoryStates[$category] ?? false;
     }
 
     /**

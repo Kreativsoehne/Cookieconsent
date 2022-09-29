@@ -7,16 +7,6 @@
 <!-- indexer::stop -->
 <script>
 window.addEventListener("load", function() {
-    // Retrieve current cconsent cookie data
-    var ccChoices = document.cookie.match(new RegExp('(^| )cconsent=([^;]+)'));
-    if (Array.isArray(ccChoices) === true && ccChoices.length > 2) {
-        try {
-            ccChoices = JSON.parse(ccChoices.pop());
-        } catch (e) {
-            ccChoices = null;
-        }
-    }
-
     // Reload on any changes to the cookie consent settings
     var ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,button.consent-give,button.consent-deny');
     for(let ccButton of ccButtons) {

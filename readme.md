@@ -127,13 +127,7 @@ In these examples we check if the category `Analytics` was accepted by the user:
 In templates:
 
 ```php
-<?php
-$ccChoices = json_decode(\Input::cookie('cconsent', true));
-$allowedAnalyticsCookies = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->analytics) &&
-$ccChoices->categories->analytics->wanted === true;
-?>
-
-<?php if ($allowedAnalyticsCookies === true): ?>
+<?php if (true === Kreativsoehne\Cookieconsent\Model\Category::isCategoryWanted('analytics')): ?>
     // User allowed cookies of category "analytics"
     // Your template code here
 <?php endif; ?>
@@ -142,16 +136,13 @@ $ccChoices->categories->analytics->wanted === true;
 In PHP:
 
 ```php
-<?php
-$ccChoices = json_decode(\Input::cookie('cconsent', true));
-$allowedAnalyticsCookies = $ccChoices !== null && is_object($ccChoices->categories) && is_object($ccChoices->categories->analytics) &&
-$ccChoices->categories->analytics->wanted === true;
+$allowedAnalyticsCookies = Kreativsoehne\Cookieconsent\Model\Category::isCategoryWanted('analytics');
+// [...]
 
-if ($allowedAnalyticsCookies === true) {
+if (true === $allowedAnalyticsCookies) {
     // User allowed cookies of category "analytics"
     // Your php code here
 }
-?>
 ```
 
 In Javascript:
