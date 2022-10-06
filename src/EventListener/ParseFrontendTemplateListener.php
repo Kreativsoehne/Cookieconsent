@@ -85,10 +85,9 @@ class ParseFrontendTemplateListener
      */
     protected function renderBlockNotice(string $category): string
     {
-        $categoryName = $this->getCategoryName($category);
-
         $template = new FrontendTemplate('cookieconsent_blocknotice');
-        $template->category = $categoryName;
+        $template->category = $this->getCategoryName($category);
+
         return $template->parse();
     }
 
