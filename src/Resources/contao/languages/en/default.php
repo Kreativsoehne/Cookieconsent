@@ -14,8 +14,9 @@ use Kreativsoehne\Cookieconsent\Controller\ContentElement\ToogleCookieconsentCon
  * Frontend
  */
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_blockcomment'] = '<!-- Template "##templateName##" blocked by Kreativsoehne\Cookieconsent, cookie-category "##category##" not wanted by user -->';
-$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Unfortunately external integrations are not available without cookies acceptance.';
-$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Edit cookie settings';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Unfortunately this content is not available without cookie acceptance.';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Please allow the cookie category "##category##" to view this content.';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_edit'] = 'Edit cookie settings';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_toggle_label'] = 'Privacy settings';
 
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_duration'] = 'Duration';

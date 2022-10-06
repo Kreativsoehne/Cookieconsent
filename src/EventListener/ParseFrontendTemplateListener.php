@@ -13,12 +13,19 @@ namespace Kreativsoehne\Cookieconsent\EventListener;
 use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\FrontendTemplate;
 use Kreativsoehne\Cookieconsent\Model\Category;
+use Kreativsoehne\Cookieconsent\Model\CategoryLanguage;
 
 /**
  * @Hook("parseFrontendTemplate")
  */
 class ParseFrontendTemplateListener
 {
+    /**
+     * Basic cache for category names to prevent multiple database queries.
+     * @var string[]
+     * */
+    protected static $categoryNames = [];
+
     /**
      * Map of templateName expressions to cookie category aliases
      * @var array[string]
@@ -78,7 +85,10 @@ class ParseFrontendTemplateListener
      */
     protected function renderBlockNotice(string $category): string
     {
+        $categoryName = $this->getCategoryName($category);
+
         $template = new FrontendTemplate('cookieconsent_blocknotice');
+        $template->category = $categoryName;
         return $template->parse();
     }
 
@@ -106,5 +116,29 @@ class ParseFrontendTemplateListener
             array_values($replaceMap),
             $GLOBALS['TL_LANG']['MCS']['cookieconsent_blockcomment']
         );
+    }
+
+    protected function getCategoryName(string $alias): string
+    {
+        $language = $GLOBALS['TL_LANGUAGE'];
+        if (false === isset(self::$categoryNames[$language])) {
+            self::$categoryNames[$language] = [];
+        }
+
+        if (false === isset(self::$categoryNames[$language][$alias])) {
+            self::$categoryNames[$language][$alias] = $alias;
+
+            $category = Category::findByAlias($alias);
+
+            if (null !== $category) {
+                $categoryLanguage = CategoryLanguage::findOneBy(['pid = ?', 'language = ?'], [$category->id, $language]);
+
+                if (null !== $categoryLanguage) {
+                    self::$categoryNames[$language][$alias] = $categoryLanguage->name;
+                }
+            }
+        }
+
+        return self::$categoryNames[$language][$alias];
     }
 }
