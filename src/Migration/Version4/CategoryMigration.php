@@ -83,7 +83,7 @@ class CategoryMigration extends AbstractMigration
             INSERT INTO `tl_ks_cc_category` (`id`, `tstamp`, `sorting`, `pid`, `alias`, `needed`, `wanted`, `checked`, `published`) VALUES
             (1, 1614777969, 0, 0, 'necessary', '1', '1', '1', '1'),
             (2, 1614777939, 0, 0, 'analytics', '', '', '', '1'),
-            (4, 1614777824, 128, 0, 'external', '', '', '', '1'),
+            (4, 1614777824, 128, 0, 'presentation', '', '', '', '1'),
             (6, 1614777877, 64, 0, 'measurement', '', '', '', '1'),
             (7, 1614777909, 0, 0, 'advertising', '', '', '', '1'),
             (8, 1614345924, 80, 0, 'recommendations', '', '', '', ''),
@@ -114,7 +114,7 @@ class CategoryMigration extends AbstractMigration
             (14, 1614777650, 2, 'en', 'Statistical analysis', '<p>Statistical analysis is the processing and display of data related to user actions and interactions on websites and apps (e.g. number of page visits, number of unique visitors, number of returning visitors, entry and exit pages, duration of visit, bounce rate, button presses) and, where applicable, the classification of users into groups based on technical data about the software settings being used (e.g. browser types, operating systems, language settings, screen resolutions).</p>'),
             (15, 1614777682, 7, 'en', 'Individualised advertising', '<p>Certain features of websites and apps are used to display personalised advertising (ads or commercials) to users in other contexts, such as on other websites, platforms or apps. For this purpose, conclusions about the interests of users are drawn from demographic data, search terms used, contextual content, user behaviour on websites and in apps, or from the location of users. Based on these interests, advertising media will be selected in the future and displayed on the websites of other online content providers.</p>'),
             (16, 1614777733, 6, 'en', 'Reach metrics', '<p>Reach metrics refers to the evaluation of user actions by analysing user behaviour in order to identify specific actions taken by users and measure the effectiveness of online advertising. The number of visitors who have accessed websites or apps by clicking on advertisements, for example, is measured. In addition, the proportion of users who perform a certain action can be measured (e.g. registration for the newsletter, ordering goods).</p>'),
-            (17, 1614777778, 4, 'en', 'Display', '<p>Cookies to improve functionalities and enable personalisation, for example for the integration of videos and the use of social media.</p>'),
+            (17, 1614777778, 4, 'en', 'Presentation', '<p>Cookies to improve functionalities and enable personalisation, for example for the integration of videos and the use of social media.</p>'),
             (18, 1614174336, 8, 'en', 'Individual recommendations', '<p>Certain functions of websites and apps serve to show users product alternatives or to increase purchasing incentives. With so-called recommendations, the customer is offered a wide variety of alternatives in addition to the product he is looking for. The behavior of the user and the shopping cart are analyzed and a forecast is made in real time which product the website visitor might like. It is also possible to display product recommendations based on product similarities in a category or to include manually assigned recommendations, such as accessories or bundled products.</p>');
         ");
 

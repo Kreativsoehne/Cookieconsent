@@ -32,8 +32,8 @@ class ParseFrontendTemplateListener
      */
     protected $templateNameToCategoryMap = [
         '/^analytics_/' => 'analytics',
-        '/^(ce_|customelement_|mod_)(vimeo|youtube)/' => 'external',
-        '/^(ce_|customelement_|mod_)(.+_)*(gmap|googlemap)/' => 'external'
+        '/^(ce_|customelement_|mod_)(vimeo|youtube)/' => 'presentation',
+        '/^(ce_|customelement_|mod_)(.+_)*(gmap|googlemap)/' => 'presentation'
     ];
 
     /**

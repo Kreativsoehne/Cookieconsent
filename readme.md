@@ -35,7 +35,7 @@ By default you should have at least these three categories, depending on the ser
 
 * Necessary cookies (alias: `necessary`, ie. PHPSESSID, Contao Token)
 * Analytics (alias: `analytics`, ie. Google Analytics/Tag Manager)
-* External (alias `external`, ie. Youtube/Vimeo)
+* Presentation (alias `presentation`, ie. Youtube/Vimeo)
 
 Their aliases are used to enable or disable specific features like auto-blocking later on.
 If these don't exist, chances are it won't work.
@@ -114,8 +114,8 @@ Within that comment you can find the content/template name and category alias
 Approx. template|Wanted category
 ---|---
 analytics_xyz|analytics
-youtube\|vimeo|external
-gmap\|googlemaps|external
+youtube\|vimeo|persentation
+gmap\|googlemaps|persentation
 
 If you have any template, frontend module or content element you'd like to be auto blocked also, kindly open a [issue](https://github.com/Kreativsoehne/Cookieconsent/issues) with us and we'll see about adding it.
 
