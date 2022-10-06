@@ -17,7 +17,7 @@ window.addEventListener("load", function() {
 });
 
 window.CookieConsent.init({
-  modalMainTextMoreLink: '<?= $this->cookie_link ?>',
+  modalMainTextMoreLink: '<?= $this->imprint_link ?>',
   modalMainTextPrivacyLink: '<?= $this->privacy_link ?>',
   barTimeout: <?= $this->barTimeout ?>,
 

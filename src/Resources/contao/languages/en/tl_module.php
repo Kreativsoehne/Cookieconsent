@@ -10,9 +10,8 @@
 
 $GLOBALS['TL_LANG']['tl_module']['ks_cc_legend'] = 'Cookieconsent information';
 
-$GLOBALS['TL_LANG']['tl_module']['ks_cc_heading'] = ['Heading', 'Heading of the 1st layer message.'];
 $GLOBALS['TL_LANG']['tl_module']['ks_cc_privacy_link'] = ['Privacy protection link', 'Link to privacy protection site.'];
-$GLOBALS['TL_LANG']['tl_module']['ks_cc_cookie_link'] = ['Imprint link', 'Link to imprint site.'];
-$GLOBALS['TL_LANG']['tl_module']['ks_cc_message'] = ['Initial message', '1st layer message about cookie usage.'];
-$GLOBALS['TL_LANG']['tl_module']['ks_cc_settings_message'] = ['Settings description', '2nd Layer explanation text about cookie settings.'];
+$GLOBALS['TL_LANG']['tl_module']['ks_cc_imprint_link'] = ['Imprint link', 'Link to imprint site.'];
+$GLOBALS['TL_LANG']['tl_module']['ks_cc_first_description'] = ['1st Layer Beschreibung', '1st layer message about cookie usage.'];
+$GLOBALS['TL_LANG']['tl_module']['ks_cc_second_description'] = ['2nd Layer Description', '2nd Layer explanation text about cookie settings.'];
 

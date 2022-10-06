@@ -11,7 +11,7 @@
 use Kreativsoehne\Cookieconsent\Controller\FrontendModule\CookieconsentController;
 
 $GLOBALS['TL_DCA']['tl_module']['palettes'][CookieconsentController::TYPE] =
-    '{title_legend},name,type,headline;{ks_cc_legend},ks_cc_privacy_link,ks_cc_cookie_link,ks_cc_message,ks_cc_settings_message;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests';
+    '{title_legend},name,type,headline;{ks_cc_legend},ks_cc_privacy_link,ks_cc_imprint_link,ks_cc_first_description,ks_cc_second_description;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests';
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['ks_cc_privacy_link'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_module']['ks_cc_privacy_link'],
@@ -21,24 +21,24 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['ks_cc_privacy_link'] = [
     'sql' => "varchar(255) NOT NULL default ''",
 ];
 
-$GLOBALS['TL_DCA']['tl_module']['fields']['ks_cc_cookie_link'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_module']['ks_cc_cookie_link'],
+$GLOBALS['TL_DCA']['tl_module']['fields']['ks_cc_imprint_link'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['ks_cc_imprint_link'],
     'exclude' => true,
     'inputType' => 'text',
     'eval' => ['rgxp' => 'url', 'decodeEntities' => true, 'dcaPicker' => true, 'fieldType' => 'radio', 'tl_class' => 'w50'],
     'sql' => "varchar(255) NOT NULL default ''",
 ];
 
-$GLOBALS['TL_DCA']['tl_module']['fields']['ks_cc_message'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_module']['ks_cc_message'],
+$GLOBALS['TL_DCA']['tl_module']['fields']['ks_cc_first_description'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['ks_cc_first_description'],
     'exclude' => true,
     'inputType' => 'textarea',
     'eval' => ['mandatory' => false, 'tl_class' => 'long clr', 'rte' => 'tinyMCE'],
     'sql' => 'text NULL',
 ];
 
-$GLOBALS['TL_DCA']['tl_module']['fields']['ks_cc_settings_message'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_module']['ks_cc_settings_message'],
+$GLOBALS['TL_DCA']['tl_module']['fields']['ks_cc_second_description'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_module']['ks_cc_second_description'],
     'exclude' => true,
     'inputType' => 'textarea',
     'eval' => ['mandatory' => false, 'tl_class' => 'long clr', 'rte' => 'tinyMCE'],

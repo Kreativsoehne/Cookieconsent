@@ -31,11 +31,10 @@ class CookieconsentController extends AbstractFrontendModuleController
 
     /** @var string[] */
     protected const MODULE_FIELDS = [
-        'ks_cc_heading',
         'ks_cc_privacy_link',
-        'ks_cc_cookie_link',
-        'ks_cc_message',
-        'ks_cc_settings_message',
+        'ks_cc_imprint_link',
+        'ks_cc_first_description',
+        'ks_cc_second_description',
     ];
 
     /** @var mixed[] */
@@ -193,7 +192,7 @@ class CookieconsentController extends AbstractFrontendModuleController
             $currentPageUrl = $GLOBALS['objPage']->getFrontendUrl();
         }
 
-        $imprintLink = $this->rootData['cookie_link'];
+        $imprintLink = $this->rootData['imprint_link'];
         $privacyLink = $this->rootData['privacy_link'];
 
         preg_match('/^{{link_url::(\d+)/', $imprintLink, $imprintMatches);

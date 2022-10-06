@@ -3,7 +3,7 @@
     locale: {
         en: {
             barMainText: function (el) {
-                el.innerHTML = '<?= $this->headline . $this->message ?>';
+                el.innerHTML = '<?= $this->headline . $this->first_description ?>';
                 return el;
             },
             barLinkSetting: "Privacy protection settings",
@@ -11,7 +11,7 @@
             barBtnAcceptAll: "Accept",
             modalMainTitle: "Privacy protection settings",
             modalMainText: function (el) {
-                el.innerHTML = '<?= $this->settings_message ?>';
+                el.innerHTML = '<?= $this->second_description ?>';
                 return el;
             },
             modalBtnSave: "Save current settings",
@@ -25,7 +25,7 @@
         },
         de: {
             barMainText: function (el) {
-                el.innerHTML = '<?= $this->headline . $this->message ?>';
+                el.innerHTML = '<?= $this->headline . $this->first_description ?>';
                 return el;
             },
             barLinkSetting: function (el) {
@@ -39,7 +39,7 @@
                 return el;
             },
             modalMainText: function (el) {
-                el.innerHTML = '<?= $this->settings_message ?>';
+                el.innerHTML = '<?= $this->second_description ?>';
                 return el;
             },
             modalBtnSave: "Speichern",
