@@ -52,8 +52,7 @@ body > #cconsent-bar .ccb__button > .ccb__edit {
     color: #000000;
 }
 
-.cconsent-blocknotice-wrapper,
-.cc-blocknotice-wrapper {
+.cconsent-blocknotice-wrapper {
     display: inline-block;
     max-height: 100%;
     max-width: 100%;
@@ -64,8 +63,7 @@ body > #cconsent-bar .ccb__button > .ccb__edit {
     z-index: 10;
 }
 
-.embed-responsive > .cconsent-blocknotice-wrapper,
-.embed-responsive > .cc-blocknotice-wrapper {
+.embed-responsive > .cconsent-blocknotice-wrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -73,8 +71,7 @@ body > #cconsent-bar .ccb__button > .ccb__edit {
     bottom: 0;
 }
 
-.cconsent-blocknotice-wrapper .cconsent-blocknotice,
-.cc-blocknotice-wrapper .cc-blocknotice {
+.cconsent-blocknotice-wrapper .cconsent-blocknotice {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
