@@ -34,8 +34,4 @@ window.CookieConsent.init({
   }
 });
 </script>
-
-<div id="cconsent-global-blocknotice" data-nosnippet style="display: none;">
-    <?= $this->blocknotice ?>
-</div>
 <!-- indexer::continue -->
