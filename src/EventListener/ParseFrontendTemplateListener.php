@@ -117,7 +117,7 @@ class ParseFrontendTemplateListener
         );
     }
 
-    protected function getCategoryName(string $alias): string
+    public static function getCategoryName(string $alias): string
     {
         $language = $GLOBALS['TL_LANGUAGE'];
         if (false === isset(self::$categoryNames[$language])) {

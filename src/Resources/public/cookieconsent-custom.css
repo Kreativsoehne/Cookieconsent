@@ -56,11 +56,14 @@ body > #cconsent-bar .ccb__button > .ccb__edit {
     display: inline-block;
     max-height: 100%;
     max-width: 100%;
-    min-height: 480px;
-    min-width: 480px;
     position: relative;
     overflow: hidden;
     z-index: 10;
+}
+
+.cconsent-blocknotice-wrapper:not(.cconsent-blocknotice-autosize) {
+    min-height: 480px;
+    min-width: 480px;
 }
 
 .embed-responsive > .cconsent-blocknotice-wrapper {

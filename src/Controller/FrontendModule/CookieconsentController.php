@@ -15,6 +15,7 @@ use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
 use Contao\FrontendTemplate;
 use Contao\ModuleModel;
 use Contao\Template;
+use Kreativsoehne\Cookieconsent\EventListener\ParseFrontendTemplateListener;
 use Kreativsoehne\Cookieconsent\Model\Category;
 use Kreativsoehne\Cookieconsent\Model\CategoryLanguage;
 use Kreativsoehne\Cookieconsent\Model\Service;
@@ -49,7 +50,7 @@ class CookieconsentController extends AbstractFrontendModuleController
         $services = $this->getServices();
 
         $cookieData['barTimeout'] = $this->isImprintOrPrivacyPage($cookieData) === true ? 3600000 : 0; // 1h
-        $cookieData['blocknotice'] = $this->renderTemplate('cookieconsent_blocknotice', $cookieData);
+        $cookieData['blocknotice'] = $this->renderAutoBlocknotice();
         $cookieData['categories'] = $this->getCategoriesContent($categories);
         $cookieData['language'] = $this->renderTemplate('cookieconsent_language', $cookieData);
         $cookieData['services'] = $this->getServicesContent($services, $categories);
@@ -212,6 +213,21 @@ class CookieconsentController extends AbstractFrontendModuleController
             $currentPageId === $privacyPageId ||
             $currentPageUrl === $imprintLink ||
             $currentPageUrl === $privacyLink
+        );
+    }
+
+    /**
+     * Renders blocknotice for auto blocking
+     * @return string
+     * @todo Probably move getCategoryName into Category instead?
+     */
+    protected function renderAutoBlocknotice(): string
+    {
+        return $this->renderTemplate(
+            'cookieconsent_blocknotice',
+            [
+                'category' => ParseFrontendTemplateListener::getCategoryName('presentation')
+            ]
         );
     }
 

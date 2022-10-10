@@ -1,8 +1,48 @@
 <!-- indexer::stop -->
 <script>
+    /* Retrieve current cconsent cookie data */
+    let ccChoices = document.cookie.match(new RegExp('(^| )cconsent=([^;]+)'));
+    if (Array.isArray(ccChoices) === true && ccChoices.length > 2) {
+        try {
+            ccChoices = JSON.parse(ccChoices.pop());
+        } catch (e) {
+            ccChoices = null;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        /* Don't bother any further if cookies are allowed */
+        try {
+            if (ccChoices !== null
+                && typeof ccChoices === 'object'
+                && typeof ccChoices.categories.presentation === 'object'
+                && ccChoices.categories.presentation.wanted === true) {
+                return;
+            }
+        } catch (e) {}
+
+        /* General Blocknotice template */
+        const blockNoticeContent = '<?= addslashes($this->blocknotice) ?>';
+        const template = document.createElement('div');
+        template.innerHTML = blockNoticeContent.trim();
+        template.firstElementChild.classList.add('cconsent-blocknotice-autosize');
+
+        /* Replace iframes with blocknotice when presentation cookies are not allowed */
+        const iFrames = document.querySelectorAll('iframe');
+
+        iFrames.forEach(function(item) {
+            item.setAttribute('data-src', item.src);
+            item.src = '';
+
+            const clonedNotice = template.firstElementChild.cloneNode(true);
+            item.parentNode.insertBefore(clonedNotice, item.nextSibling);
+            clonedNotice.appendChild(item);
+        })
+    });
+
     window.addEventListener("load", function() {
         /* Reload on any changes to the cookie consent settings */
-        var ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,button.consent-give,button.consent-deny');
+        const ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,button.consent-give,button.consent-deny');
         for(let ccButton of ccButtons) {
             ccButton.addEventListener('click', function() {
                 return window.location.reload();
