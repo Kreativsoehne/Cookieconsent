@@ -12,8 +12,10 @@
  * Frontend
  */
 
-$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Unfortunately external integrations are not available without cookies acceptance.';
-$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Edit cookie settings';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Unfortunately this content is not available without cookie acceptance.';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Please allow the cookie category "##category##" to view this content.';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_default_category'] = 'Presentation';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_edit'] = 'Edit settings';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_toggle_label'] = 'Privacy settings';
 
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_duration'] = 'Duration';

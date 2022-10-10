@@ -1,10 +1,24 @@
+<?php
+	$category = false === empty($this->category) ?
+        $this->category :
+        $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_default_category'];
+?>
+
 <!-- indexer::stop -->
 <div class="cconsent-blocknotice-wrapper cc-blocknotice-wrapper">
-    <div class="cconsent-blocknotice cc-blocknotice">
-        <strong><?= $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] ?></strong>
+    <div class="cconsent-blocknotice cc-blocknotice alert alert-danger">
+        <p>
+            <strong>
+                <?= $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] ?>
+                <br>
+                <?= str_replace(['##category##'], [$category], $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow']) ?>
+            </strong>
+        </p>
+
         <?= $this->insert('ce_cookieconsent_toggle', [
+            'class' => 'btn btn-danger',
             'iconClass' => false,
-            'label' => $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'],
+            'label' => $GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_edit'],
         ]) ?>
     </div>
 </div>
