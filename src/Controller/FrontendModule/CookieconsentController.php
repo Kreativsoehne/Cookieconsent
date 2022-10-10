@@ -12,6 +12,7 @@ namespace Kreativsoehne\Cookieconsent\Controller\FrontendModule;
 
 use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
 use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
+use Contao\FrontendTemplate;
 use Contao\ModuleModel;
 use Contao\Template;
 use Kreativsoehne\Cookieconsent\Model\Category;
@@ -37,26 +38,25 @@ class CookieconsentController extends AbstractFrontendModuleController
         'ks_cc_second_description',
     ];
 
-    /** @var mixed[] */
-    protected $rootData = [];
-
     /** @inheritDoc */
     protected function getResponse(Template $template, ModuleModel $model, Request $request): Response
     {
         $blDebugMode = \Contao\Config::get('debugMode');
         \Contao\Config::set('debugMode', false);
 
-        $this->prepareRootData($model);
-        $this->setTemplateData($template, $this->rootData);
-
+        $cookieData = $this->prepareCookieData($model);
         $categories = $this->getCategories();
         $services = $this->getServices();
 
-        $template->barTimeout = $this->isImprintOrPrivacyPage() === true ? 3600000 : 0; // 1h
-        $template->blocknotice = $this->renderTemplate('cookieconsent_blocknotice', $this->rootData);
-        $template->categories = $this->getCategoriesContent($categories);
-        $template->language = $this->renderTemplate('cookieconsent_language', $this->rootData);
-        $template->services = $this->getServicesContent($services, $categories);
+        $cookieData['barTimeout'] = $this->isImprintOrPrivacyPage($cookieData) === true ? 3600000 : 0; // 1h
+        $cookieData['blocknotice'] = $this->renderTemplate('cookieconsent_blocknotice', $cookieData);
+        $cookieData['categories'] = $this->getCategoriesContent($categories);
+        $cookieData['language'] = $this->renderTemplate('cookieconsent_language', $cookieData);
+        $cookieData['services'] = $this->getServicesContent($services, $categories);
+
+        $cookieData['cookieconsent'] = $this->renderCookieconsent($cookieData);
+
+        $this->setTemplateData($template, $cookieData);
 
         \Contao\Config::set('debugMode', $blDebugMode);
 
@@ -65,17 +65,22 @@ class CookieconsentController extends AbstractFrontendModuleController
 
     /**
      * Readout and prepare root data
+     * @return mixed[]
      */
-    protected function prepareRootData(ModuleModel $model)
+    protected function prepareCookieData(ModuleModel $model): array
     {
+        $cookieData = [];
+
         foreach (self::MODULE_FIELDS as $field) {
-            $this->rootData[substr($field, strlen('ks_cc_'))] = $model->{$field};
+            $cookieData[substr($field, strlen('ks_cc_'))] = $model->{$field};
         }
 
         // Generate headline from serialized data
         $headline = unserialize($model->headline);
-        $this->rootData['headline'] =
+        $cookieData['headline'] =
             '<' . $headline['unit'] . ' class="ccb__heading">' . html_entity_decode($headline['value']) . '</' . $headline['unit'] . '>';
+
+        return $cookieData;
     }
 
     /**
@@ -177,9 +182,10 @@ class CookieconsentController extends AbstractFrontendModuleController
 
     /**
      * Check if current page is imprint or privacy page
+     * @param mixed[] $cookieData
      * @return bool
      */
-    protected function isImprintOrPrivacyPage(): bool
+    protected function isImprintOrPrivacyPage(array $cookieData): bool
     {
         $currentPageId = $GLOBALS['objPage']->id;
         $currentPageUrl = null;
@@ -192,8 +198,8 @@ class CookieconsentController extends AbstractFrontendModuleController
             $currentPageUrl = $GLOBALS['objPage']->getFrontendUrl();
         }
 
-        $imprintLink = $this->rootData['imprint_link'];
-        $privacyLink = $this->rootData['privacy_link'];
+        $imprintLink = $cookieData['imprint_link'];
+        $privacyLink = $cookieData['privacy_link'];
 
         preg_match('/^{{link_url::(\d+)/', $imprintLink, $imprintMatches);
         $imprintPageId = count($imprintMatches) > 1 ? $imprintMatches[1] : null;
@@ -210,6 +216,17 @@ class CookieconsentController extends AbstractFrontendModuleController
     }
 
     /**
+     * Renders cookieconsent init script
+     * @param array $cookieData
+     * @return string
+     */
+    protected function renderCookieconsent(array $cookieData): string
+    {
+        $result = $this->renderTemplate('cookieconsent_init', $cookieData);
+        return \Contao\Controller::replaceInsertTags($result);
+    }
+
+    /**
      * Render child template with specified data
      * @param string $template
      * @param array $data
@@ -217,7 +234,7 @@ class CookieconsentController extends AbstractFrontendModuleController
      */
     protected function renderTemplate(string $template, array $data): string
     {
-        $template = new \Contao\FrontendTemplate($template);
+        $template = new FrontendTemplate($template);
         $this->setTemplateData($template, $data);
 
         $result = $template->parse();
@@ -226,10 +243,10 @@ class CookieconsentController extends AbstractFrontendModuleController
 
     /**
      * Set data into template
-     * @param \Contao\FrontendTemplate $template
+     * @param FrontendTemplate $template
      * @param array $data
      */
-    protected function setTemplateData(\Contao\FrontendTemplate $template, array $data)
+    protected function setTemplateData(FrontendTemplate $template, array $data)
     {
         foreach ($data as $key => $value) {
             $template->{$key} = $value;

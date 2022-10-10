@@ -1,37 +1,8 @@
 <?php
-    $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent.css|static';
-    $GLOBALS['TL_CSS'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent-custom.css|static';
-    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/kreativsoehnecookieconsent/cookieconsent.js|static';
+    $GLOBALS['TL_CSS']['cookieconsent'] = 'bundles/kreativsoehnecookieconsent/cookieconsent.css|static';
+    $GLOBALS['TL_CSS']['cookieconsent-custom'] = 'bundles/kreativsoehnecookieconsent/cookieconsent-custom.css|static';
+    $GLOBALS['TL_JAVASCRIPT']['cookieconsent'] = 'bundles/kreativsoehnecookieconsent/cookieconsent.js|static';
+
+    /* See template `cookieconsent_init.html5` for customization */
+    $GLOBALS['TL_HEAD']['cookieconsent'] = $this->cookieconsent;
 ?>
-
-<!-- indexer::stop -->
-<script>
-window.addEventListener("load", function() {
-    // Reload on any changes to the cookie consent settings
-    var ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,button.consent-give,button.consent-deny');
-    for(let ccButton of ccButtons) {
-        ccButton.addEventListener('click', function() {
-            return window.location.reload();
-        });
-    }
-});
-
-window.CookieConsent.init({
-  modalMainTextMoreLink: '<?= $this->imprint_link ?>',
-  modalMainTextPrivacyLink: '<?= $this->privacy_link ?>',
-  barTimeout: <?= $this->barTimeout ?>,
-
-  language: {
-    <?= $this->language ?>
-  },
-
-  categories: {
-    <?= $this->categories ?>
-  },
-
-  services: {
-    <?= $this->services ?>
-  }
-});
-</script>
-<!-- indexer::continue -->

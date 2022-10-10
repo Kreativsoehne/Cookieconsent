@@ -1,0 +1,34 @@
+<!-- indexer::stop -->
+<script>
+    window.addEventListener("load", function() {
+        /* Reload on any changes to the cookie consent settings */
+        var ccButtons = document.querySelectorAll('#ccm__footer__consent-modal-submit,button.consent-give,button.consent-deny');
+        for(let ccButton of ccButtons) {
+            ccButton.addEventListener('click', function() {
+                return window.location.reload();
+            });
+        }
+    });
+
+    window.CookieConsent.init({
+    modalMainTextMoreLink: '<?= $this->imprint_link ?>',
+    modalMainTextPrivacyLink: '<?= $this->privacy_link ?>',
+    barTimeout: <?= $this->barTimeout ?>,
+
+    language: {
+        /* See template `cookieconsent_language.html5 for customization  */
+        <?= $this->language ?>
+    },
+
+    categories: {
+        /* See template `cookieconsent_categories.html5 for customization  */
+        <?= $this->categories ?>
+    },
+
+    services: {
+        /* See template `cookieconsent_services.html5 for customization  */
+        <?= $this->services ?>
+    }
+    });
+</script>
+<!-- indexer::continue -->

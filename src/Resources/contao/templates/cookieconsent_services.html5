@@ -46,4 +46,4 @@
         }
     },
 <?php endforeach?>
-/* Javascript object end, } */
+/* Javascript object end, services: } */

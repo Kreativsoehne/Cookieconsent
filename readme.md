@@ -64,9 +64,11 @@ A few ways to block things manually through templating, PHP or Javascript can be
 ##### Cookieconsent
 
 Renders the entire cookieconsent overlay (both 1st and 2nd layer) into the frontend.
-Contains a few basic text- and editor-fields for customizing the layers content & description-texts. See the file `gdpr-texts.md` for some common texts.
+Contains a few basic text- and editor-fields for customizing the layer contents & description-texts. See the file `gdpr-texts.md` for some common texts.
 It also offers two fields for selecting or linking the imprint & privacy policy pages.
-These will be linked within the 1st layer and the cookieconsent will not automatically open on these pages.
+These will be linked within the 1st layer and the cookieconsent will not automatically open on these pages (though it still runs in the background).
+
+**Note**: While this is Frontend-Module and can be placed anywhere on your page, the cookieconsent will always be rendered into the Page-Head (`<head>`-tag).
 
 
 #### Content-Elements
