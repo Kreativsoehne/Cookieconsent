@@ -12,8 +12,10 @@
  * Frontend
  */
 
-$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Leider sind externe Einbindungen ohne entsprechende Cookies Zustimmung nicht verfügbar.';
-$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Cookie Einstellungen bearbeiten';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice'] = 'Leider ist dieser Inhalt nicht ohne entsprechende Cookies Zustimmung verfügbar.';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_allow'] = 'Bitte erlauben Sie die Cookie Kategorie "##category##" um diesen Inhalt zu sehen.';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_default_category'] = 'Darstellung';
+$GLOBALS['TL_LANG']['MCS']['cookieconsent_blocknotice_edit'] = 'Einstellungen bearbeiten';
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_toggle_label'] = 'Datenschutz&shy;einstellungen';
 
 $GLOBALS['TL_LANG']['MCS']['cookieconsent_duration'] = 'Zeitdauer';
