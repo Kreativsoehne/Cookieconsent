@@ -117,7 +117,6 @@
 
 #cconsent-modal {
     display: none;
-    font-size: 14px;
     line-height: 18px;
     color: #666;
     width: 100vw;
@@ -137,10 +136,6 @@
     justify-content: center;
 }
 
-#cconsent-bar.ccb--hidden+#cconsent-modal {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
 @media (max-width: 680px) {
     #cconsent-modal {
         height: 100%;
@@ -156,6 +151,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 #cconsent-modal .ccm__content {
