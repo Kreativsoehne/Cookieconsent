@@ -7,13 +7,13 @@
     }
 ?>
 
-<div>
+<div class="ccm__service-title">
     <?= $this->name ?>
 </div>
 
-<small>
+<div class="ccm__service-content small">
     <?php if (empty(trim($this->duration)) === false): ?>
         <p><?= $GLOBALS['TL_LANG']['MCS']['cookieconsent_duration'] ?>: <?= $translatedDuration ?></p>
     <?php endif; ?>
     <div><?= addslashes($this->description) ?></div>
-</small>
+</div>
