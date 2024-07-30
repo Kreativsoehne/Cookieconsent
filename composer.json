@@ -3,7 +3,7 @@
     "description": "Abandoned: See readme - Cookieconsent overlay with required optin and ways to block cookies and external resources",
     "keywords": ["contao", "cookie", "cookiebar", "cookieconsent", "gdpr"],
     "type": "contao-bundle",
-    "version": "3.5.1",
+    "version": "3.5.2",
     "license": "MIT",
     "authors": [
         {
