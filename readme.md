@@ -1,5 +1,7 @@
 # Kreativsoehne - Cookieconsent
 
+**Abandoned**: This project is no longer maintained and may not be GDPR compliant anymore. We recommend [Consentmanager](https://www.consentmanager.de/) as a much more feature rich and GDPR compliant alternative.
+
 Cookie optin with [brainsum/cookieconsent](https://github.com/brainsum/cookieconsent) as the overlay and ways to block cookies and external resources.
 
 **Note**:
